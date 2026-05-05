@@ -5,13 +5,12 @@ import Home from './pages/Home';
 import TestPlatform from './pages/Test';
 import CraftsDir from './pages/Crafts';
 import CraftSingle from './pages/CraftDetail';
+import LearnHome from './pages/LearnHome';
+import CourseOverview from './pages/CourseOverview';
+import LessonDetail from './pages/LessonDetail';
 
 function CentersDir() {
   return <div className="text-center py-32 text-2xl font-bold font-heading">قريباً - مراكز التكوين المهني حسب الولاية</div>;
-}
-
-function LearnArea() {
-  return <div className="text-center py-32 text-2xl font-bold font-heading">قريباً - مساحة التعلم التفاعلي</div>;
 }
 
 export default function App() {
@@ -26,7 +25,9 @@ export default function App() {
             <Route path="/crafts" element={<CraftsDir />} />
             <Route path="/craft/:id" element={<CraftSingle />} />
             <Route path="/centers" element={<CentersDir />} />
-            <Route path="/learn" element={<LearnArea />} />
+            <Route path="/learn" element={<LearnHome />} />
+            <Route path="/learn/:craftId" element={<CourseOverview />} />
+            <Route path="/learn/:craftId/lesson/:lessonId" element={<LessonDetail />} />
           </Routes>
         </main>
         <Footer />
