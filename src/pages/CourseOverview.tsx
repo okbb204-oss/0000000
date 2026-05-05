@@ -39,14 +39,19 @@ export default function CourseOverview() {
              {isRTL ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
              <span>{t('learn.back_to_space')}</span>
            </Link>
-           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 leading-tight">{isRTL ? course.title : course.title}</h1>
-           <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">{isRTL ? course.description : course.description}</p>
+           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 leading-tight">{isRTL ? course.title : (course.titleEN || course.title)}</h1>
+           <p className="text-xl text-gray-300 max-w-2xl leading-relaxed">{isRTL ? course.description : (course.descriptionEN || course.description)}</p>
          </div>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
         <div className="bg-[var(--color-card)] rounded-2xl p-8 shadow-md border border-[var(--color-border)] mb-12">
-           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            {craftId === 'sewing' && completedLessonIds.length === 0 && (
+              <div className="mb-8 p-6 bg-[var(--color-primary)]/10 border-l-4 border-[var(--color-primary)] text-[var(--color-dark)] rounded-r-xl">
+                 <p className="text-lg font-medium italic">"{t('sewing.start_msg')}"</p>
+              </div>
+            )}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
              <div>
                <h3 className="font-heading font-bold text-xl mb-2 text-[var(--color-dark)]">{t('learn.your_journey')}</h3>
                <p className="text-[var(--color-secondary)]">{t('learn.journey_desc')}</p>
@@ -89,8 +94,8 @@ export default function CourseOverview() {
                      <div className="bg-[var(--color-card)] rounded-3xl p-8 shadow-sm border border-[var(--color-border)]">
                        <div className="flex items-center justify-between mb-4 border-b border-[var(--color-border)] pb-4">
                          <div>
-                           <h2 className="text-2xl font-bold font-heading text-[var(--color-dark)] mb-2">{isRTL ? level.title : level.title}</h2>
-                           <p className="text-[var(--color-secondary)] leading-relaxed max-w-2xl">{isRTL ? level.description : level.description}</p>
+                           <h2 className="text-2xl font-bold font-heading text-[var(--color-dark)] mb-2">{isRTL ? level.title : (level.titleEN || level.title)}</h2>
+                           <p className="text-[var(--color-secondary)] leading-relaxed max-w-2xl">{isRTL ? level.description : (level.descriptionEN || level.description)}</p>
                          </div>
                          {isLocked && <Lock className="w-6 h-6 text-[var(--color-secondary)]" />}
                        </div>
@@ -109,7 +114,7 @@ export default function CourseOverview() {
                                 </div>
                                 <div className="flex-grow">
                                   <h4 className={`font-bold font-heading text-lg ${isCompleted ? 'text-[var(--color-dark)]' : 'text-[var(--color-dark)]'}`}>
-                                    {t('learn.lesson')} {idx + 1}: {isRTL ? lesson.title : lesson.title}
+                                    {t('learn.lesson')} {idx + 1}: {isRTL ? lesson.title : (lesson.titleEN || lesson.title)}
                                   </h4>
                                   <div className="flex items-center gap-4 mt-2 text-sm text-[var(--color-secondary)] font-medium">
                                     <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {lesson.duration}</span>

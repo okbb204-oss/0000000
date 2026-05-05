@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Trophy, Clock, Hammer, ArrowLeft } from 'lucide-react';
+import { BookOpen, Trophy, Clock, Hammer, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { coursesData } from '../data/courses';
 import { crafts } from '../data/crafts';
 import { motion } from 'motion/react';
@@ -10,6 +10,7 @@ import { useProgress } from '../contexts/ProgressContext';
 export default function LearnHome() {
   const { t, i18n } = useTranslation();
   const { progress } = useProgress();
+  const isRTL = i18n.language === 'ar';
   const availableCourses = Object.values(coursesData);
 
   return (
@@ -58,14 +59,14 @@ export default function LearnHome() {
                  {t('learn.badges')}
               </h3>
               <div className="flex justify-center gap-4 text-[var(--color-secondary)] flex-wrap">
-                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('starter') ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={i18n.language === 'ar' ? 'خطوة الألف ميل' : 'The First Step'}>
+                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('sh_starter') ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={t('sewing.badges.start')}>
                     <Hammer className="w-6 h-6" />
                  </div>
-                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('keyboard_master') ? 'bg-[var(--color-accent)]/10 text-[var(--color-accent)] border-[var(--color-accent)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={i18n.language === 'ar' ? 'سيد لوحة المفاتيح' : 'Keyboard Master'}>
-                    <Clock className="w-6 h-6" />
+                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('sh_pro') ? 'bg-[var(--color-accent)]/10 text-[var(--color-accent)] border-[var(--color-accent)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={t('sewing.badges.pro')}>
+                    <Trophy className="w-6 h-6" />
                  </div>
-                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('graduate') ? 'bg-[var(--color-success)]/10 text-[var(--color-success)] border-[var(--color-success)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={i18n.language === 'ar' ? 'أخصائي الإدراج' : 'Entry Specialist'}>
-                    <BookOpen className="w-6 h-6" />
+                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('sh_repair') ? 'bg-[var(--color-success)]/10 text-[var(--color-success)] border-[var(--color-success)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={t('sewing.badges.repair')}>
+                    <CheckCircle2 className="w-6 h-6" />
                  </div>
               </div>
               <p className="text-xs text-center text-[var(--color-secondary)] mt-3">{t('learn.unlock_badges')}</p>
@@ -91,16 +92,20 @@ export default function LearnHome() {
                   className="bg-[var(--color-card)] rounded-2xl overflow-hidden shadow-sm border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-md transition-all group flex flex-col"
                 >
                   <div className="h-40 overflow-hidden relative">
-                    <img src={craft.image} alt={course.title} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
+                    <img src={craft.image} alt={isRTL ? course.title : (course.titleEN || course.title)} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
                        <span className="bg-[var(--color-primary)] text-white px-3 py-1 rounded-sm text-xs font-bold">
-                         {i18n.language === 'ar' ? craft.category : craft.category} {/* Ideally we translate category too */}
+                         {isRTL ? craft.category : craft.category}
                        </span>
                     </div>
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold font-heading mb-2 text-[var(--color-dark)]">{course.title}</h3>
-                    <p className="text-[var(--color-secondary)] text-sm mb-6 line-clamp-2 leading-relaxed flex-grow">{course.description}</p>
+                    <h3 className="text-xl font-bold font-heading mb-2 text-[var(--color-dark)]">
+                      {isRTL ? course.title : (course.titleEN || course.title)}
+                    </h3>
+                    <p className="text-[var(--color-secondary)] text-sm mb-6 line-clamp-2 leading-relaxed flex-grow">
+                      {isRTL ? course.description : (course.descriptionEN || course.description)}
+                    </p>
                     
                     <div className="flex items-center justify-between text-sm text-[var(--color-secondary)] mb-6 font-medium">
                       <div className="flex items-center gap-1.5 bg-[var(--color-bg-sand)] px-3 py-1.5 rounded-lg border border-[var(--color-border)]">

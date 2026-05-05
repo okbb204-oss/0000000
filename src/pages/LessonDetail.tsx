@@ -112,7 +112,7 @@ export default function LessonDetail() {
           </div>
           
           <div className="hidden md:block font-bold text-[var(--color-dark)] font-heading">
-            {isRTL ? course.levels[levelIndex].title : course.levels[levelIndex].title}
+            {isRTL ? course.levels[levelIndex].title : (course.levels[levelIndex].titleEN || course.levels[levelIndex].title)}
           </div>
           <div className="text-sm font-bold text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-3 py-1 rounded-md">
             {t('learn.lesson')} {lessonIndex + 1}
@@ -135,7 +135,7 @@ export default function LessonDetail() {
                  return (
                    <div key={level.id}>
                      <div className="mb-3">
-                       <h4 className="font-bold text-sm text-[var(--color-dark)] mb-2">{isRTL ? level.title : level.title}</h4>
+                       <h4 className="font-bold text-sm text-[var(--color-dark)] mb-2">{isRTL ? level.title : (level.titleEN || level.title)}</h4>
                        <div className="h-1.5 w-full bg-[var(--color-bg-sand)] rounded-full overflow-hidden border border-[var(--color-border)]">
                          <div className="h-full bg-[var(--color-primary)]" style={{ width: `${progressPercent}%` }} />
                        </div>
@@ -184,7 +184,9 @@ export default function LessonDetail() {
               
               {/* Header */}
               <div className="mb-8">
-                 <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--color-dark)] leading-tight">{lessonData.title}</h1>
+                 <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--color-dark)] leading-tight">
+                   {isRTL ? lessonData.title : (lessonData.titleEN || lessonData.title)}
+                 </h1>
               </div>
 
               {/* Visual Scene Area (Animation / Illustration) */}
@@ -236,7 +238,7 @@ export default function LessonDetail() {
                     {t('learn.summary')}
                   </h2>
                   <ul className="space-y-5">
-                    {lessonData.summary.map((point, idx) => (
+                    {(isRTL ? lessonData.summary : (lessonData.summaryEN || lessonData.summary)).map((point, idx) => (
                       <li key={idx} className="flex items-start gap-4 text-[var(--color-secondary)] leading-relaxed text-lg">
                         <div className="mt-2 w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
                         <span>{point}</span>
@@ -253,9 +255,11 @@ export default function LessonDetail() {
                       <Target className="w-6 h-6 text-[var(--color-primary)]" />
                       {t('learn.try_yourself')}
                     </h2>
-                    <h3 className="font-bold text-lg mb-2 text-[var(--color-dark)]">{lessonData.task.title}</h3>
+                    <h3 className="font-bold text-lg mb-2 text-[var(--color-dark)]">
+                      {isRTL ? lessonData.task.title : (lessonData.task.titleEN || lessonData.task.title)}
+                    </h3>
                     <p className="text-[var(--color-secondary)] leading-relaxed mb-6">
-                      {lessonData.task.description}
+                      {isRTL ? lessonData.task.description : (lessonData.task.descriptionEN || lessonData.task.description)}
                     </p>
                     
                     <button 
@@ -289,7 +293,7 @@ export default function LessonDetail() {
                         
                         return (
                           <div key={q.id} className="bg-[var(--color-bg-sand)] rounded-2xl p-6 border border-[var(--color-border)]">
-                            <h3 className="font-bold text-lg text-[var(--color-dark)] mb-4">{qIdx + 1}. {q.question}</h3>
+                            <h3 className="font-bold text-lg text-[var(--color-dark)] mb-4">{qIdx + 1}. {isRTL ? q.question : (q.questionEN || q.question)}</h3>
                             <div className="space-y-3">
                               {q.options.map(opt => {
                                 const isSelected = userAnswer === opt.id;
@@ -314,7 +318,7 @@ export default function LessonDetail() {
                                     onClick={() => setQuizAnswers(prev => ({...prev, [q.id]: opt.id}))}
                                     className={`w-full ${isRTL ? 'text-right' : 'text-left'} px-6 py-4 rounded-xl border-2 font-medium transition-all flex items-center justify-between ${btnClass}`}
                                   >
-                                    <span>{opt.text}</span>
+                                    <span>{isRTL ? opt.text : (opt.textEN || opt.text)}</span>
                                     {icon}
                                   </button>
                                 )
@@ -329,7 +333,7 @@ export default function LessonDetail() {
                                >
                                  <strong className="text-[var(--color-dark)] block mb-1">{t('learn.explanation')}</strong>
                                  <span className={userAnswer === q.options.find(o => o.isCorrect)?.id ? 'text-green-600' : 'text-orange-600'}>
-                                   {q.explanation}
+                                   {isRTL ? q.explanation : (q.explanationEN || q.explanation)}
                                  </span>
                                </motion.div>
                             )}
@@ -355,8 +359,14 @@ export default function LessonDetail() {
               {/* Navigation Arrows */}
               <div className="mt-12 flex items-center justify-between border-t border-[var(--color-border)] pt-8">
                  {prId ? (
-                   <Link to={`/learn/${craftId}/lesson/${prId}`} className="text-[var(--color-secondary)] hover:text-[var(--color-dark)] font-bold flex items-center gap-2 transition-colors">
-                     {isRTL ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
+                   <Link 
+                    to={`/learn/${craftId}/lesson/${prId}`} 
+                    title={isRTL ? 'العودة للدرس السابق' : 'Back to previous lesson'}
+                    className="text-[var(--color-secondary)] hover:text-[var(--color-dark)] font-bold flex items-center gap-2 transition-colors group"
+                   >
+                     <div className="w-8 h-8 rounded-lg bg-[var(--color-bg-sand)] flex items-center justify-center group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors">
+                       {isRTL ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
+                     </div>
                      {t('learn.prev_lesson')}
                    </Link>
                  ) : <div/>}
@@ -364,20 +374,22 @@ export default function LessonDetail() {
                  {nxtId ? (
                    <Link 
                      to={lessonCompleted ? `/learn/${craftId}/lesson/${nxtId}` : '#'} 
+                     title={!lessonCompleted ? (isRTL ? 'أكمل المتطلبات لفتح هذا الدرس' : 'Complete prerequisites to unlock this lesson') : (isRTL ? 'الانتقال للدرس التالي' : 'Go to next lesson')}
                      onClick={(e) => {
                        if (!lessonCompleted) {
                          e.preventDefault();
-                         // Ideally we could use a toast here or translation string, using a simple alert for MVP
                          alert(isRTL ? 'يجب إكمال التمرين والاختبار للانتقال للدرس التالي.' : 'You must complete the task and quiz to proceed to the next lesson.');
                        }
                      }}
-                     className={`font-bold flex items-center gap-2 px-6 py-3 rounded-xl transition-colors ${lessonCompleted ? 'bg-[var(--color-primary)] text-[var(--color-bg-sand)] hover:bg-[var(--color-primary-hover)] shadow-sm' : 'bg-[var(--color-bg-sand)] border border-[var(--color-border)] text-[var(--color-secondary)] cursor-not-allowed'}`}
+                     className={`font-bold flex items-center gap-2 px-6 py-3 rounded-xl transition-all ${lessonCompleted ? 'bg-[var(--color-primary)] text-[var(--color-bg-sand)] hover:bg-[var(--color-primary-hover)] shadow-md' : 'bg-[var(--color-bg-sand)] border border-[var(--color-border)] text-[var(--color-secondary)] cursor-not-allowed opacity-75'}`}
                    >
-                     {t('learn.next_lesson')} {isRTL ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+                     {!lessonCompleted && <Lock className="w-4 h-4" />}
+                     {t('learn.next_lesson')} 
+                     {lessonCompleted ? (isRTL ? <ArrowLeft className="w-5 h-5 ml-1" /> : <ArrowRight className="w-5 h-5 mr-1" />) : null}
                    </Link>
                  ) : (
                     lessonCompleted ? (
-                      <Link to={`/learn/${craftId}`} className="font-bold flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-dark)] text-white hover:bg-black transition-colors shadow-sm">
+                      <Link to={`/learn/${craftId}`} className="font-bold flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-dark)] text-white hover:bg-black transition-colors shadow-sm animate-pulse">
                         {t('learn.finish_path')} <Trophy className="w-5 h-5" />
                       </Link>
                     ) : <div/>
@@ -398,6 +410,9 @@ export default function LessonDetail() {
                     <div>
                       <h4 className="font-bold text-sm">{t('learn.lesson_completed')}</h4>
                       <p className="text-xs text-gray-400 mt-0.5">+{xpEarned} {t('learn.xp_points').split(' ')[0]}</p>
+                      <p className="text-[10px] text-green-400 mt-1 italic max-w-[180px]">
+                        {craftId === 'sewing' ? t('sewing.lesson_done') : ''}
+                      </p>
                     </div>
                   </motion.div>
                 )}

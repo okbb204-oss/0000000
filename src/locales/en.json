@@ -73,6 +73,19 @@
     "finish_path": "Finish Path",
     "lesson_completed": "Lesson successfully completed"
   },
+  "sewing": {
+    "start_msg": "Welcome to the world of sewing! A journey of a thousand stitches begins with patience and precision. Are you ready to design your first piece?",
+    "lesson_done": "Creative! You've passed an important lesson. Every stitch brings you closer to becoming a master tailor.",
+    "quiz_error": "It's okay, even the most skilled tailors need to unpick and resew sometimes. Try again with more focus.",
+    "stage_done": "What energy! You've completed a full stage. Tidy your tools and get ready for what's next; you're moving with confidence.",
+    "graduation": "Congratulations, hero! You now possess the basics of a noble craft. Algeria is proud of its new artisans like you. Don't stop here, creativity has no limits!",
+    "badges": {
+      "start": "Thread and Needle",
+      "project": "Creative Tailor",
+      "repair": "Garment Savior",
+      "pro": "Fabric Pro"
+    }
+  },
   "admin": {
     "dashboard_title": "System Dashboard",
     "dashboard_subtitle": "Tools for adding new learning paths and smart content generation.",

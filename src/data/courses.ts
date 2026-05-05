@@ -1,20 +1,24 @@
 export interface QuizQuestion {
   id: string;
   question: string;
-  options: { id: string; text: string; isCorrect: boolean }[];
+  questionEN?: string;
+  options: { id: string; text: string; textEN?: string; isCorrect: boolean }[];
   explanation: string;
+  explanationEN?: string;
 }
 
 export interface Lesson {
   id: string;
   title: string;
+  titleEN?: string;
   visualType: 'animation' | 'illustration';
   visualUrls: string[];
   visualDescription?: string;
   duration: string;
   summary: string[];
-  tools?: { name: string; image: string }[];
-  task?: { title: string; description: string };
+  summaryEN?: string[];
+  tools?: { name: string; nameEN?: string; image: string }[];
+  task?: { title: string; titleEN?: string; description: string; descriptionEN?: string };
   quiz?: QuizQuestion[];
   xpReward: number;
 }
@@ -22,14 +26,18 @@ export interface Lesson {
 export interface Level {
   id: string;
   title: string;
+  titleEN?: string;
   description: string;
+  descriptionEN?: string;
   lessons: Lesson[];
 }
 
 export interface Course {
   craftId: string;
   title: string;
+  titleEN?: string;
   description: string;
+  descriptionEN?: string;
   levels: Level[];
 }
 
@@ -577,5 +585,582 @@ export const coursesData: Record<string, Course> = {
         ]
       }
     ]
+  },
+  'sewing': {
+    craftId: 'sewing',
+    title: 'تكوين الخياطة والتفصيل',
+    titleEN: 'Sewing and Tailoring Course',
+    description: 'مسار تعليمي شامل يأخذك من الصفر حتى الاحتراف في فن الخياطة العصرية والتقليدية.',
+    descriptionEN: 'A comprehensive educational path that takes you from zero to professional in modern and traditional sewing.',
+    levels: [
+      {
+        id: 'sew_lvl_1',
+        title: 'المرحلة الأولى: أساسيات الخياطة والأدوات',
+        titleEN: 'Stage 1: Sewing Basics and Tools',
+        description: 'التعرف على الورشة، الأدوات، الأقمشة، وتشغيل الماكينة.',
+        descriptionEN: 'Getting to know the workshop, tools, fabrics, and machine operation.',
+        lessons: [
+          {
+            id: 'sew_1_1',
+            title: 'التجهيزات الأساسية وترتيب الورشة',
+            titleEN: 'Basic Equipment and Workshop Layout',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'مشهد متحرك لورشة خياطة صغيرة مرتبة. طاولة خشبية واسعة، رفوف خيوط ملونة، إضاءة نهارية دافئة.',
+            duration: '05:30',
+            summary: [
+              'رتّب ورشتك: منطقة للقص، منطقة للخياطة، منطقة للكي.',
+              'الإضاءة الجيدة ضرورية: ضوء أبيض دافئ مباشر على منطقة العمل.',
+              'احتفظ بالأدوات الحادة في مكان آمن ومخصص.',
+              'الخيوط ترتب حسب اللون لسهولة الوصول.',
+              'كرسي مريح يحمي ظهرك في جلسات العمل الطويلة.'
+            ],
+            summaryEN: [
+              'Organize your workshop: cutting area, sewing area, and ironing area.',
+              'Good lighting is essential: direct warm white light on the workspace.',
+              'Keep sharp tools in a safe, designated place.',
+              'Sort threads by color for easy access.',
+              'A comfortable chair protects your back during long sessions.'
+            ],
+            task: {
+              title: 'تجهيز ركن الخياطة',
+              titleEN: 'Setting up your sewing corner',
+              description: 'جهز ركناً في بيتك كورشة صغيرة. ضع طاولة قرب النافذة، نظف المساحة، واجمع أدواتك.',
+              descriptionEN: 'Set up a small corner at home as a workshop. Place a table near a window, clean the space, and gather your tools.'
+            },
+            quiz: [
+              {
+                id: 'sew_1_1_q1',
+                question: 'لماذا نفضل ترتيب الورشة إلى مناطق (قص، خياطة، كي)؟',
+                questionEN: 'Why do we prefer organizing the workshop into zones (cutting, sewing, ironing)?',
+                options: [
+                  { id: 'o1', text: 'لجمالية المكان فقط', textEN: 'For aesthetics only', isCorrect: false },
+                  { id: 'o2', text: 'لتنظيم تدفق العمل ومنع الفوضى والحوادث', textEN: 'To organize workflow and prevent clutter and accidents', isCorrect: true },
+                  { id: 'o3', text: 'لأن مساحة القماش تتطلب ذلك', textEN: 'Because fabric size requires it', isCorrect: false }
+                ],
+                explanation: 'التقسيم يحافظ على نظافة القماش ويسهل الانتقال بين خطوات الإنتاج.',
+                explanationEN: 'Zoning keeps the fabric clean and makes transitioning between production steps easier.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'sew_1_2',
+            title: 'التعرف على أدوات الخياطة واستخداماتها',
+            titleEN: 'Getting to Know Sewing Tools',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1544441892-794166f1e3be?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي كبير على شكل طاولة عرض، كل أداة مرسومة بدقة مع تسميتها: مقص، متر، طباشير، دبابيس.',
+            duration: '06:45',
+            summary: [
+              'مقص القماش: حاد جداً، لا يستخدم إلا على القماش.',
+              'مقص الورق: مخصص لقص الباترونات فقط.',
+              'متر القياس: مرن، أساسي لأخذ المقاسات.',
+              'طباشير التعليم: يترك أثراً يزول بالكي.',
+              'الكشتبان: يحمي الإصبع عند الخياطة اليدوية.'
+            ],
+            summaryEN: [
+              'Fabric Scissors: Very sharp, only use on fabric.',
+              'Paper Scissors: Only for cutting patterns.',
+              'Measuring Tape: Flexible, essential for measurements.',
+              'Tailor\'s Chalk: Leaves a mark that vanishes with ironing.',
+              'Thimble: Protects the finger during hand sewing.'
+            ],
+            task: {
+              title: 'جرد الأدوات',
+              titleEN: 'Tool Inventory',
+              description: 'اجمع كل أدواتك، اكتب على ورقة اسم كل أداة ووظيفتها.',
+              descriptionEN: 'Gather all your tools, write the name and function of each tool on a piece of paper.'
+            },
+            quiz: [
+              {
+                id: 'sew_1_2_q1',
+                question: 'هل يمكن استخدام مقص القماش لقص ورق الباترون؟',
+                questionEN: 'Can you use fabric scissors to cut pattern paper?',
+                options: [
+                  { id: 'o1', text: 'نعم، لا مشكلة', textEN: 'Yes, no problem', isCorrect: false },
+                  { id: 'o2', text: 'لا، لأن الورق يفقد المقص حدته بسرعة', textEN: 'No, because paper dulls the blades quickly', isCorrect: true }
+                ],
+                explanation: 'الحفاظ على حدة مقص القماش ضروري لقص نظيف وسلس للأنسجة.',
+                explanationEN: 'Maintaining the sharpness of fabric scissors is essential for clean, smooth fabric cuts.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'sew_1_3',
+            title: 'أنواع الأقمشة والتعرف على النسيج',
+            titleEN: 'Fabric Types and Understanding Texture',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'عينة قماش تظهر مع تكبير نسيجها: قطن، حرير، جينز، صوف.',
+            duration: '07:15',
+            summary: [
+              'الأقمشة الطبيعية: قطن، كتان، صوف، حرير. مريحة وتتنفس.',
+              'الأقمشة الاصطناعية: بوليستر، نايلون، أكرليك. متينة وسهلة العناية.',
+              'انظر إلى اتجاه النسيج (خيوط الطول والعرض) قبل القص.',
+              'تعرف على وجه القماش والظهر.',
+              'بعض الأقمشة تحتاج لغسيل مسبق لتجنب الانكماش.'
+            ],
+            summaryEN: [
+              'Natural fabrics: cotton, linen, wool, silk. Comfortable and breathable.',
+              'Synthetic fabrics: polyester, nylon, acrylic. Durable and easy to care for.',
+              'Look at the grain direction (warp and weft) before cutting.',
+              'Identify the right and wrong sides of the fabric.',
+              'Some fabrics need pre-washing to avoid shrinkage.'
+            ],
+            task: {
+              title: 'تصنيف الأقمشة',
+              titleEN: 'Fabric Classification',
+              description: 'اجمع 5 قطع قماش مختلفة من ملابس قديمة. المسها، ادرس نسيجها، واكتب نوع كل قماش.',
+              descriptionEN: 'Collect 5 different fabric scraps. Touch them, study the grain, and guess each fabric type.'
+            },
+            xpReward: 35
+          },
+          {
+            id: 'sew_1_4',
+            title: 'تشغيل ماكينة الخياطة وضبط الغرز',
+            titleEN: 'Operating the Sewing Machine and Stitch Adjustment',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1520032484190-e5ef81d87978?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'يد تضع بكرة الخيط، تمرره عبر المسارات، وتضبط الغرزة المستقيمة والزكزاك.',
+            duration: '10:00',
+            summary: [
+              'تركيب الخيط العلوي والسفلي (المكوك) بشكل صحيح.',
+              'الغرزة المستقيمة: الأكثر استخداماً، طولها المثالي 2.5 مم.',
+              'الغرزة المتعرجة (زكزاك): لمنع تنسيل الأقمشة حوافها.',
+              'ضبط شد الخيط (Tension) حسب نوع القماش.',
+              'اختبر الغرزة دائماً على عينة قماش تجريبية.'
+            ],
+            summaryEN: [
+              'Correctly threading the top thread and bobbin.',
+              'Straight stitch: Most used, ideal length is 2.5mm.',
+              'Zigzag stitch: To prevent fabric fraying at the edges.',
+              'Adjusting thread tension based on fabric type.',
+              'Always test the stitch on a scrap piece of fabric.'
+            ],
+            task: {
+              title: 'التمرن على الغرز',
+              titleEN: 'Practicing Stitches',
+              description: 'جرب الخياطة بخط مستقيم، ثم منحني، ثم زكزاك على قطعة قماش قديمة.',
+              descriptionEN: 'Try sewing a straight line, then a curve, then a zigzag on a scrap piece of fabric.'
+            },
+            xpReward: 40
+          }
+        ]
+      },
+      {
+        id: 'sew_lvl_2',
+        title: 'المرحلة الثانية: تقنيات الخياطة الأساسية',
+        titleEN: 'Stage 2: Core Sewing Techniques',
+        description: 'أخذ القياسات، الباترونات، القص، والدرزات الاحترافية.',
+        descriptionEN: 'Taking measurements, patterns, cutting, and professional seams.',
+        lessons: [
+          {
+            id: 'sew_2_1',
+            title: 'أخذ القياسات الصحيحة',
+            titleEN: 'Taking Correct Measurements',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'شخصية ظلية تظهر عليها خطوط قياس الصدر، الخصر، الأرداف، والأكتاف.',
+            duration: '08:00',
+            summary: [
+              'استخدم متراً مرناً ولا تشده كثيراً (اترك مسافة إصبع).',
+              'الصدر – الخصر – الأرداف – عرض الكتفين – طول الكم.',
+              'سجّل الأرقام مباشرة في دفتر خاص.',
+              'القياسات تؤخذ بملابس خفيفة لضمان الدقة.',
+              'أضف "زيادة الراحة" (Ease) حسب نوع التصميم.'
+            ],
+            summaryEN: [
+              'Use a flexible tape and don\'t pull too tight (leave a finger gap).',
+              'Chest - Waist - Hips - Shoulder width - Sleeve length.',
+              'Record the numbers directly in a dedicated notebook.',
+              'Take measurements over light clothing for accuracy.',
+              'Add "ease" depending on the design type.'
+            ],
+            task: {
+              title: 'قياساتك الشخصية',
+              titleEN: 'Your Personal Measurements',
+              description: 'خذ قياساتك بنفسك أمام المرآة وسجلها في دفترك.',
+              descriptionEN: 'Take your own measurements in front of a mirror and record them in your notebook.'
+            },
+            xpReward: 35
+          },
+          {
+            id: 'sew_2_2',
+            title: 'فهم الباترونات وقراءتها',
+            titleEN: 'Understanding and Reading Patterns',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1524230507669-5ff97982bb5e?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'ورق باترون بني تظهر عليه علامات القص، الخياطة، وسهم اتجاه النسيج.',
+            duration: '07:30',
+            summary: [
+              'الباترون هو قالب ورقي لقص القماش بدقة.',
+              'خط القص (متصل) وخط الخياطة (متقطع).',
+              'سهم اتجاه النسيج: يحدد وضعية الباترون على القماش.',
+              'علامات المحاذاة (Notches): لتطابق القطع عند التجميع.',
+              'قارن مقاس الباترون بقياساتك قبل البدء.'
+            ],
+            summaryEN: [
+              'A pattern is a paper template for cutting fabric accurately.',
+              'Cutting line (solid) and sewing line (dashed).',
+              'Grainline arrow: Determines the pattern placement on fabric.',
+              'Notches: Small marks to match pieces during assembly.',
+              'Compare pattern size with your measurements before starting.'
+            ],
+            task: {
+              title: 'تحليل باترون',
+              titleEN: 'Pattern Analysis',
+              description: 'ابحث عن باترون بسيط، وحدد عليه خط القص وسهم النسيج.',
+              descriptionEN: 'Find a simple pattern and identify the cutting line and grainline arrow on it.'
+            },
+            xpReward: 35
+          },
+          {
+            id: 'sew_2_3',
+            title: 'قص القماش بدقة واحترافية',
+            titleEN: 'Cutting Fabric with Precision',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'مقص كبير يتحرك بسلاسة على القماش الموشّى بعلامات الطباشير.',
+            duration: '09:00',
+            summary: [
+              'اغسل وكوي القماش قبل القص لتجنب المفاجآت.',
+              'ثبت الباترون بالدبابيس في اتجاه النسيج الصحيح.',
+              'ارسم حول الباترون بالطباشير، ثم أزله.',
+              'قص بحركات طويلة ومستمرة بالمقص الحاد.',
+              'ابدأ بالقطع الكبيرة ثم انتقل للصغيرة.'
+            ],
+            summaryEN: [
+              'Pre-wash and iron fabric before cutting to avoid surprises.',
+              'Pin the pattern in the correct grain direction.',
+              'Trace around the pattern with chalk, then remove it.',
+              'Cut with long, steady strokes using sharp scissors.',
+              'Start with larger pieces then move to smaller ones.'
+            ],
+            task: {
+              title: 'تمرين القص',
+              titleEN: 'Cutting Exercise',
+              description: 'ارسم مربعاً 20×20 سم على قماش قديم وقصه بدقة.',
+              descriptionEN: 'Draw a 20x20cm square on scrap fabric and cut it precisely.'
+            },
+            xpReward: 40
+          },
+          {
+            id: 'sew_2_4',
+            title: 'الخياطة المستقيمة والمنحنية والزوايا',
+            titleEN: 'Straight, Curved, and Corner Sewing',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'إبرة الماكينة وهي تخيط خطاً مستقيماً، ثم تلتف حول منحنی، ثم تتوقف عند زاوية.',
+            duration: '08:30',
+            summary: [
+              'الخطوط المنحنية: خيط ببطء وأدر القماش تدريجياً.',
+              'الزوايا: توقف والإبرة لأسفل، ارفع القدم، أدر القماش 90 درجة.',
+              'ثبت البداية والنهاية دائماً بغرزة عكسية (Backstitch).',
+              'حافظ على سرعة ثابتة، لا تستعجل في المنعطفات.',
+              'استخدم خطوط التوجيه على الماكينة للحفاظ على المسافة.'
+            ],
+            summaryEN: [
+              'Curved lines: Sew slowly and rotate the fabric gradually.',
+              'Corners: Stop with the needle down, lift the foot, rotate the fabric 90°.',
+              'Always secure the start and end with a backstitch.',
+              'Maintain a constant speed; don\'t rush on turns.',
+              'Use the guide lines on the machine to maintain distance.'
+            ],
+            task: {
+              title: 'متاهة الخياطة',
+              titleEN: 'Sewing Maze',
+              description: 'ارسم خطاً متموجاً وزوايا حادة على قماش وخط فوقها بالماكينة.',
+              descriptionEN: 'Draw a wavy line and sharp corners on fabric and sew over them.'
+            },
+            xpReward: 40
+          },
+          {
+             id: 'sew_2_5',
+             title: 'تشطيب الحواف ومنع التنسيل',
+             titleEN: 'Finishing Edges and Preventing Fraying',
+             visualType: 'illustration',
+             visualUrls: ['https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&w=1200&q=80'],
+             visualDescription: 'مقارنة بين حافة مشطبة بزكزاك، حافة مطوية، وحافة أوفرلوك.',
+             duration: '06:00',
+             summary: [
+               'الحواف الخام تتنسل مع الغسيل ويجب حمايتها.',
+               'أسهل طريقة: غرزة الزكزاك على حافة القماش.',
+               'الثني المزدوج: طي الحافة مرتين ثم خياطتها.',
+               'كوي الحواف المطوية يجعل الخياطة أسهل وأكثر نظافة.',
+               'ماكينة الأوفرلوك تعطي لمسة احترافية وتجارية.'
+             ],
+             summaryEN: [
+               'Raw edges fray with washing and must be protected.',
+               'Easiest way: Zigzag stitch along the fabric edge.',
+               'Double fold: Folding the edge twice then sewing it.',
+               'Ironing folded edges makes sewing easier and cleaner.',
+               'An overlock machine provides a professional, commercial finish.'
+             ],
+             task: {
+               title: 'تطبيق التشطيب',
+               titleEN: 'Edge Finish Application',
+               description: 'شطّب حواف قطعة قماش صغيرة بغرزة زكزاك وأخرى بثني مزدوج.',
+               descriptionEN: 'Finish edges of a fabric scrap with zigzag stitch and another with double fold.'
+             },
+             xpReward: 35
+          }
+        ]
+      },
+      {
+        id: 'sew_lvl_3',
+        title: 'المرحلة الثالثة: مشاريع تطبيقية بسيطة',
+        titleEN: 'Stage 3: Simple Practical Projects',
+        description: 'صناعة وسادة، حقيبة تسوق، وإصلاح الملابس والكي الاحترافي.',
+        descriptionEN: 'Making pillows, tote bags, garment repairs, and professional ironing.',
+        lessons: [
+          {
+            id: 'sew_3_1',
+            title: 'خياطة وسادة بسيطة (مشروع 1)',
+            titleEN: 'Sewing a Simple Pillow (Project 1)',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'قطعة قماش تطوى وجهها للداخل، تخيط من 3 جوانب، ثم تقلب وتحشى.',
+            duration: '12:00',
+            summary: [
+              'قص القماش بأبعاد الوسادة + 2 سم للخياطة.',
+              'ضع وجهي القماش على بعضهما (الوجه الجيد للداخل).',
+              'خيط 3 جوانب، واترك نصف الجانب الرابع مفتوحاً.',
+              'اقلب الوسادة على وجهها، واحشُها جيداً.',
+              'أغلق الفتحة بغرزة خفية (سلم) يدوياً.'
+            ],
+            summaryEN: [
+              'Cut fabric to pillow dimensions + 2cm for seams.',
+              'Place right sides together.',
+              'Sew 3 sides, leaving half of the 4th side open.',
+              'Turn right side out and stuff well.',
+              'Close the opening with a hand-sewn ladder stitch.'
+            ],
+            task: {
+              title: 'صناعة وسادتك الأولى',
+              titleEN: 'Make your first pillow',
+              description: 'اصنع وسادة صغيرة (30×30 سم) باستخدام قماش قديم.',
+              descriptionEN: 'Create a small pillow (30x30cm) using scrap fabric.'
+            },
+            xpReward: 50
+          },
+          {
+            id: 'sew_3_2',
+            title: 'خياطة حقيبة تسوق قماشية (مشروع 2)',
+            titleEN: 'Sewing a Canvas Tote Bag (Project 2)',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1544816155-12df964ac73c?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'قطع قماش خارجي وبطانة تُخاط معاً مع تركيب الحمالات الطويلة.',
+            duration: '15:00',
+            summary: [
+              'حقيبة التسوق القماشية مشروع سهل ومفيد ويُباع جيداً.',
+              'تحتاج لقماش خارجي متين (جينز، كتان) وبطانة قطنية.',
+              'الحمالات: شريحتان طويلتان تثبتان في الفتحة العلوية.',
+              'يمكن إضافة جيب داخلي صغير.',
+              'الدرزات تكون مزدوجة في مناطق الضغط لمتانة أكبر.'
+            ],
+            summaryEN: [
+              'Canvas tote bags are easy, useful, and sell well.',
+              'Requires durable outer fabric (denim, linen) and cotton lining.',
+              'Handles: Two long strips fixed at the top opening.',
+              'An optional small interior pocket can be added.',
+              'Double stitch stress points for greater durability.'
+            ],
+            task: {
+              title: 'حقيبة صديقة للبيئة',
+              titleEN: 'Eco-friendly Bag',
+              description: 'صمم حقيبة تسوق بسيطة، ارسم شكلها، ثم قص القماش وخيط.',
+              descriptionEN: 'Design a simple shopping bag, draw its shape, cut the fabric, and sew.'
+            },
+            xpReward: 60
+          },
+          {
+            id: 'sew_3_3',
+            title: 'إصلاحات الملابس الشائعة',
+            titleEN: 'Common Garment Repairs',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1528221321742-f9a71068075a?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم يظهر إصلاح زر مقطوع، إغلاق فتحة جانبية، وتقصير بنطال.',
+            duration: '10:00',
+            summary: [
+              'إصلاح الملابس خدمة دخلها سريع ولا تحتاج رأس مال كبير.',
+              'خياطة الزر: اصنع حلقة صغيرة تحت الزر ليتمدد الخيط.',
+              'إغلاق الفتحات: غرزة خفية باليد أو زكزاك بالماكينة.',
+              'تقصير البنطال: اطوِ، اكوي، خيط بطية حول الساق.',
+              'استبدال السحاب يتطلب فتح الدرز القديم وتركيب الجديد بدقة.'
+            ],
+            summaryEN: [
+              'Repair services provide quick income with little capital.',
+              'Sewing buttons: Create a small shank under the button.',
+              'Closing holes: Hand ladder stitch or machine zigzag.',
+              'Hemming pants: Fold, iron, and stitch around the leg.',
+              'Zippers require removing the old seam and careful replacement.'
+            ],
+            task: {
+              title: 'مهمة الإنقاذ',
+              titleEN: 'Rescue Mission',
+              description: 'أصلح زر مقطوعاً أو فتحة في قطعة ملابس ببيتك.',
+              descriptionEN: 'Repair a missing button or a hole in a garment at home.'
+            },
+            xpReward: 45
+          },
+          {
+            id: 'sew_3_4',
+            title: 'تقنيات الكي الاحترافي',
+            titleEN: 'Professional Ironing Techniques',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1489274495757-95c7c837b101?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'يد تكوي درزاً مفتوحاً بالإصبع ثم بالمكواة. بخار يخرج والمكواة تتحرك بهدوء.',
+            duration: '06:00',
+            summary: [
+              'الكي نصف جمال الخياطة. لا تهمله.',
+              'افتح الدرزات واكوها مسطحة بعد كل خطوة خياطة.',
+              'استخدم قطعة قماش حماية للأنسجة الحساسة.',
+              'اضبط درجة الحرارة حسب القماش (قطن عالي، بوليستر منخفض).',
+              'لا تسحب المكواة بقوة، بل اضغط بحركات هادئة.'
+            ],
+            summaryEN: [
+              'Ironing is half the beauty of sewing. Don\'t ignore it.',
+              'Press seams open and flat after every sewing step.',
+              'Use a pressing cloth for delicate fabrics.',
+              'Set temperature by fabric (high for cotton, low for polyester).',
+              'Don\'t drag the iron forcefully; press with calm motions.'
+            ],
+            task: {
+              title: 'تحدي الكي',
+              titleEN: 'Ironing Challenge',
+              description: 'جرب كي درز مفتوح على قطعتين مخيطتين معاً ولاحظ الفرق في النتيجة.',
+              descriptionEN: 'Try pressing a seam open on two sewn pieces and note the result.'
+            },
+            xpReward: 30
+          }
+        ]
+      },
+      {
+        id: 'sew_lvl_4',
+        title: 'المرحلة الرابعة: الاحتراف والمشاريع',
+        titleEN: 'Stage 4: Professionalism and Projects',
+        description: 'تفصيل القميص، اللمسات التقليدية، والتسويق لمشروعك.',
+        descriptionEN: 'Shirt drafting, traditional touches, and marketing your project.',
+        lessons: [
+          {
+            id: 'sew_4_1',
+            title: 'تفصيل قميص أو بلوزة بسيطة (مشروع 3)',
+            titleEN: 'Drafting a Simple Shirt or Blouse (Project 3)',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1594932224828-b4b059b6f6ee?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'تجميع أجزاء القميص من الباترون إلى المنتج النهائي على عارضة.',
+            duration: '25:00',
+            summary: [
+              'تجميع الأجزاء: الأكتاف، ثم الأكمام، ثم الجوانب، والفتحات.',
+              'استخدم باترون تجاري بمقاسك لضمان النتائج الأولى.',
+              'الياقة اختيارية للمبتدئين ويمكن استبدالها بفتحة رقبة بسيطة.',
+              'ثنيات الأكمام والذيل تشطب في النهاية.',
+              'جرب الملابس على الجسم عدة مرات أثناء العمل للتعديل.'
+            ],
+            summaryEN: [
+              'Assembly: Shoulders, then sleeves, then sides and openings.',
+              'Use a commercial pattern in your size for best initial results.',
+              'Collars are optional; beginners can start with simple necklines.',
+              'Hem the sleeves and bottom at the very end.',
+              'Try the garment on several times during construction for adjustments.'
+            ],
+            task: {
+              title: 'قميصك الأول',
+              titleEN: 'Your First Shirt',
+              description: 'نفذ باترون قميص بسيط على قماش رخيص كتجربة أولى.',
+              descriptionEN: 'Execute a simple shirt pattern on inexpensive fabric as a first try.'
+            },
+            xpReward: 100
+          },
+          {
+            id: 'sew_4_2',
+            title: 'لمسات تقليدية جزائرية – الكراكو والقفطان',
+            titleEN: 'Algerian Traditional Touches – Karakou & Caftan',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي لكراكو مطرز وقفطان جزائري أنيق مع تسميات العناصر التقليدية.',
+            duration: '15:00',
+            summary: [
+              'الخياطة التقليدية فن مربح ومطلوب جداً في الجزائر.',
+              'الكراكو: سترة مطرزة بالفتلة أو المجبود.',
+              'القفطان: فستان طويل فخم يلبس بحزام مزين.',
+              'التقنيات: التطريز اليدوي وتثبيت العقاش والخرز.',
+              'تخصص في لمسة معينة لتمييز علامتك التجارية.'
+            ],
+            summaryEN: [
+              'Traditional sewing is a highly profitable and in-demand art in Algeria.',
+              'Karakou: A jacket embroidered with Fetla or Mejboud.',
+              'Caftan: A luxurious long dress worn with a decorative belt.',
+              'Techniques: Hand embroidery, beadwork, and sequin fixing.',
+              'Specialize in a specific touch to distinguish your brand.'
+            ],
+            xpReward: 40
+          },
+          {
+            id: 'sew_4_3',
+            title: 'تسويق منتجاتك وبناء زبائنك',
+            titleEN: 'Marketing Your Products and Building Clients',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'هاتف يعرض صفحة تواصل اجتماعي لعلامة خياطة مع صور احترافية لمنتجات.',
+            duration: '12:00',
+            summary: [
+              'صور منتجاتك بتصوير جيد في ضوء النهار الطبيعي.',
+              'أنشئ صفحة على إنستغرام أو فيسبوك واعرض أعمالك بانتظام.',
+              'اطلب من زبائنك نشر صورهم بمنتجاتك وتقييم خدمتك.',
+              'حدد مواعيد تسليم واقعية والتزم بها لبناء الثقة.',
+              'قدم وصفاً واضحاً للخامات والمقاسات والأسعار.'
+            ],
+            summaryEN: [
+              'Photograph your products well in natural daylight.',
+              'Create Instagram/Facebook pages and showcase your work regularly.',
+              'Ask clients to post photos of themselves in your creations and review you.',
+              'Set realistic delivery dates and stick to them to build trust.',
+              'Provide clear descriptions of materials, sizes, and pricing.'
+            ],
+            task: {
+              title: 'هويتك الرقمية',
+              titleEN: 'Your Digital Identity',
+              description: 'أنشئ صفحة لعلامتك التجارية وانشر 3 صور لأعمالك التجريبية.',
+              descriptionEN: 'Create a page for your brand and post 3 photos of your practice projects.'
+            },
+            xpReward: 50
+          },
+          {
+            id: 'sew_4_4',
+            title: 'مشروع التخرج – تصميم زي كامل حسب الطلب',
+            titleEN: 'Final Project – Custom Design from Sketch to Finish',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1524230507669-5ff97982bb5e?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'لوحة تصميم (Mood Board) تضم رسماً تخطيطياً، عينات قماش، والقطعة النهائية.',
+            duration: 'مفتوح',
+            summary: [
+              'صمم الزي على الورق مع القياسات التقديرية.',
+              'اختر نوع القماش واللون المناسب للمناسبة.',
+              'ارسم الباترون الكامل للأمام والخلف والأكمام.',
+              'قص وخيط القطعة مع الالتزام بتشطيب نظيف.',
+              'قدم تقريراً عن رحلة العمل من الفكرة إلى التنفيذ.'
+            ],
+            summaryEN: [
+              'Design the outfit on paper with estimated measurements.',
+              'Choose appropriate fabric type and color for the occasion.',
+              'Draft the full pattern for front, back, and sleeves.',
+              'Cut and sew the piece, maintaining clean finishes.',
+              'Submit a report on your journey from concept to creation.'
+            ],
+            task: {
+              title: 'عرض التخرج',
+              titleEN: 'Graduation Display',
+              description: 'صمم ونفذ زياً كاملاً لزبون افتراضي وقدمه كعرض نهائي لموهبتك.',
+              descriptionEN: 'Design and execute a full outfit for a hypothetical client as a final showcase of your talent.'
+            },
+            xpReward: 150
+          }
+        ]
+      }
+    ]
   }
 };
+
