@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, PlayCircle, Star, Wrench, Target, ArrowLeft, Trophy } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, PlayCircle, Star, Wrench, Target, Trophy, Menu, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { coursesData } from '../data/courses';
+import { coursesData, Lesson } from '../data/courses';
+import { useTranslation } from 'react-i18next';
 
 export default function LessonDetail() {
   const { craftId, lessonId } = useParams<{ craftId: string, lessonId: string }>();
@@ -10,7 +11,7 @@ export default function LessonDetail() {
   
   const course = craftId ? coursesData[craftId] : undefined;
   
-  let lessonData;
+  let lessonData: Lesson | undefined;
   let levelIndex = -1;
   let lessonIndex = -1;
 
@@ -31,30 +32,35 @@ export default function LessonDetail() {
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [lessonCompleted, setLessonCompleted] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   if (!course || !lessonData) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center">
-        <h2 className="text-3xl font-bold font-heading mb-4">الدرس غير موجود</h2>
-        <Link to={`/learn/${craftId}`} className="text-[var(--color-primary)] font-bold">العودة للمسار</Link>
+      <div className="min-h-[60vh] flex flex-col items-center justify-center bg-[var(--color-bg-sand)]">
+        <h2 className="text-3xl font-bold font-heading mb-4 text-[var(--color-dark)]">{isRTL ? 'الدرس غير موجود' : 'Lesson not found'}</h2>
+        <Link to={`/learn/${craftId}`} className="text-[var(--color-primary)] font-bold">{t('learn.back_to_path')}</Link>
       </div>
     );
   }
 
+  // Mocking completed lessons for demo
+  const completedLessonIds = ['les_1_1']; 
+
   const handleQuizSubmit = () => {
     setQuizSubmitted(true);
     let correctCount = 0;
-    lessonData.quiz?.forEach(q => {
+    lessonData?.quiz?.forEach(q => {
       const correctOpt = q.options.find(o => o.isCorrect);
       if (correctOpt && quizAnswers[q.id] === correctOpt.id) {
         correctCount++;
       }
     });
 
-    // Minimal gamification logic per user constraints (no childish stuff, just XP)
     if (!lessonCompleted) {
       setLessonCompleted(true);
-      setXpEarned(lessonData.xpReward);
+      setXpEarned(lessonData?.xpReward || 0);
     }
   };
 
@@ -67,231 +73,333 @@ export default function LessonDetail() {
     return null;
   };
 
+  const prevLessonId = () => {
+    if (lessonIndex > 0) {
+      return course.levels[levelIndex].lessons[lessonIndex - 1].id;
+    } else if (levelIndex > 0) {
+      const prevLevelLessons = course.levels[levelIndex - 1].lessons;
+      if (prevLevelLessons.length > 0) {
+         return prevLevelLessons[prevLevelLessons.length - 1].id;
+      }
+    }
+    return null;
+  };
+
   const nxtId = nextLessonId();
+  const prId = prevLessonId();
 
   return (
-    <div className="bg-[var(--color-bg-sand)] min-h-screen pb-32">
+    <div className="bg-[var(--color-bg-sand)] min-h-screen pb-32 flex flex-col">
       {/* Top Nav */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to={`/learn/${craftId}`} className="text-gray-500 hover:text-[var(--color-dark)] flex items-center gap-2 font-bold transition-colors">
-            <ArrowRight className="w-5 h-5" />
-            عودة للدروس
-          </Link>
+      <div className="bg-[var(--color-card)] border-b border-[var(--color-border)] sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setShowSidebar(!showSidebar)}
+              className="lg:hidden p-2 hover:bg-[var(--color-bg-sand)] rounded-lg text-[var(--color-secondary)]"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+            <Link to={`/learn/${craftId}`} className="text-[var(--color-secondary)] hover:text-[var(--color-primary)] flex items-center gap-2 font-bold transition-colors">
+              {isRTL ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
+              <span className="hidden sm:inline">{t('learn.back_to_path')}</span>
+            </Link>
+          </div>
+          
           <div className="hidden md:block font-bold text-[var(--color-dark)] font-heading">
-            {course.levels[levelIndex].title}
+            {isRTL ? course.levels[levelIndex].title : course.levels[levelIndex].title}
           </div>
           <div className="text-sm font-bold text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-3 py-1 rounded-md">
-            الدرس {lessonIndex + 1}
+            {t('learn.lesson')} {lessonIndex + 1}
           </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 mt-8">
-        
-        {/* Header */}
-        <div className="mb-8 relative">
-           <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--color-dark)] leading-tight">{lessonData.title}</h1>
-        </div>
+      <div className="flex-grow max-w-7xl mx-auto w-full flex flex-col lg:flex-row relative">
+         
+         {/* Sidebar Navigation */}
+         <div className={`fixed inset-y-0 ${isRTL ? 'right-0 border-l' : 'left-0 border-r'} z-30 transform lg:transform-none lg:static w-80 bg-[var(--color-card)] border-[var(--color-border)] overflow-y-auto transition-transform duration-300 ease-in-out ${showSidebar ? 'translate-x-0' : (isRTL ? 'translate-x-full lg:translate-x-0' : '-translate-x-full lg:translate-x-0')}`} style={{ top: '64px', height: 'calc(100vh - 64px)' }}>
+           <div className="p-6">
+             <h3 className="font-heading font-bold text-lg mb-6 text-[var(--color-dark)]">{t('learn.stages')}</h3>
+             <div className="space-y-6">
+               {course.levels.map((level, lIdx) => {
+                 const isLevelCompleted = level.lessons.every(l => completedLessonIds.includes(l.id));
+                 const completedInLevel = level.lessons.filter(l => completedLessonIds.includes(l.id)).length;
+                 const progressPercent = Math.round((completedInLevel / level.lessons.length) * 100);
 
-        {/* Video Player Area */}
-        <div className="bg-gray-950 rounded-2xl md:rounded-3xl overflow-hidden aspect-video relative shadow-lg mb-12 border border-gray-800">
-           {/* Placeholder for real video embed */}
-           {lessonData.videoUrl && (
-             <>
-                <img src={lessonData.videoUrl} alt="Video Thumbnail" className="w-full h-full object-cover opacity-50 mix-blend-overlay" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-                   <div className="w-20 h-20 bg-[var(--color-primary)]/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(198,123,75,0.4)] cursor-pointer hover:scale-105 transition-transform">
-                     <PlayCircle className="w-10 h-10 text-white translate-x-0.5" />
-                   </div>
-                   <p className="text-white mt-6 font-bold text-lg bg-black/50 px-4 py-2 rounded-lg backdrop-blur-sm">{lessonData.videoTitle || "فيديو الدرس"}</p>
-                </div>
-             </>
-           )}
-        </div>
-
-        {/* Content Tabs / Sections */}
-        <div className="space-y-12">
-          
-          {/* Summary / Notes */}
-          <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-            <h2 className="text-2xl font-bold font-heading mb-6 flex items-center gap-3 border-b border-gray-100 pb-4 text-gray-800">
-              <Star className="w-6 h-6 text-[var(--color-primary)]" />
-              أهم النقاط (الملخص)
-            </h2>
-            <ul className="space-y-4">
-              {lessonData.summary.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-4 text-gray-600 leading-relaxed text-lg">
-                  <div className="mt-1 w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {/* Tools if any */}
-          {lessonData.tools && lessonData.tools.length > 0 && (
-             <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-              <h2 className="text-2xl font-bold font-heading mb-6 flex items-center gap-3 border-b border-gray-100 pb-4 text-gray-800">
-                <Wrench className="w-6 h-6 text-gray-500" />
-                الأدوات المذكورة
-              </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                 {lessonData.tools.map((tool, idx) => (
-                   <div key={idx} className="bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
-                     <div className="h-32 relative">
-                        <img src={tool.image} alt={tool.name} className="w-full h-full object-cover" />
+                 return (
+                   <div key={level.id}>
+                     <div className="mb-3">
+                       <h4 className="font-bold text-sm text-[var(--color-dark)] mb-2">{isRTL ? level.title : level.title}</h4>
+                       <div className="h-1.5 w-full bg-[var(--color-bg-sand)] rounded-full overflow-hidden border border-[var(--color-border)]">
+                         <div className="h-full bg-[var(--color-primary)]" style={{ width: `${progressPercent}%` }} />
+                       </div>
                      </div>
-                     <div className="p-3 text-center font-bold text-gray-700 bg-white">
-                        {tool.name}
+                     <div className="space-y-1">
+                       {level.lessons.map((lesson, idx) => {
+                         const isActive = lesson.id === lessonId;
+                         const isCompleted = completedLessonIds.includes(lesson.id);
+                         const isLocked = !isCompleted && !isActive && (idx > 0 && !completedLessonIds.includes(level.lessons[idx-1].id)); // simplified locking
+
+                         return (
+                           <Link 
+                             key={lesson.id}
+                             to={isLocked ? '#' : `/learn/${course.craftId}/lesson/${lesson.id}`}
+                             className={`flex items-center gap-3 p-3 rounded-xl transition-colors border border-transparent ${isActive ? 'bg-[var(--color-bg-sand)] border-[var(--color-primary)]/20' : (isLocked ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[var(--color-bg-sand)]')}`}
+                           >
+                             <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${isCompleted ? 'bg-green-100/50 text-green-500 border border-green-200' : (isActive ? 'bg-[var(--color-primary)]/20 text-[var(--color-primary)]' : 'bg-[var(--color-bg-sand)] border border-[var(--color-border)] text-[var(--color-secondary)]')}`}>
+                               {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : (isLocked ? <Lock className="w-3 h-3" /> : <PlayCircle className={`w-4 h-4 ${isRTL ? 'mr-0.5' : 'ml-0.5'}`} />)}
+                             </div>
+                             <span className={`text-sm font-medium line-clamp-1 ${isActive ? 'text-[var(--color-primary)] font-bold' : 'text-[var(--color-secondary)]'}`}>
+                               {idx + 1}. {isRTL ? lesson.title : lesson.title}
+                             </span>
+                           </Link>
+                         )
+                       })}
                      </div>
                    </div>
-                 ))}
-              </div>
-            </section>
-          )}
+                 )
+               })}
+             </div>
+           </div>
+         </div>
 
-          {/* Practical Task */}
-          {lessonData.task && (
-            <section className="bg-[var(--color-primary)]/5 rounded-3xl p-8 border border-[var(--color-primary)]/20 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-2 h-full bg-[var(--color-primary)]"></div>
-              <h2 className="text-2xl font-bold font-heading mb-4 flex items-center gap-3 text-[var(--color-dark)]">
-                <Target className="w-6 h-6 text-[var(--color-primary)]" />
-                جرّب بنفسك (مهمة تطبيقية)
-              </h2>
-              <h3 className="font-bold text-lg mb-2 text-gray-800">{lessonData.task.title}</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                {lessonData.task.description}
-              </p>
+         {/* Overlay for mobile sidebar */}
+         {showSidebar && (
+           <div 
+             className="fixed inset-0 bg-black/20 z-20 lg:hidden"
+             style={{ top: '64px' }}
+             onClick={() => setShowSidebar(false)}
+           />
+         )}
+
+         {/* Main Content Area */}
+         <div className="flex-grow p-4 sm:p-6 lg:p-10 w-full overflow-x-hidden">
+            <div className="max-w-3xl mx-auto">
               
-              <button 
-                onClick={() => setTaskDone(!taskDone)}
-                className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold transition-all w-full md:w-auto ${taskDone ? 'bg-green-100 text-green-700 border-2 border-green-200' : 'bg-white border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white'}`}
-              >
-                <div className={`w-6 h-6 rounded flex items-center justify-center border-2 ${taskDone ? 'bg-green-600 border-green-600 text-white' : 'border-current'}`}>
-                  {taskDone && <CheckCircle2 className="w-4 h-4" />}
-                </div>
-                {taskDone ? 'أنجزت المهمة العمليّة بنجاح' : 'ضع علامة عند الإنجاز'}
-              </button>
-            </section>
-          )}
+              {/* Header */}
+              <div className="mb-8">
+                 <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--color-dark)] leading-tight">{lessonData.title}</h1>
+              </div>
 
-          {/* Quick Quiz */}
-          {lessonData.quiz && lessonData.quiz.length > 0 && (
-            <section className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-              <h2 className="text-2xl font-bold font-heading mb-6 flex items-center gap-3 border-b border-gray-100 pb-4 text-[var(--color-dark)]">
-                <Star className="w-6 h-6 text-[var(--color-accent)]" />
-                تأكد من فهمك
-              </h2>
-
-              <div className="space-y-8">
-                {lessonData.quiz.map((q, qIdx) => {
-                  const userAnswer = quizAnswers[q.id];
-                  const qSubmitted = quizSubmitted;
-                  
-                  return (
-                    <div key={q.id} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                      <h3 className="font-bold text-lg text-gray-800 mb-4">{qIdx + 1}. {q.question}</h3>
-                      <div className="space-y-3">
-                        {q.options.map(opt => {
-                          const isSelected = userAnswer === opt.id;
-                          let btnClass = isSelected ? 'bg-[var(--color-primary)]/10 border-[var(--color-primary)] text-[var(--color-primary)]' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-100';
-                          let icon = null;
-
-                          if (qSubmitted) {
-                            if (opt.isCorrect) {
-                              btnClass = 'bg-green-50 border-green-500 text-green-700';
-                              icon = <CheckCircle2 className="w-5 h-5 text-green-600" />;
-                            } else if (isSelected && !opt.isCorrect) {
-                              btnClass = 'bg-red-50 border-red-300 text-red-700 opacity-70';
-                            } else {
-                              btnClass = 'bg-white border-gray-200 text-gray-400 opacity-50';
-                            }
-                          }
-
-                          return (
-                            <button
-                              key={opt.id}
-                              disabled={qSubmitted}
-                              onClick={() => setQuizAnswers(prev => ({...prev, [q.id]: opt.id}))}
-                              className={`w-full text-right px-6 py-4 rounded-xl border-2 font-medium transition-all flex items-center justify-between ${btnClass}`}
-                            >
-                              <span>{opt.text}</span>
-                              {icon}
-                            </button>
-                          )
-                        })}
-                      </div>
-
-                      {qSubmitted && (
-                         <motion.div 
-                           initial={{ opacity: 0, height: 0 }}
-                           animate={{ opacity: 1, height: 'auto' }}
-                           className="mt-4 p-4 bg-blue-50/50 rounded-xl border border-blue-100 text-gray-700 text-sm leading-relaxed"
-                         >
-                           <strong className="text-[var(--color-dark)] block mb-1">توضيح:</strong>
-                           {q.explanation}
-                         </motion.div>
+              {/* Visual Scene Area (Animation / Illustration) */}
+              <div className="bg-[var(--color-card)] rounded-3xl overflow-hidden aspect-video relative shadow-sm border border-[var(--color-border)] mb-12 flex items-center justify-center">
+                 {lessonData.visualType === 'animation' ? (
+                   <div className="w-full h-full relative bg-[#F7F3EB] dark:bg-[#1A1816] flex items-center justify-center">
+                      {lessonData.visualUrls && lessonData.visualUrls.length > 0 ? (
+                        <div className="relative w-full h-full">
+                           <img src={lessonData.visualUrls[0]} alt="Animation representation" className="w-full h-full object-cover mix-blend-multiply opacity-90" />
+                           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-sand)]/60 to-transparent"></div>
+                           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[var(--color-card)]/80 backdrop-blur-sm px-4 py-2 flex items-center gap-3 rounded-full shadow-sm text-sm font-bold text-[var(--color-dark)] border border-[var(--color-border)]">
+                              <motion.div 
+                                animate={{ scale: [1, 1.2, 1] }} 
+                                transition={{ repeat: Infinity, duration: 2 }}
+                                className="w-3 h-3 bg-green-500 rounded-full"
+                              />
+                              {isRTL ? 'رسم متحرك توضيحي يعمل' : 'Playing animation'}
+                           </div>
+                        </div>
+                      ) : (
+                        <div className="text-[var(--color-secondary)] font-bold flex flex-col items-center gap-4">
+                           <PlayCircle className="w-16 h-16 opacity-50" />
+                           <p>مساحة عرض الرسوم المتحركة الخفيفة (Lottie/SVG)</p>
+                        </div>
                       )}
-                    </div>
-                  )
-                })}
-              </div>
-
-              {!quizSubmitted && (
-                <button 
-                  onClick={handleQuizSubmit}
-                  disabled={Object.keys(quizAnswers).length !== lessonData.quiz.length}
-                  className={`mt-8 px-8 py-4 rounded-xl font-bold w-full md:w-auto transition-all ${Object.keys(quizAnswers).length === lessonData.quiz.length ? 'bg-[var(--color-dark)] hover:bg-black text-white shadow-md' : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
-                >
-                  تحقق من الإجابات
-                </button>
-              )}
-            </section>
-          )}
-
-        </div>
-
-        {/* Completion Toast & Next Lesson */}
-        <AnimatePresence>
-          {lessonCompleted && (
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-12 bg-[var(--color-primary)] text-white rounded-3xl p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6"
-            >
-              <div className="flex items-center gap-4 text-center md:text-right">
-                <div className="bg-white/20 p-3 rounded-full hidden md:block">
-                  <Trophy className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold font-heading mb-1">أحسنت! أتممت الدرس بنجاح</h3>
-                  <p className="text-white/80">مهارة جديدة تضاف لرصيدك المعرفي. مكتسباتك تزداد قوة.</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-2">
-                 <span className="text-xl font-bold bg-white/20 px-4 py-2 rounded-lg">+{xpEarned} XP</span>
-                 {nxtId ? (
-                   <Link 
-                     to={`/learn/${craftId}/lesson/${nxtId}`} 
-                     className="bg-white text-[var(--color-primary)] px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors shadow-sm"
-                   >
-                     الدرس التالي <ArrowLeft className="w-5 h-5" />
-                   </Link>
+                   </div>
                  ) : (
-                   <Link 
-                     to={`/learn/${craftId}`} 
-                     className="bg-white text-[var(--color-primary)] px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors shadow-sm"
-                   >
-                     العودة للمسار <ArrowLeft className="w-5 h-5" />
-                   </Link>
+                   <div className="w-full h-full relative bg-[var(--color-bg-sand)] flex items-center justify-center group cursor-pointer selection-none">
+                      {lessonData.visualUrls && lessonData.visualUrls.length > 0 ? (
+                        <img src={lessonData.visualUrls[0]} alt="Illustration" className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="text-[var(--color-secondary)] font-bold">مساحة عرض الرسم التوضيحي الثابت</div>
+                      )}
+                      
+                      <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} bg-[var(--color-card)]/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs font-bold text-[var(--color-dark)] border border-[var(--color-border)]`}>
+                        {isRTL ? 'رسم توضيحي' : 'Illustration'}
+                      </div>
+                   </div>
                  )}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
+              {/* Content Tabs / Sections */}
+              <div className="space-y-12">
+                
+                {/* Summary / Notes */}
+                <section className="bg-[var(--color-card)] rounded-3xl p-8 shadow-sm border border-[var(--color-border)]">
+                  <h2 className="text-2xl font-bold font-heading mb-6 flex items-center gap-3 border-b border-[var(--color-border)] pb-4 text-[var(--color-dark)]">
+                    <Star className="w-6 h-6 text-[var(--color-primary)]" />
+                    {t('learn.summary')}
+                  </h2>
+                  <ul className="space-y-5">
+                    {lessonData.summary.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-4 text-[var(--color-secondary)] leading-relaxed text-lg">
+                        <div className="mt-2 w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                {/* Practical Task */}
+                {lessonData.task && (
+                  <section className="bg-[var(--color-primary)]/5 rounded-3xl p-8 border border-[var(--color-primary)]/20 relative overflow-hidden">
+                    <div className={`absolute top-0 ${isRTL ? 'right-0' : 'left-0'} w-2 h-full bg-[var(--color-primary)]`}></div>
+                    <h2 className="text-2xl font-bold font-heading mb-4 flex items-center gap-3 text-[var(--color-dark)]">
+                      <Target className="w-6 h-6 text-[var(--color-primary)]" />
+                      {t('learn.try_yourself')}
+                    </h2>
+                    <h3 className="font-bold text-lg mb-2 text-[var(--color-dark)]">{lessonData.task.title}</h3>
+                    <p className="text-[var(--color-secondary)] leading-relaxed mb-6">
+                      {lessonData.task.description}
+                    </p>
+                    
+                    <button 
+                      onClick={() => setTaskDone(true)}
+                      className={`flex items-center justify-center gap-3 px-6 py-4 rounded-xl font-bold transition-all w-full md:w-auto ${taskDone ? 'bg-green-500/10 text-green-600 border-2 border-green-500/30' : 'bg-[var(--color-card)] border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-bg-sand)]'}`}
+                    >
+                      <div className={`w-6 h-6 rounded flex items-center justify-center border-2 ${taskDone ? 'bg-green-600 border-green-600 text-[var(--color-bg-sand)]' : 'border-current'}`}>
+                        {taskDone && <CheckCircle2 className="w-4 h-4" />}
+                      </div>
+                      {taskDone ? t('learn.task_done') : t('learn.click_when_done')}
+                    </button>
+                  </section>
+                )}
+
+                {/* Quick Quiz */}
+                {lessonData.quiz && lessonData.quiz.length > 0 && taskDone && (
+                  <motion.section 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-[var(--color-card)] rounded-3xl p-8 shadow-sm border border-[var(--color-border)]"
+                  >
+                    <h2 className="text-2xl font-bold font-heading mb-6 flex items-center gap-3 border-b border-[var(--color-border)] pb-4 text-[var(--color-dark)]">
+                      <Star className="w-6 h-6 text-[var(--color-accent)]" />
+                      {t('learn.quick_quiz')}
+                    </h2>
+
+                    <div className="space-y-8">
+                      {lessonData.quiz.map((q, qIdx) => {
+                        const userAnswer = quizAnswers[q.id];
+                        const qSubmitted = quizSubmitted;
+                        
+                        return (
+                          <div key={q.id} className="bg-[var(--color-bg-sand)] rounded-2xl p-6 border border-[var(--color-border)]">
+                            <h3 className="font-bold text-lg text-[var(--color-dark)] mb-4">{qIdx + 1}. {q.question}</h3>
+                            <div className="space-y-3">
+                              {q.options.map(opt => {
+                                const isSelected = userAnswer === opt.id;
+                                let btnClass = isSelected ? 'bg-[var(--color-primary)]/10 border-[var(--color-primary)] text-[var(--color-primary)]' : 'bg-[var(--color-card)] border-[var(--color-border)] text-[var(--color-secondary)] hover:border-[var(--color-primary)]';
+                                let icon = null;
+
+                                if (qSubmitted) {
+                                  if (opt.isCorrect) {
+                                    btnClass = 'bg-green-500/10 border-green-500/50 text-green-600';
+                                    icon = <CheckCircle2 className="w-5 h-5 text-green-500" />;
+                                  } else if (isSelected && !opt.isCorrect) {
+                                    btnClass = 'bg-orange-500/10 border-orange-500/50 text-orange-600 opacity-70'; 
+                                  } else {
+                                    btnClass = 'bg-[var(--color-card)] border-[var(--color-border)] text-[var(--color-secondary)] opacity-50';
+                                  }
+                                }
+
+                                return (
+                                  <button
+                                    key={opt.id}
+                                    disabled={qSubmitted}
+                                    onClick={() => setQuizAnswers(prev => ({...prev, [q.id]: opt.id}))}
+                                    className={`w-full ${isRTL ? 'text-right' : 'text-left'} px-6 py-4 rounded-xl border-2 font-medium transition-all flex items-center justify-between ${btnClass}`}
+                                  >
+                                    <span>{opt.text}</span>
+                                    {icon}
+                                  </button>
+                                )
+                              })}
+                            </div>
+
+                            {qSubmitted && (
+                               <motion.div 
+                                 initial={{ opacity: 0, height: 0 }}
+                                 animate={{ opacity: 1, height: 'auto' }}
+                                 className="mt-4 p-4 bg-[var(--color-card)] rounded-xl border border-[var(--color-border)] text-[var(--color-secondary)] text-sm leading-relaxed"
+                               >
+                                 <strong className="text-[var(--color-dark)] block mb-1">{t('learn.explanation')}</strong>
+                                 <span className={userAnswer === q.options.find(o => o.isCorrect)?.id ? 'text-green-600' : 'text-orange-600'}>
+                                   {q.explanation}
+                                 </span>
+                               </motion.div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {!quizSubmitted && (
+                      <button 
+                        onClick={handleQuizSubmit}
+                        disabled={Object.keys(quizAnswers).length !== lessonData.quiz.length}
+                        className={`mt-8 px-8 py-4 rounded-xl font-bold w-full md:w-auto transition-all ${Object.keys(quizAnswers).length === lessonData.quiz.length ? 'bg-[var(--color-dark)] hover:bg-black text-[var(--color-bg-sand)] shadow-md' : 'bg-[var(--color-bg-sand)] border border-[var(--color-border)] text-[var(--color-secondary)] cursor-not-allowed'}`}
+                      >
+                        {t('learn.check_answers')}
+                      </button>
+                    )}
+                  </motion.section>
+                )}
+
+              </div>
+
+              {/* Navigation Arrows */}
+              <div className="mt-12 flex items-center justify-between border-t border-[var(--color-border)] pt-8">
+                 {prId ? (
+                   <Link to={`/learn/${craftId}/lesson/${prId}`} className="text-[var(--color-secondary)] hover:text-[var(--color-dark)] font-bold flex items-center gap-2 transition-colors">
+                     {isRTL ? <ArrowRight className="w-5 h-5" /> : <ArrowLeft className="w-5 h-5" />}
+                     {t('learn.prev_lesson')}
+                   </Link>
+                 ) : <div/>}
+
+                 {nxtId ? (
+                   <Link 
+                     to={lessonCompleted ? `/learn/${craftId}/lesson/${nxtId}` : '#'} 
+                     onClick={(e) => {
+                       if (!lessonCompleted) {
+                         e.preventDefault();
+                         // Ideally we could use a toast here or translation string, using a simple alert for MVP
+                         alert(isRTL ? 'يجب إكمال التمرين والاختبار للانتقال للدرس التالي.' : 'You must complete the task and quiz to proceed to the next lesson.');
+                       }
+                     }}
+                     className={`font-bold flex items-center gap-2 px-6 py-3 rounded-xl transition-colors ${lessonCompleted ? 'bg-[var(--color-primary)] text-[var(--color-bg-sand)] hover:bg-[var(--color-primary-hover)] shadow-sm' : 'bg-[var(--color-bg-sand)] border border-[var(--color-border)] text-[var(--color-secondary)] cursor-not-allowed'}`}
+                   >
+                     {t('learn.next_lesson')} {isRTL ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+                   </Link>
+                 ) : (
+                    lessonCompleted ? (
+                      <Link to={`/learn/${craftId}`} className="font-bold flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-dark)] text-white hover:bg-black transition-colors shadow-sm">
+                        {t('learn.finish_path')} <Trophy className="w-5 h-5" />
+                      </Link>
+                    ) : <div/>
+                 )}
+              </div>
+
+              {/* Completion Toast */}
+              <AnimatePresence>
+                {lessonCompleted && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--color-dark)] text-white rounded-2xl px-6 py-4 shadow-2xl flex items-center gap-4 z-50 border border-gray-800"
+                  >
+                    <div className="bg-green-500/20 p-2 rounded-full border border-green-500/30">
+                      <Trophy className="w-6 h-6 text-green-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-sm">{t('learn.lesson_completed')}</h4>
+                      <p className="text-xs text-gray-400 mt-0.5">+{xpEarned} {t('learn.xp_points').split(' ')[0]}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+            </div>
+         </div>
       </div>
     </div>
   )

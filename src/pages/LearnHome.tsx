@@ -4,23 +4,25 @@ import { BookOpen, Trophy, Clock, Hammer, ArrowLeft } from 'lucide-react';
 import { coursesData } from '../data/courses';
 import { crafts } from '../data/crafts';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 export default function LearnHome() {
+  const { t, i18n } = useTranslation();
   const availableCourses = Object.values(coursesData);
 
   return (
     <div className="bg-[var(--color-bg-sand)] min-h-screen pb-24">
       {/* Header */}
-      <div className="bg-[var(--color-dark)] text-white pt-20 pb-16 px-4">
+      <div className="bg-[var(--color-header)] text-[var(--color-dark)] pt-20 pb-16 px-4 border-b border-[var(--color-border)]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
-            <div className="bg-white/10 p-2 rounded-lg">
+            <div className="bg-[var(--color-primary)]/10 p-2 rounded-lg">
                <BookOpen className="w-8 h-8 text-[var(--color-primary)]" />
             </div>
-            <h1 className="text-4xl font-heading font-bold">مساحة التعلّم</h1>
+            <h1 className="text-4xl font-heading font-bold">{t('learn.space_title')}</h1>
           </div>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
-            رحلتك المهنية تبدأ هنا. تعلم المبادئ الأساسية، شاهد تطبيقات حقيقية، وطبّق بنفسك لتستعد لبدء تكوينك المهني بقوة.
+          <p className="text-[var(--color-secondary)] text-lg leading-relaxed max-w-2xl">
+            {t('learn.space_subtitle')}
           </p>
         </div>
       </div>
@@ -29,49 +31,49 @@ export default function LearnHome() {
         
         {/* Progress Sidebar */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col items-center text-center">
-            <div className="w-24 h-24 bg-[var(--color-bg-sand)] rounded-full flex items-center justify-center mb-4 border-4 border-white shadow-sm">
+          <div className="bg-[var(--color-card)] rounded-3xl p-8 shadow-sm border border-[var(--color-border)] flex flex-col items-center text-center">
+            <div className="w-24 h-24 bg-[var(--color-bg-sand)] rounded-full flex items-center justify-center mb-4 border-4 border-[var(--color-card)] shadow-sm">
               <Trophy className="w-10 h-10 text-[var(--color-primary)]" />
             </div>
-            <h2 className="text-2xl font-bold font-heading mb-1 text-[var(--color-dark)]">ملف التقدّم</h2>
-            <p className="text-gray-500 text-sm mb-8">أنت تبني خبرتك. هذه رحلتك المهنية.</p>
+            <h2 className="text-2xl font-bold font-heading mb-1 text-[var(--color-dark)]">{t('learn.progress_profile')}</h2>
+            <p className="text-[var(--color-secondary)] text-sm mb-8">{t('learn.space_subtitle').split('.')[0]}.</p>
 
             <div className="w-full bg-[var(--color-bg-sand)] rounded-2xl p-6 flex justify-around mb-6">
               <div className="flex flex-col items-center">
                 <span className="text-3xl font-bold font-heading text-[var(--color-primary)]">0</span>
-                <span className="text-gray-500 text-sm mt-1">نقاط الخبرة (XP)</span>
+                <span className="text-[var(--color-secondary)] text-sm mt-1">{t('learn.xp_points')}</span>
               </div>
-              <div className="w-px bg-gray-200"></div>
+              <div className="w-px bg-[var(--color-border)]"></div>
               <div className="flex flex-col items-center">
-                <span className="text-3xl font-bold font-heading text-green-600">0</span>
-                <span className="text-gray-500 text-sm mt-1">دروس مكتملة</span>
+                <span className="text-3xl font-bold font-heading text-[var(--color-success)]">0</span>
+                <span className="text-[var(--color-secondary)] text-sm mt-1">{t('learn.completed_lessons')}</span>
               </div>
             </div>
 
-            <div className="w-full text-right">
-              <h3 className="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                 <Trophy className="w-4 h-4 text-gray-400" />
-                 شارات الإنجاز
+            <div className="w-full text-start rtl:text-right">
+              <h3 className="font-bold text-[var(--color-dark)] mb-3 flex items-center gap-2">
+                 <Trophy className="w-4 h-4 text-[var(--color-secondary)]" />
+                 {t('learn.badges')}
               </h3>
-              <div className="flex justify-center gap-4 text-gray-300">
-                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center filter grayscale opacity-50" title="المبتدئ الواثق">
+              <div className="flex justify-center gap-4 text-[var(--color-secondary)]">
+                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-[var(--color-border)] flex items-center justify-center filter grayscale opacity-50">
                     <Hammer className="w-6 h-6" />
                  </div>
-                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center filter grayscale opacity-50" title="الحرفي الصبور">
+                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-[var(--color-border)] flex items-center justify-center filter grayscale opacity-50">
                     <Clock className="w-6 h-6" />
                  </div>
-                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center filter grayscale opacity-50" title="صانع المستقبل">
+                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-[var(--color-border)] flex items-center justify-center filter grayscale opacity-50">
                     <BookOpen className="w-6 h-6" />
                  </div>
               </div>
-              <p className="text-xs text-center text-gray-400 mt-3">أكمل مساراتك لفتح الشارات المهنية</p>
+              <p className="text-xs text-center text-[var(--color-secondary)] mt-3">{t('learn.unlock_badges')}</p>
             </div>
           </div>
         </div>
 
         {/* Available Courses */}
         <div className="lg:col-span-2">
-          <h2 className="text-2xl font-bold font-heading mb-6 border-b border-gray-200 pb-4">المسارات المتوفرة</h2>
+          <h2 className="text-2xl font-bold font-heading mb-6 border-b border-[var(--color-border)] pb-4">{t('learn.available_paths')}</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {availableCourses.map((course, idx) => {
@@ -84,33 +86,33 @@ export default function LearnHome() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   key={course.craftId}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:border-[var(--color-primary)] hover:shadow-md transition-all group flex flex-col"
+                  className="bg-[var(--color-card)] rounded-2xl overflow-hidden shadow-sm border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-md transition-all group flex flex-col"
                 >
                   <div className="h-40 overflow-hidden relative">
                     <img src={craft.image} alt={course.title} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-4">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
                        <span className="bg-[var(--color-primary)] text-white px-3 py-1 rounded-sm text-xs font-bold">
-                         {craft.category}
+                         {i18n.language === 'ar' ? craft.category : craft.category} {/* Ideally we translate category too */}
                        </span>
                     </div>
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold font-heading mb-2">{course.title}</h3>
-                    <p className="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed flex-grow">{course.description}</p>
+                    <h3 className="text-xl font-bold font-heading mb-2 text-[var(--color-dark)]">{course.title}</h3>
+                    <p className="text-[var(--color-secondary)] text-sm mb-6 line-clamp-2 leading-relaxed flex-grow">{course.description}</p>
                     
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-6 font-medium">
-                      <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg">
+                    <div className="flex items-center justify-between text-sm text-[var(--color-secondary)] mb-6 font-medium">
+                      <div className="flex items-center gap-1.5 bg-[var(--color-bg-sand)] px-3 py-1.5 rounded-lg border border-[var(--color-border)]">
                         <Trophy className="w-4 h-4 text-orange-500" />
-                        {course.levels.length} مراحل
+                        {course.levels.length} {t('learn.stages')}
                       </div>
-                      <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-1.5 rounded-lg">
-                        <BookOpen className="w-4 h-4 text-blue-500" />
-                        {course.levels.reduce((acc, lvl) => acc + lvl.lessons.length, 0)} دروس
+                      <div className="flex items-center gap-1.5 bg-[var(--color-bg-sand)] px-3 py-1.5 rounded-lg border border-[var(--color-border)]">
+                        <BookOpen className="w-4 h-4 text-[var(--color-accent)]" />
+                        {course.levels.reduce((acc, lvl) => acc + lvl.lessons.length, 0)} {t('learn.lessons')}
                       </div>
                     </div>
 
-                    <Link to={`/learn/${course.craftId}`} className="block text-center w-full bg-[var(--color-bg-sand)] hover:bg-[var(--color-primary)] hover:text-white text-[var(--color-dark)] py-3 rounded-xl font-bold transition-colors">
-                      استكشف المسار
+                    <Link to={`/learn/${course.craftId}`} className="block text-center w-full bg-[var(--color-bg-sand)] hover:bg-[var(--color-primary)] hover:text-[var(--color-bg-sand)] text-[var(--color-dark)] py-3 rounded-xl font-bold transition-colors border border-[var(--color-border)] hover:border-[var(--color-primary)]">
+                      {t('learn.explore_path')}
                     </Link>
                   </div>
                 </motion.div>

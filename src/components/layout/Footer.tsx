@@ -1,8 +1,12 @@
 import React from 'react';
 import { Hammer, Facebook, Instagram, Twitter, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
   return (
     <footer className="bg-[var(--color-dark)] text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,10 +17,10 @@ export default function Footer() {
               <div className="bg-white/10 p-2 rounded-lg">
                 <Hammer className="w-6 h-6 text-[var(--color-primary)]" />
               </div>
-              <span className="font-heading font-bold text-3xl text-white">حرفتي</span>
+              <span className="font-heading font-bold text-3xl text-white">{t('home.title')}</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              منصة ذكية لاكتشاف الحرف والتكوين المهني في الجزائر. نهدف لتوجيه الشباب نحو مسارات مهنية تناسب قدراتهم وتلبي احتياجات السوق.
+              {t('home.subtitle')}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[var(--color-primary)] transition-colors">
@@ -32,34 +36,34 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-bold text-xl mb-6 border-b border-white/10 pb-3 inline-block">روابط سريعة</h3>
+            <h3 className="font-heading font-bold text-xl mb-6 border-b border-white/10 pb-3 inline-block">{isRTL ? 'روابط سريعة' : 'Quick Links'}</h3>
             <ul className="space-y-4">
-              <li><Link to="/test" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> تحليل الشخصية</Link></li>
-              <li><Link to="/crafts" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> دليل الحرف</Link></li>
-              <li><Link to="/centers" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> مراكز التكوين</Link></li>
-              <li><Link to="/learn" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> مساحة التعلم</Link></li>
+              <li><Link to="/test" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {t('nav.test')}</Link></li>
+              <li><Link to="/crafts" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {t('nav.crafts')}</Link></li>
+              <li><Link to="/centers" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {isRTL ? 'مراكز التكوين' : 'Training Centers'}</Link></li>
+              <li><Link to="/learn" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {t('nav.learn')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-heading font-bold text-xl mb-6 border-b border-white/10 pb-3 inline-block">حرف شائعة</h3>
+            <h3 className="font-heading font-bold text-xl mb-6 border-b border-white/10 pb-3 inline-block">{isRTL ? 'حرف شائعة' : 'Popular Crafts'}</h3>
             <ul className="space-y-4">
-              <li><Link to="/craft/carpentry" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> النجارة والأثاث</Link></li>
-              <li><Link to="/craft/electrical_building" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> كهرباء معمارية</Link></li>
-              <li><Link to="/craft/mechanics" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> ميكانيك السيارات</Link></li>
-              <li><Link to="/craft/agriculture" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> الزراعة المحمية</Link></li>
+              <li><Link to="/craft/carpentry" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {isRTL ? 'النجارة والأثاث' : 'Carpentry & Furniture'}</Link></li>
+              <li><Link to="/craft/electrical_building" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {isRTL ? 'كهرباء معمارية' : 'Building Electricity'}</Link></li>
+              <li><Link to="/craft/mechanics" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {isRTL ? 'ميكانيك السيارات' : 'Auto Mechanics'}</Link></li>
+              <li><Link to="/craft/agriculture" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"><span>-</span> {isRTL ? 'الزراعة المحمية' : 'Protected Agriculture'}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-heading font-bold text-xl mb-6 border-b border-white/10 pb-3 inline-block">تواصل معنا</h3>
+            <h3 className="font-heading font-bold text-xl mb-6 border-b border-white/10 pb-3 inline-block">{isRTL ? 'تواصل معنا' : 'Contact Us'}</h3>
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail className="w-5 h-5 text-[var(--color-primary)]" />
                 <span>contact@hirfati.dz</span>
               </li>
-              <li className="text-sm text-gray-500 mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-                هل أنت حرفي خبير؟ انضم إلينا وشارك خبرتك مع الجيل القادم.
+              <li className="text-sm text-gray-500 mt-6 p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                {isRTL ? 'هل أنت حرفي خبير؟ انضم إلينا وشارك خبرتك مع الجيل القادم.' : 'Are you an expert craftsperson? Join us and share your expertise with the next generation.'}
               </li>
             </ul>
           </div>
@@ -67,10 +71,10 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} حرفتي. جميع الحقوق محفوظة.</p>
+          <p>© {new Date().getFullYear()} {isRTL ? 'حرفتي. جميع الحقوق محفوظة.' : 'Hirfati. All rights reserved.'}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="hover:text-white transition-colors">سياسة الخصوصية</Link>
-            <Link to="/terms" className="hover:text-white transition-colors">شروط الاستخدام</Link>
+            <Link to="/privacy" className="hover:text-white transition-colors">{isRTL ? 'سياسة الخصوصية' : 'Privacy Policy'}</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">{isRTL ? 'شروط الاستخدام' : 'Terms of Use'}</Link>
           </div>
         </div>
       </div>

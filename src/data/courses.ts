@@ -8,8 +8,9 @@ export interface QuizQuestion {
 export interface Lesson {
   id: string;
   title: string;
-  videoUrl?: string;
-  videoTitle?: string;
+  visualType: 'animation' | 'illustration';
+  visualUrls: string[];
+  visualDescription?: string;
   duration: string;
   summary: string[];
   tools?: { name: string; image: string }[];
@@ -46,8 +47,9 @@ export const coursesData: Record<string, Course> = {
           {
             id: 'les_1_1',
             title: 'مقدمة للنجارة المعمارية',
-            videoUrl: 'https://images.unsplash.com/photo-1610488251214-7227ab8bfeb9?auto=format&fit=crop&w=800&q=80', // Using image placeholder for video cover
-            videoTitle: 'مقدمة في النجارة: ما تحتاج إلى معرفته للبدء',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1610488251214-7227ab8bfeb9?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي لورشة نجارة منظمة مع تسليط الضوء على أدوات السلامة.',
             duration: '04:30',
             summary: [
               'النجارة الجمع بين الفن والهندسة العملية.',
@@ -75,7 +77,9 @@ export const coursesData: Record<string, Course> = {
           {
             id: 'les_1_2',
             title: 'أدوات القياس ووضع العلامات',
-            videoUrl: 'https://images.unsplash.com/photo-1540340061722-f155c5dfc5b2?auto=format&fit=crop&w=800&q=80',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1540340061722-f155c5dfc5b2?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'حركة ليد ترسم خطاً مستقيماً باستخدام زاوية قائمة وقلم رصاص على لوح خشبي.',
             duration: '06:15',
             summary: [
               'قس مرتين، واقطع مرة واحدة (القاعدة الذهبية).',
@@ -90,6 +94,18 @@ export const coursesData: Record<string, Course> = {
               title: 'تطبيق القياس',
               description: 'أحضر أي قطعة خشب أو حتى كرتون مقوى، واستخدم شريط القياس لرسم خطوط متوازية تفصل بينها 5 سم بالضبط.'
             },
+            quiz: [
+              {
+                id: 'q2',
+                question: 'لماذا نستخدم الزاوية القائمة (L-square) في وضع العلامات؟',
+                options: [
+                  { id: 'o1', text: 'للتأكد من أن الطول كافٍ', isCorrect: false },
+                  { id: 'o2', text: 'لضمان رسم خط عمودي مستقيم تماماً للقطع', isCorrect: true },
+                  { id: 'o3', text: 'لرسم الدوائر والأقواس', isCorrect: false }
+                ],
+                explanation: 'الزاوية القائمة تضمن أن يكون القطع مستقيماً بزاوية 90 درجة لتسهيل تركيب القطع لاحقاً.'
+              }
+            ],
             xpReward: 30
           }
         ]
@@ -102,12 +118,19 @@ export const coursesData: Record<string, Course> = {
           {
             id: 'les_2_1',
             title: 'المنشار اليدوي: القبضة والحركة',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم متحرك يوضح زاوية ميلان المنشار اليدوي الصحيحة (45 درجة) مع اتجاه الحركة.',
             duration: '05:40',
             summary: [
               'اختيار المنشار المناسب للعمل (قص طولي أو عرضي).',
               'وضعية الجسد: قف بثبات واجعل ذراعك كتلة واحدة مع المنشار.',
               'الاستعانة بقطعة خشبية دليلاً لضمان استقامة القطع.'
             ],
+            task: {
+              title: 'تصحيح القبضة',
+              description: 'امسك بأي مقبض يشبه المنشار وتدرب على حركة الذراع بحيث يكون المرفق والرسغ في خط مستقيم.'
+            },
             xpReward: 40
           }
         ]
