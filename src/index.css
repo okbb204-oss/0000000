@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #C67B4B;
+  --color-primary-hover: #b56c3e;
+  --color-secondary: #6B705C;
+  --color-dark: #2D2D2D;
+  --color-bg-sand: #F9F6F0;
+  --color-accent: #3A7B85;
+  --color-accent-hover: #2e666f;
+
+  --font-sans: 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Cairo', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--color-bg-sand)] text-[var(--color-dark)] font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
