@@ -23,10 +23,21 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-[var(--color-primary)] text-[var(--color-bg-sand)] p-2 rounded-lg group-hover:bg-[var(--color-primary-hover)] transition-colors">
-                <Hammer className="w-6 h-6" />
+              <img 
+                src="/logo.png" 
+                alt="Hirfati Logo" 
+                className="h-16 w-auto object-contain transition-transform group-hover:scale-110"
+                onError={(e) => {
+                  // Fallback to text if image is missing
+                  e.currentTarget.style.display = 'none';
+                  const nextSib = e.currentTarget.nextElementSibling as HTMLElement;
+                  if (nextSib) nextSib.style.display = 'flex';
+                }}
+              />
+              <div className="hidden flex-col rtl:items-end ltr:items-start group-hover:opacity-80 transition-opacity">
+                <span className="font-heading font-bold text-2xl text-[var(--color-primary)] leading-tight">حرفتي</span>
+                <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-secondary)] uppercase leading-none">Hirfati</span>
               </div>
-              <span className="font-heading font-bold text-3xl text-[var(--color-primary)]">حرفتي</span>
             </Link>
           </div>
           

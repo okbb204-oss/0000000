@@ -14,10 +14,17 @@ export default function Footer() {
           
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 group mb-4">
-              <div className="bg-white/10 p-2 rounded-lg">
-                <Hammer className="w-6 h-6 text-[var(--color-primary)]" />
+              <div className="bg-white p-2 rounded-lg transition-transform group-hover:scale-105">
+                <img 
+                  src="/logo.png" 
+                  alt="Hirfati Logo" 
+                  className="h-10 w-auto object-contain"
+                  onError={(e) => {
+                    e.currentTarget.parentElement!.style.display = 'none';
+                  }}
+                />
               </div>
-              <span className="font-heading font-bold text-3xl text-white">{t('home.title')}</span>
+              <span className="font-heading font-bold text-3xl text-white">حرفتي</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               {t('home.subtitle')}
