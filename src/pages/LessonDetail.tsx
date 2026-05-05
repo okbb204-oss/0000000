@@ -4,10 +4,12 @@ import { ArrowLeft, ArrowRight, CheckCircle2, PlayCircle, Star, Wrench, Target, 
 import { motion, AnimatePresence } from 'motion/react';
 import { coursesData, Lesson } from '../data/courses';
 import { useTranslation } from 'react-i18next';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function LessonDetail() {
   const { craftId, lessonId } = useParams<{ craftId: string, lessonId: string }>();
   const navigate = useNavigate();
+  const { progress, markLessonComplete, addXP } = useProgress();
   
   const course = craftId ? coursesData[craftId] : undefined;
   
@@ -45,8 +47,8 @@ export default function LessonDetail() {
     );
   }
 
-  // Mocking completed lessons for demo
-  const completedLessonIds = ['les_1_1']; 
+  // Using the context for completed lessons
+  const completedLessonIds = progress.completedLessons; 
 
   const handleQuizSubmit = () => {
     setQuizSubmitted(true);
@@ -60,7 +62,10 @@ export default function LessonDetail() {
 
     if (!lessonCompleted) {
       setLessonCompleted(true);
-      setXpEarned(lessonData?.xpReward || 0);
+      const reward = lessonData?.xpReward || 0;
+      setXpEarned(reward);
+      addXP(reward);
+      markLessonComplete(lessonId!, course.levels[levelIndex].id, craftId);
     }
   };
 

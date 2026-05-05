@@ -5,12 +5,14 @@ import { motion } from 'motion/react';
 import { coursesData } from '../data/courses';
 import { crafts } from '../data/crafts';
 import { useTranslation } from 'react-i18next';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function CourseOverview() {
   const { craftId } = useParams<{ craftId: string }>();
   const course = craftId ? coursesData[craftId] : undefined;
   const craft = crafts.find(c => c.id === craftId);
   const { t, i18n } = useTranslation();
+  const { progress } = useProgress();
   const isRTL = i18n.language === 'ar';
 
   if (!course || !craft) {
@@ -22,8 +24,8 @@ export default function CourseOverview() {
     );
   }
 
-  // Mocking completed lessons for demo purposes. In real app, load from user state/DB.
-  const completedLessonIds = ['les_1_1']; 
+  // Using the context for completed lessons
+  const completedLessonIds = progress.completedLessons; 
 
   return (
     <div className="bg-[var(--color-bg-sand)] min-h-screen pb-24">
@@ -52,10 +54,10 @@ export default function CourseOverview() {
              <div className="w-full md:w-1/3">
                <div className="flex justify-between text-sm text-[var(--color-primary)] font-bold mb-2">
                  <span>{t('learn.overall_progress')}</span>
-                 <span>15%</span>
+                 <span>{Math.round((completedLessonIds.length / course.levels.reduce((acc, lvl) => acc + lvl.lessons.length, 0)) * 100)}%</span>
                </div>
                <div className="h-3 w-full bg-[var(--color-bg-sand)] rounded-full overflow-hidden border border-[var(--color-border)]">
-                 <div className="h-full bg-[var(--color-primary)] w-[15%]" />
+                 <div className="h-full bg-[var(--color-primary)] transition-all" style={{ width: `${Math.round((completedLessonIds.length / course.levels.reduce((acc, lvl) => acc + lvl.lessons.length, 0)) * 100)}%` }} />
                </div>
              </div>
            </div>

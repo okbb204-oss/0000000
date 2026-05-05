@@ -135,12 +135,12 @@ export default function TestPlatform() {
                    </div>
                 )}
                 <div className="h-48 relative">
-                   <img src={result.craft.image} alt={result.craft.nameAR} className="w-full h-full object-cover" />
+                   <img src={result.craft.image} alt={(!isRTL && result.craft.nameEN) ? result.craft.nameEN : result.craft.nameAR} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold font-heading mb-2 text-[var(--color-dark)]">{isRTL ? result.craft.nameAR : result.craft.nameAR}</h3>
+                  <h3 className="text-2xl font-bold font-heading mb-2 text-[var(--color-dark)]">{(!isRTL && result.craft.nameEN) ? result.craft.nameEN : result.craft.nameAR}</h3>
                   <p className="text-[var(--color-secondary)] text-sm mb-4">{isRTL ? 'نسبة التوافق:' : 'Match Rate:'} {Math.min(100, Math.round(result.score * 8))}%</p>
-                  <p className="text-[var(--color-secondary)] text-sm mb-6">{result.craft.shortDescription}</p>
+                  <p className="text-[var(--color-secondary)] text-sm mb-6">{(!isRTL && result.craft.shortDescriptionEN) ? result.craft.shortDescriptionEN : result.craft.shortDescription}</p>
                   <Link to={`/craft/${result.craft.id}`} className={`block text-center w-full py-3 rounded-xl font-bold transition-colors ${idx === 0 ? 'bg-[var(--color-primary)] text-[var(--color-bg-sand)] hover:bg-[var(--color-primary-hover)]' : 'bg-[var(--color-bg-sand)] text-[var(--color-dark)] hover:border hover:border-[var(--color-primary)]'}`}>
                     {isRTL ? 'ابدأ في هذه الحرفة' : 'Start in this craft'}
                   </Link>

@@ -2,14 +2,23 @@ export interface Craft {
   id: string;
   nameAR: string;
   nameFR: string;
+  nameEN?: string;
   category: string;
+  categoryEN?: string;
   shortDescription: string;
+  shortDescriptionEN?: string;
   fullDescription: string;
+  fullDescriptionEN?: string;
   tools: string[];
+  toolsEN?: string[];
   skills: string[];
+  skillsEN?: string[];
   duration: string;
+  durationEN?: string;
   careerOpportunities: string[];
+  careerOpportunitiesEN?: string[];
   averageIncome: string;
+  averageIncomeEN?: string;
   image: string;
 }
 
@@ -83,5 +92,28 @@ export const crafts: Craft[] = [
     careerOpportunities: ['مشروع زراعي خاص', 'مستثمرات فلاحية كبرى', 'مشاتل نباتات الزينة'],
     averageIncome: 'مرتبط بحصاد الموسم، لكنه قطاع مدعوم جداً في الجزائر وذو مردودية واعدة.',
     image: 'https://images.unsplash.com/photo-1592424001807-6bb932efbaac?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'data_entry',
+    nameAR: 'عون إدراج المعلومات',
+    nameFR: 'Data Entry Specialist',
+    nameEN: 'Data Entry Specialist',
+    category: 'خدماتية رقمية',
+    categoryEN: 'Digital Services',
+    shortDescription: 'إدخال البيانات وتنظيمها والتأكد من دقتها في أنظمة معلوماتية مختلفة.',
+    shortDescriptionEN: 'Inputting, organizing, and verifying the accuracy of information across digital systems.',
+    fullDescription: 'في عصر الرقمنة المتسارع الذي تعيشه الجزائر، تبرز حرفة عون إدراج المعلومات كبوابة ذهبية للشباب نحو عالم المهن الرقمية. عون الإدراج هو الشخص الذي يتولى إدخال البيانات وتنظيمها والتأكد من دقتها في أنظمة معلوماتية مختلفة. يعمل في بيئة مريحة داخل مكاتب الإدارات العمومية، الشركات الخاصة، العيادات، أو حتى من بيته كمستقل عبر الإنترنت. يومه يمضي بين لوحة المفاتيح والشاشة، منتبهاً لكل حرف ورقم، محولاً الأكوام الورقية إلى قواعد بيانات رقمية منظمة تسهل عمل المؤسسات. إنها حرفة تتطلب الدقة والصبر وحساً تنظيمياً عالياً، وتناسب الأشخاص الذين يحبون العمل الذهني الهادئ. مع تكوين بسيط وإرادة قوية، يمكنك أن تصبح عون إدراج محترفاً وتفتح لنفسك أبواب عمل واسعة في السوقين المحلي والعالمي.',
+    fullDescriptionEN: 'In Algeria\'s fast-paced digital transformation era, the Data Entry Specialist profession emerges as a golden gateway for youth into the world of digital careers. A data entry agent is responsible for inputting, organizing, and verifying the accuracy of information across various digital systems. They work in comfortable environments—public administrations, private companies, clinics—or even from home as freelancers online. Their day flows between keyboard and screen, meticulously attending to every letter and number, transforming paper stacks into structured digital databases that empower organizations. This craft demands precision, patience, and strong organizational skills, suiting those who prefer calm, focused mental work. With straightforward training and determination, you can become a professional Data Entry Specialist, unlocking vast job opportunities in both local and global markets.',
+    tools: ['حاسوب مكتبي أو محمول', 'لوحة مفاتيح مريحة', 'فأرة', 'اتصال بالإنترنت', 'طابعة – ماسح ضوئي'],
+    toolsEN: ['Desktop or Laptop Computer', 'Ergonomic Keyboard', 'Mouse', 'Internet Connection', 'Printer - Scanner'],
+    skills: ['سرعة الكتابة 30 كلمة/دقيقة كحد أدنى', 'الدقة (أقل من 2% خطأ)', 'الصبر والتركيز لساعات', 'حس تنظيمي وتصنيف'],
+    skillsEN: ['Typing speed 30 WPM minimum', 'Accuracy (less than 2% error rate)', 'Sustained focus over hours', 'Systematic classification & formatting'],
+    duration: 'من 6 إلى 12 شهراً',
+    durationEN: '6 to 12 months',
+    careerOpportunities: ['الإدارات العمومية', 'القطاع الصحي والقانوني', 'البنوك والشركات', 'العمل الحر'],
+    careerOpportunitiesEN: ['Public Administrations', 'Health and Legal Sectors', 'Banks and Companies', 'Freelancing (Upwork, Fiverr)'],
+    averageIncome: 'من 25,000 دج إلى 50,000+ دج للمحترفين، وقد يصل حتى 100,000+ دج في العمل الحر وعن بعد.',
+    averageIncomeEN: 'Starting at 25,000 DZD up to 50,000+ DZD. Freelancers can earn 100,000+ DZD remote.',
+    image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'
   }
 ];

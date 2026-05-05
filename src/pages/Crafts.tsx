@@ -11,11 +11,13 @@ export default function CraftsDir() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
-  const categories = Array.from(new Set(crafts.map(c => c.category)));
+  const categories = Array.from(new Set(crafts.map(c => (!isRTL && c.categoryEN) ? c.categoryEN : c.category)));
 
   const filteredCrafts = crafts.filter(c => {
-    const matchSearch = c.nameAR.includes(searchTerm) || c.nameFR.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchCat = selectedCategory ? c.category === selectedCategory : true;
+    const nameToSearch = (!isRTL && c.nameEN) ? c.nameEN : c.nameAR;
+    const matchSearch = nameToSearch.toLowerCase().includes(searchTerm.toLowerCase()) || c.nameFR.toLowerCase().includes(searchTerm.toLowerCase());
+    const catToMatch = (!isRTL && c.categoryEN) ? c.categoryEN : c.category;
+    const matchCat = selectedCategory ? catToMatch === selectedCategory : true;
     return matchSearch && matchCat;
   });
 
@@ -103,9 +105,9 @@ export default function CraftsDir() {
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold font-heading mb-1 text-[var(--color-dark)]">{isRTL ? craft.nameAR : craft.nameAR}</h3> {/* Replace craft.nameAR with AR default if no English available */}
+                  <h3 className="text-xl font-bold font-heading mb-1 text-[var(--color-dark)]">{(!isRTL && craft.nameEN) ? craft.nameEN : craft.nameAR}</h3>
                   <div className="text-[var(--color-secondary)] opacity-70 text-xs mb-3 font-sans" dir="ltr">{craft.nameFR}</div>
-                  <p className="text-[var(--color-secondary)] text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">{craft.shortDescription}</p>
+                  <p className="text-[var(--color-secondary)] text-sm mb-6 line-clamp-3 leading-relaxed flex-grow">{(!isRTL && craft.shortDescriptionEN) ? craft.shortDescriptionEN : craft.shortDescription}</p>
                   
                   <Link to={`/craft/${craft.id}`} className="mt-auto flex items-center justify-between w-full text-[var(--color-primary)] font-bold group/btn pt-4 border-t border-[var(--color-border)]">
                     <span>{t('crafts.about_craft')}</span>

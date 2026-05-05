@@ -5,9 +5,11 @@ import { coursesData } from '../data/courses';
 import { crafts } from '../data/crafts';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function LearnHome() {
   const { t, i18n } = useTranslation();
+  const { progress } = useProgress();
   const availableCourses = Object.values(coursesData);
 
   return (
@@ -40,12 +42,12 @@ export default function LearnHome() {
 
             <div className="w-full bg-[var(--color-bg-sand)] rounded-2xl p-6 flex justify-around mb-6">
               <div className="flex flex-col items-center">
-                <span className="text-3xl font-bold font-heading text-[var(--color-primary)]">0</span>
+                <span className="text-3xl font-bold font-heading text-[var(--color-primary)]">{progress.xp}</span>
                 <span className="text-[var(--color-secondary)] text-sm mt-1">{t('learn.xp_points')}</span>
               </div>
               <div className="w-px bg-[var(--color-border)]"></div>
               <div className="flex flex-col items-center">
-                <span className="text-3xl font-bold font-heading text-[var(--color-success)]">0</span>
+                <span className="text-3xl font-bold font-heading text-[var(--color-success)]">{progress.completedLessons.length}</span>
                 <span className="text-[var(--color-secondary)] text-sm mt-1">{t('learn.completed_lessons')}</span>
               </div>
             </div>
@@ -55,14 +57,14 @@ export default function LearnHome() {
                  <Trophy className="w-4 h-4 text-[var(--color-secondary)]" />
                  {t('learn.badges')}
               </h3>
-              <div className="flex justify-center gap-4 text-[var(--color-secondary)]">
-                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-[var(--color-border)] flex items-center justify-center filter grayscale opacity-50">
+              <div className="flex justify-center gap-4 text-[var(--color-secondary)] flex-wrap">
+                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('starter') ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] border-[var(--color-primary)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={i18n.language === 'ar' ? 'خطوة الألف ميل' : 'The First Step'}>
                     <Hammer className="w-6 h-6" />
                  </div>
-                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-[var(--color-border)] flex items-center justify-center filter grayscale opacity-50">
+                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('keyboard_master') ? 'bg-[var(--color-accent)]/10 text-[var(--color-accent)] border-[var(--color-accent)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={i18n.language === 'ar' ? 'سيد لوحة المفاتيح' : 'Keyboard Master'}>
                     <Clock className="w-6 h-6" />
                  </div>
-                 <div className="w-16 h-16 rounded-xl border-2 border-dashed border-[var(--color-border)] flex items-center justify-center filter grayscale opacity-50">
+                 <div className={`w-16 h-16 rounded-xl border-2 border-[var(--color-border)] flex items-center justify-center transition-all ${progress.badges.includes('graduate') ? 'bg-[var(--color-success)]/10 text-[var(--color-success)] border-[var(--color-success)] shadow-sm' : 'border-dashed opacity-50 grayscale'}`} title={i18n.language === 'ar' ? 'أخصائي الإدراج' : 'Entry Specialist'}>
                     <BookOpen className="w-6 h-6" />
                  </div>
               </div>

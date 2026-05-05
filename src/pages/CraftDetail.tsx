@@ -39,11 +39,11 @@ export default function CraftSingle() {
             </Link>
             <div className="flex flex-wrap gap-3 mb-4">
                <span className="bg-[var(--color-primary)] text-[var(--color-bg-sand)] px-3 py-1 rounded-sm text-sm font-bold shadow-sm">
-                 {craft.category}
+                 {(!isRTL && craft.categoryEN) ? craft.categoryEN : craft.category}
                </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-2 leading-tight">
-              {isRTL ? craft.nameAR : craft.nameAR}
+              {(!isRTL && craft.nameEN) ? craft.nameEN : craft.nameAR}
             </h1>
             <p className="text-xl text-gray-300 font-sans" dir="ltr">{craft.nameFR}</p>
           </div>
@@ -60,7 +60,7 @@ export default function CraftSingle() {
               {t('crafts.about_craft')}
             </h2>
             <p className="text-[var(--color-secondary)] text-lg leading-loose">
-              {craft.fullDescription}
+              {(!isRTL && craft.fullDescriptionEN) ? craft.fullDescriptionEN : craft.fullDescription}
             </p>
           </section>
 
@@ -73,7 +73,7 @@ export default function CraftSingle() {
               <div>
                 <h3 className="font-bold text-[var(--color-dark)] mb-4 bg-[var(--color-bg-sand)] p-3 rounded-lg inline-block border border-[var(--color-border)]">{isRTL ? 'الأدوات الأساسية:' : 'Basic Tools:'}</h3>
                 <ul className="space-y-3">
-                  {craft.tools.map((tool, i) => (
+                  {((!isRTL && craft.toolsEN) ? craft.toolsEN : craft.tools).map((tool, i) => (
                     <li key={i} className="flex items-center gap-3 text-[var(--color-secondary)]">
                       <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] opacity-50" />
                       {tool}
@@ -84,7 +84,7 @@ export default function CraftSingle() {
               <div>
                 <h3 className="font-bold text-[var(--color-dark)] mb-4 bg-[var(--color-bg-sand)] p-3 rounded-lg inline-block border border-[var(--color-border)]">{isRTL ? 'المهارات المطلوبة:' : 'Required Skills:'}</h3>
                 <ul className="space-y-3">
-                  {craft.skills.map((skill, i) => (
+                  {((!isRTL && craft.skillsEN) ? craft.skillsEN : craft.skills).map((skill, i) => (
                     <li key={i} className="flex items-center gap-3 text-[var(--color-secondary)]">
                       <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] opacity-50" />
                       {skill}
@@ -123,7 +123,7 @@ export default function CraftSingle() {
                 </div>
                 <div>
                    <h4 className="font-bold text-[var(--color-dark)] mb-1">{t('crafts.duration')}</h4>
-                   <p className="text-[var(--color-secondary)] text-sm">{craft.duration}</p>
+                   <p className="text-[var(--color-secondary)] text-sm">{(!isRTL && craft.durationEN) ? craft.durationEN : craft.duration}</p>
                 </div>
               </div>
 
@@ -133,7 +133,7 @@ export default function CraftSingle() {
                 </div>
                 <div>
                    <h4 className="font-bold text-[var(--color-dark)] mb-1">{t('crafts.income')}</h4>
-                   <p className="text-[var(--color-secondary)] text-sm leading-relaxed">{craft.averageIncome}</p>
+                   <p className="text-[var(--color-secondary)] text-sm leading-relaxed">{(!isRTL && craft.averageIncomeEN) ? craft.averageIncomeEN : craft.averageIncome}</p>
                 </div>
               </div>
 
@@ -144,7 +144,7 @@ export default function CraftSingle() {
                 <div>
                    <h4 className="font-bold text-[var(--color-dark)] mb-2">{t('crafts.career')}</h4>
                    <div className="flex flex-wrap gap-2">
-                     {craft.careerOpportunities.map((op, i) => (
+                     {((!isRTL && craft.careerOpportunitiesEN) ? craft.careerOpportunitiesEN : craft.careerOpportunities).map((op, i) => (
                        <span key={i} className="bg-[var(--color-bg-sand)] border border-[var(--color-border)] text-[var(--color-secondary)] px-2 py-1 flex items-center justify-center text-xs rounded-md">
                          {op}
                        </span>
@@ -158,7 +158,7 @@ export default function CraftSingle() {
                <Link to={`/learn/${craft.id}`} className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-[var(--color-bg-sand)] py-4 rounded-xl transition-all shadow-md flex flex-col items-center justify-center gap-1 group">
                  <div className="flex items-center gap-2 font-bold text-lg">
                    <BookOpen className={`w-5 h-5 transition-transform ${isRTL ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
-                   {t('crafts.start_learning')} {isRTL ? craft.nameAR : craft.nameAR}
+                   {t('crafts.start_learning')} {(!isRTL && craft.nameEN) ? craft.nameEN : craft.nameAR}
                  </div>
                  <span className="text-sm font-normal text-[var(--color-bg-sand)]/80 text-center">{t('crafts.interactive_lessons')}</span>
                </Link>

@@ -135,17 +135,17 @@ export default function Home() {
                 <div className="h-56 relative overflow-hidden group">
                   <img 
                     src={craft.image} 
-                    alt={craft.nameAR} 
+                    alt={(!isRTL && craft.nameEN) ? craft.nameEN : craft.nameAR} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} bg-[var(--color-card)]/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-[var(--color-dark)] shadow-sm`}>
-                    {craft.category}
+                    {(!isRTL && craft.categoryEN) ? craft.categoryEN : craft.category}
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold font-heading mb-2 text-[var(--color-dark)]">{isRTL ? craft.nameAR : craft.nameAR}</h3> {/* Name AR is fallback because we didn't add en fields yet */}
+                  <h3 className="text-2xl font-bold font-heading mb-2 text-[var(--color-dark)]">{(!isRTL && craft.nameEN) ? craft.nameEN : craft.nameAR}</h3>
                   <p className="text-[var(--color-secondary)] text-sm mb-4 font-sans dir-ltr h-5 truncate" dir="ltr">{craft.nameFR}</p>
-                  <p className="text-[var(--color-secondary)] mb-6 line-clamp-2 leading-relaxed">{craft.shortDescription}</p>
+                  <p className="text-[var(--color-secondary)] mb-6 line-clamp-2 leading-relaxed">{(!isRTL && craft.shortDescriptionEN) ? craft.shortDescriptionEN : craft.shortDescription}</p>
                   
                   <div className="flex items-center gap-4 text-sm text-[var(--color-secondary)] mb-6">
                     <div className="flex items-center gap-1.5 bg-[var(--color-bg-sand)] px-3 py-1.5 rounded-lg border border-[var(--color-border)]">
