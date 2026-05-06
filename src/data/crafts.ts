@@ -35,7 +35,7 @@ export const crafts: Craft[] = [
     duration: 'من 12 إلى 18 شهراً',
     careerOpportunities: ['ورشة خاصة', 'مصانع الأثاث الكبرى', 'العمل الحر كمنفذ ديكورات'],
     averageIncome: 'بداية بـ 40,000 دج، وتصل إلى أكثر من 150,000 دج لأصحاب الورش والمقاولات.',
-    image: 'https://images.unsplash.com/photo-1610488251214-7227ab8bfeb9?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'electrical_building',
@@ -72,7 +72,7 @@ export const crafts: Craft[] = [
     careerOpportunitiesEN: ['Home or private atelier', 'Cooperatives and craft centers', 'Boutiques and fashion stores', 'Theater and event costume design', 'Online selling (Social Media)'],
     averageIncome: 'بداية بـ 15,000 دج، وتصل إلى 80,000+ دج للمحترفين والمصممين، وقد تتجاوز 100,000 دج في المواسم.',
     averageIncomeEN: 'Starting 15,000 DZD, up to 80,000+ DZD for pros. Can exceed 100,000 DZD in peak seasons.',
-    image: 'https://images.unsplash.com/photo-1584347781845-d85c8ef78b30?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'mechanics',
@@ -100,7 +100,7 @@ export const crafts: Craft[] = [
     duration: 'تكوينات قصيرة (3-6 أشهر) أو دبلوم 12 شهراً',
     careerOpportunities: ['مشروع زراعي خاص', 'مستثمرات فلاحية كبرى', 'مشاتل نباتات الزينة'],
     averageIncome: 'مرتبط بحصاد الموسم، لكنه قطاع مدعوم جداً في الجزائر وذو مردودية واعدة.',
-    image: 'https://images.unsplash.com/photo-1592424001807-6bb932efbaac?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'data_entry',
@@ -147,5 +147,51 @@ export const crafts: Craft[] = [
     averageIncome: 'بداية بـ 35,000 دج كإداري، وتصل لتجاوز 80,000 دج للمستشارين في الرقمنة والعمل الحر.',
     averageIncomeEN: 'Starting at 35,000 DZD for admins, exceeding 80,000 DZD for digitization consultants and freelancers.',
     image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'hair_styling',
+    nameAR: 'صبغ الشعر، إزالة الصبغة، وتجعيد الشعر',
+    nameFR: 'Coloration, Décoloration et Permanente des Cheveux',
+    nameEN: 'Hair Coloring, Dye Removal, and Perming',
+    category: 'حرف التجميل والعناية الشخصية',
+    categoryEN: 'Beauty & Personal Care Crafts',
+    shortDescription: 'من الصبغات العصرية إلى إزالة الألوان غير المرغوبة، ومن التجعيد الناعم إلى الموجات الكلاسيكية.',
+    shortDescriptionEN: 'From trendy dyes to unwanted color removal, and from soft waves to classic curls.',
+    fullDescription: 'في صالونات التجميل الجزائرية المزدحمة، يلتقي الفن بالكيمياء على رؤوس الزبائن. حرفي صبغ الشعر وتجعيده ليس مجرد مصفف، بل كيميائي وفنان يفهم طبيعة كل شعرة ويحول اللون والملمس إلى تناغم يعبر عن شخصية الزبون. من الصبغات العصرية إلى إزالة الألوان غير المرغوبة، ومن التجعيد الناعم إلى الموجات الكلاسيكية، تتطلب هذه الحرفة عيناً دقيقة، صبراً طويلاً، ومعرفة عميقة بالمواد والمحاليل الكيميائية. يعمل الحرفي في صالون أنيق، حيث يتعامل مع زبائن متنوعين، ويقف ساعات طوالاً ليصنع تحولات تمنح الثقة والجمال. مع تنامي ثقافة العناية بالمظهر في الجزائر، تزداد فرص العمل لهذه الحرفة في كل مدينة وحي، سواء في صالونات راقية أو كمستقل يزور بيوت الزبائن.',
+    fullDescriptionEN: 'In Algeria\'s busy beauty salons, art meets chemistry on clients\' heads. The hair coloring and perming artisan is not just a stylist but a chemist and artist who understands the nature of every hair strand, transforming color and texture into a harmony that expresses the client\'s personality. From trendy dyes to unwanted color removal, and from soft waves to classic curls, this craft demands a sharp eye, long patience, and deep knowledge of chemical products and solutions. The artisan works in an elegant salon, interacting with diverse clients and standing for hours to create transformations that grant confidence and beauty. With the growing culture of personal grooming in Algeria, job opportunities for this craft are multiplying in every city and neighborhood, whether in upscale salons or as a freelancer visiting clients\' homes.',
+    tools: ['فراشي توزيع الصبغة', 'أوعية خلط الصبغة', 'ميزان حساس', 'مجفف شعر (سشوار)', 'مكواة تمليس وتجعيد', 'بكرة تجعيد (رولو) متنوعة', 'قفازات واقية', 'رداء وقاية للزبون', 'مشط رفيع وعادي', 'غطاء معالجة (هايلايتر)'],
+    toolsEN: ['Color application brushes', 'Mixing bowls', 'Precision scale', 'Hair dryer', 'Flat iron & curling iron', 'Perm rods (various sizes)', 'Protective gloves', 'Client protective cape', 'Fine-tooth & regular combs', 'Highlighting cap'],
+    skills: ['نظرية الألوان', 'تشخيص الشعر', 'الدقة في المواقيت', 'مهارات يدوية', 'التواصل', 'النظافة والسلامة'],
+    skillsEN: ['Color wheel & pigment knowledge', 'Hair diagnosis (type, porosity)', 'Strict timing accuracy', 'Sectioning & steady application', 'Active client consultation', 'Hygiene & chemical safety'],
+    duration: '12 شهراً + 3-6 أشهر إضافية',
+    durationEN: '12 months + 3-6 months',
+    careerOpportunities: ['صالونات التجميل', 'العمل الحر', 'مراكز التجميل الكبرى', 'قاعات الأفراح', 'التدريب'],
+    careerOpportunitiesEN: ['Women\'s, men\'s, mixed salons', 'Mobile hairdresser, freelance', 'Spas, upscale traditional hammams', 'Bridal & event styling', 'Teaching techniques to beginners'],
+    averageIncome: '25,000 – 40,000 دج للمؤهلين، وقد تتجاوز 80,000 دج لأصحاب الصالونات',
+    averageIncomeEN: 'Starting at 25,000 DZD up to 40,000+ DZD. Salon owners can earn 80,000+ DZD.',
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'alu_pvc_joinery',
+    nameAR: 'نجارة الألومنيوم والمواد البلاستيكية (PVC)',
+    nameFR: 'Menuiserie Aluminium et PVC',
+    nameEN: 'Aluminum and PVC Carpentry',
+    category: 'حرف بناء وديكور',
+    categoryEN: 'Construction & Decoration Crafts',
+    shortDescription: 'حول مقاطع الألمنيوم وصفائح PVC إلى نوافذ عازلة وأبواب وأعمال تجارية بتقنيات عصرية.',
+    shortDescriptionEN: 'Transform aluminum profiles and PVC sheets into insulated windows and doors with modern techniques.',
+    fullDescription: 'في المدن الجزائرية المتنامية، تلمع واجهات العمارات بنوافذها الأنيقة وأبوابها المتينة، وهنا يتجسد فن نجارة الألومنيوم والمواد البلاستيكية. هذه الحرفة تجمع بين الدقة الهندسية والحس الجمالي، حيث يحول الحرفي مقاطع الألمنيوم وصفائح PVC إلى نوافذ عازلة، أبواب منزلقة، واجهات محلات تجارية، وقواطع مكاتب عصرية. يعمل نجار الألمنيوم في ورشة تتزاحم فيها المناشير الدقيقة وماكينات القص والتجميع، صانعاً قطعاً تدوم لعقود وتقاوم العوامل الجوية. إنها حرفة تتطور باستمرار مع ظهور مواد وتصاميم جديدة، وتناسب من يحب العمل اليدوي الدقيق، ويجيد قياس الميليمترات، ويملك خيالاً يترجم احتياجات الزبائن إلى واقع ملموس. مع ازدهار البناء والتجديد، يظل نجار الألمنيوم والـ PVC مطلوباً بقوة في كل ولاية.',
+    fullDescriptionEN: 'In Algeria\'s growing cities, building facades shine with elegant windows and sturdy doors—here lies the art of aluminum and PVC carpentry. This craft blends engineering precision with aesthetic sense, as the artisan transforms aluminum profiles and PVC sheets into insulated windows, sliding doors, shopfronts, and modern office partitions. The aluminum joiner works in a workshop buzzing with precision saws and assembly machines, crafting pieces that last decades and withstand the elements. It’s a craft that evolves constantly with new materials and designs, suiting those who love precise manual work, can measure to the millimeter, and have the imagination to turn client needs into reality. With the construction and renovation boom, aluminum and PVC joiners are in high demand across every wilaya.',
+    tools: ['منشار تقطيع ألمنيوم (قرص)', 'مثقاب (Drill) + ريش معادن', 'مطرقة مطاطية', 'مفكات براغي متنوعة', 'متر قياس (شريط)', 'ميزان ماء (مستوى)', 'مسدس سيليكون', 'منشار يدوي للـ PVC', 'زاوية قائمة (كوس)', 'قفازات ونظارات واقية'],
+    toolsEN: ['Aluminum Chop Saw', 'Power Drill with Metal Bits', 'Rubber Mallet', 'Screwdrivers Set', 'Measuring Tape', 'Spirit Level', 'Silicone Gun', 'Hand Saw for PVC', 'Set Square', 'Safety Gloves & Goggles'],
+    skills: ['القياس الدقيق بالميليمتر', 'قراءة المخططات ورسوم الأبعاد', 'استخدام الأدوات الكهربائية بأمان', 'تنسيق الألوان والتشطيبات', 'التركيز والصبر', 'التواصل مع الزبائن وفهم الاحتياجات'],
+    skillsEN: ['Millimeter precision measurement', 'Reading technical drawings', 'Safe power tool operation', 'Aesthetic coordination of finishes', 'Patience & sustained focus', 'Client communication'],
+    duration: '12 إلى 18 شهراً بمركز التكوين، وسنتان في الورشة للتمهين',
+    durationEN: '12-18 months in vocational centers, plus 2 years workshop apprenticeship',
+    careerOpportunities: ['شركات بناء ومقاولات سكنية', 'امتلاك ورشة نجارة خاصة', 'مشاريع التجديد والتوسعة للمنازل', 'تركيب واجهات المحلات والأبواب الزجاجية', 'العمل في مصانع إنتاج الألمنيوم والـ PVC'],
+    careerOpportunitiesEN: ['Construction companies & residential contractors', 'Owning a private carpentry workshop', 'Home renovation & expansion projects', 'Shopfront and glass door installation', 'Working in aluminum & PVC factories'],
+    averageIncome: 'يبدأ من 25,000 دج ويصل لـ 80,000+ دج للمحترفين وأصحاب الورش',
+    averageIncomeEN: 'Starting from 25,000 DZD up to 80,000+ DZD for experts and workshop owners',
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'
   }
 ];
