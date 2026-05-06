@@ -35,7 +35,7 @@ export const crafts: Craft[] = [
     duration: 'من 12 إلى 18 شهراً',
     careerOpportunities: ['ورشة خاصة', 'مصانع الأثاث الكبرى', 'العمل الحر كمنفذ ديكورات'],
     averageIncome: 'بداية بـ 40,000 دج، وتصل إلى أكثر من 150,000 دج لأصحاب الورش والمقاولات.',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'electrical_building',
@@ -72,7 +72,7 @@ export const crafts: Craft[] = [
     careerOpportunitiesEN: ['Home or private atelier', 'Cooperatives and craft centers', 'Boutiques and fashion stores', 'Theater and event costume design', 'Online selling (Social Media)'],
     averageIncome: 'بداية بـ 15,000 دج، وتصل إلى 80,000+ دج للمحترفين والمصممين، وقد تتجاوز 100,000 دج في المواسم.',
     averageIncomeEN: 'Starting 15,000 DZD, up to 80,000+ DZD for pros. Can exceed 100,000 DZD in peak seasons.',
-    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'mechanics',
@@ -86,7 +86,7 @@ export const crafts: Craft[] = [
     duration: 'حوالي 18 إلى 24 شهراً',
     careerOpportunities: ['وكالات السيارات الكبرى', 'ورشات خاصة', 'فحص السيارات المتنقل'],
     averageIncome: 'بداية بـ 40,000 دج، وأكثر من 150,000 دج للورش الخاصة المزدحمة.',
-    image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'agriculture',
@@ -100,7 +100,7 @@ export const crafts: Craft[] = [
     duration: 'تكوينات قصيرة (3-6 أشهر) أو دبلوم 12 شهراً',
     careerOpportunities: ['مشروع زراعي خاص', 'مستثمرات فلاحية كبرى', 'مشاتل نباتات الزينة'],
     averageIncome: 'مرتبط بحصاد الموسم، لكنه قطاع مدعوم جداً في الجزائر وذو مردودية واعدة.',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'data_entry',
@@ -123,7 +123,7 @@ export const crafts: Craft[] = [
     careerOpportunitiesEN: ['Public Administrations', 'Health and Legal Sectors', 'Banks and Companies', 'Freelancing (Upwork, Fiverr)'],
     averageIncome: 'من 25,000 دج إلى 50,000+ دج للمحترفين، وقد يصل حتى 100,000+ دج في العمل الحر وعن بعد.',
     averageIncomeEN: 'Starting at 25,000 DZD up to 50,000+ DZD. Freelancers can earn 100,000+ DZD remote.',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'ms_access',
@@ -146,7 +146,7 @@ export const crafts: Craft[] = [
     careerOpportunitiesEN: ['Public administrations & schools', 'HR & Inventory management offices', 'Private commercial companies', 'Freelance development of small databases'],
     averageIncome: 'بداية بـ 35,000 دج كإداري، وتصل لتجاوز 80,000 دج للمستشارين في الرقمنة والعمل الحر.',
     averageIncomeEN: 'Starting at 35,000 DZD for admins, exceeding 80,000 DZD for digitization consultants and freelancers.',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'hair_styling',
@@ -192,6 +192,75 @@ export const crafts: Craft[] = [
     careerOpportunitiesEN: ['Construction companies & residential contractors', 'Owning a private carpentry workshop', 'Home renovation & expansion projects', 'Shopfront and glass door installation', 'Working in aluminum & PVC factories'],
     averageIncome: 'يبدأ من 25,000 دج ويصل لـ 80,000+ دج للمحترفين وأصحاب الورش',
     averageIncomeEN: 'Starting from 25,000 DZD up to 80,000+ DZD for experts and workshop owners',
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'mens_barbering',
+    nameAR: 'حلاقة وتجميل الرجال',
+    nameFR: 'Coiffure pour Hommes',
+    nameEN: 'Men\'s Barbering & Grooming',
+    category: 'حرف العناية الشخصية والخدمات',
+    categoryEN: 'Personal Care & Service Crafts',
+    shortDescription: 'صالون الحلاقة ليس مجرد مكان لتقصير الشعر، بل نادٍ صغير يجتمع فيه الرجال، حيث يتحول الحلاق إلى فنان.',
+    shortDescriptionEN: 'A barbershop is not just a place to cut hair; it’s a small club where men gather, and the barber becomes an artist.',
+    fullDescription: 'صالون الحلاقة ليس مجرد مكان لتقصير الشعر، بل نادٍ صغير يجتمع فيه الرجال، حيث يتحول الحلاق إلى فنان يستمع، ينصح، ويصنع مظهراً يعكس شخصية كل زبون. حرفة حلاقة الرجال في الجزائر تجمع بين المهارة اليدوية العالية والذوق الفني ولمسة من التواصل الاجتماعي. من القصة الكلاسيكية إلى التسريحات العصرية، ومن حلاقة الذقن بالموس إلى تشذيب اللحى وتخطيطها، يستخدم الحلاق الماهر مقصه، وماكينته، وموسه ليمنح زبونه إحساساً بالثقة والانتعاش. هي حرفة لا تندثر، لا تأكلها الآلات، وهي مطلوبة في كل شارع وحي. تبدأ بخدمات أساسية وتتطور إلى تقنيات متقدمة كالألوان الرجالية والعناية بالبشرة. سواء عملت في صالون خاص، أو فتحت محلك، أو صرت حلاقاً متنقلاً، فإنك تدخل عالماً من الاستقلالية والعلاقات الإنسانية والدخل المستقر.',
+    fullDescriptionEN: 'A barbershop is not just a place to cut hair; it’s a small club where men gather, and the barber becomes an artist who listens, advises, and crafts a look that reflects each client’s personality. The craft of men\'s barbering in Algeria combines high manual skill, artistic taste, and a touch of social connection. From the classic cut to modern hairstyles, and from a straight razor shave to beard shaping and lining, the skilled barber uses his scissors, clipper, and razor to give his client a feeling of confidence and freshness. It’s a timeless craft, one that machines cannot replace, and is in demand on every street and in every neighborhood. It starts with basic services and evolves to advanced techniques like men’s coloring and skincare. Whether you work in a salon, open your own shop, or become a mobile barber, you enter a world of independence, human connections, and stable income.',
+    tools: ['ماكينة حلاقة كهربائية (Clipper)', 'مقص حلاقة احترافي', 'موس حلاقة (موس مستقيم + شفرات)', 'فرشاة حلاقة', 'مشط بأسنان مختلفة', 'كابينة قص (غطاء واقٍ للزبون)', 'بخاخ ماء', 'ماكينة تشذيب (Trimmer) للتفاصيل', 'مجفف شعر (سشوار)', 'معقم أدوات (UV)'],
+    toolsEN: ['Electric Hair Clipper', 'Barber Scissors', 'Straight Razor / Safety Razor', 'Shaving Brush', 'Combs (various sizes)', 'Barber Cape', 'Spray Bottle', 'Detail Trimmer', 'Hair Dryer', 'UV Sterilizer'],
+    skills: ['التحكم بالمقص والماكينة بثبات', 'فهم شكل الوجه واختيار القصة المناسبة', 'تصميم خطوط وتدرجات عصرية', 'تعقيم الأدوات بعد كل زبون', 'الاستماع للزبون وتقديم النصيحة', 'الوقوف لساعات مع الحفاظ على الجودة'],
+    skillsEN: ['Steady hand control', 'Face shape analysis & suitable cuts', 'Creative fading & line design', 'Strict tool sterilization', 'Active listening & consultation', 'Stamina & sustained focus'],
+    duration: 'من 6 إلى 12 شهراً بمركز التكوين المهني، وسنة إضافية للتمهين في صالون',
+    durationEN: '6-12 months in vocational training, plus 1 additional year for salon apprenticeship',
+    careerOpportunities: ['صالونات تقليدية أو عصرية', 'فتح محل حلاقة خاص', 'حلاقة متنقلة وزيارة المنازل', 'صالونات داخل المراكز التجارية', 'خدمات الحلاقة في الحمامات التقليدية والفنادق'],
+    careerOpportunitiesEN: ['Traditional or modern salons', 'Opening a private barbershop', 'Mobile barbering & home visits', 'Salons inside commercial centers', 'Barbering services in traditional hammams and hotels'],
+    averageIncome: 'يبدأ من 12,000 دج للمساعد ويصل لـ 60,000+ دج لأصحاب المحلات والخبراء',
+    averageIncomeEN: 'Starting from 12,000 DZD for an assistant up to 60,000+ DZD for shop owners and experts',
+    image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'sanitary_plumbing',
+    nameAR: 'مساعد الترصيص الصحي',
+    nameFR: 'Assistant Plombier Sanitaire',
+    nameEN: 'Sanitary Plumbing Assistant',
+    category: 'حرف البناء والتركيبات الصحية',
+    categoryEN: 'Construction & Sanitary Crafts',
+    shortDescription: 'حلقة الوصل بين المخططات النظرية وتدفق المياه الفعلي؛ حوّل الأنابيب الخام إلى شبكة حيوية.',
+    shortDescriptionEN: 'The link between theoretical blueprints and actual water flow; turn raw pipes into a vital network.',
+    fullDescription: 'في كل ورشة بناء جزائرية وفي كل منزل يحتاج إلى إصلاح، يقف مساعد الترصيص الصحي كحلقة وصل بين المخططات النظرية وتدفق المياه الفعلي. إنها المهنة التي تحول الأنابيب الخام إلى شبكة حيوية تمد المنازل بالماء النظيف وتصرف المياه المستعملة بأمان. مساعد الترصيص الصحي يعمل جنباً إلى جنب مع السباك المحترف، يتعلم كيف يقطع الأنابيب البلاستيكية والنحاسية، يثبتها، يلحمها بالحرارة، ويركب الصنابير والمغاسل والمراحيض. يقرأ رموز المخططات ويتعامل مع أدوات دقيقة وقوية. هي حرفة مضمونة الطلب، لا تغني عنها التكنولوجيا، وتناسب من يحب العمل بيديه ولا يخاف من البلل والطين. تبدأ كمساعد بسيط، وتكبر لتصبح سباكاً خبيراً، ثم مقاولاً خاصاً يحقق دخلاً ممتازاً في سوق دائم النمو.',
+    fullDescriptionEN: 'On every Algerian construction site and in every home needing repair, the sanitary plumbing assistant stands as the link between theoretical blueprints and actual water flow. This is the trade that turns raw pipes into a vital network supplying clean water to homes and draining used water safely. The plumbing assistant works side by side with a professional plumber, learning to cut plastic and copper pipes, fix them, heat-weld them, and install taps, sinks, and toilets. They read blueprint symbols and handle precise, powerful tools. It’s a craft with guaranteed demand, irreplaceable by technology, and suits those who love working with their hands and don’t mind getting wet or muddy. You start as a simple assistant and grow into an expert plumber, then a private contractor achieving excellent income in an ever-growing market.',
+    tools: ['قاطع أنابيب (PVC، PPR، نحاس)', 'مكوى لحام الأنابيب البلاستيكية (PPR)', 'منشار حديد', 'مفتاح أنابيب (مفتاح سويدي)', 'مفك براغي متنوع', 'ميزان ماء (مستوى)', 'شريط قياس (متر)', 'كماشة (كلابة)', 'آلة ثقب (بيرفوراتور)', 'مكشط (لتسوية الأنابيب)'],
+    toolsEN: ['Pipe cutter (PVC, PPR, copper)', 'PPR welding iron', 'Hacksaw', 'Pipe wrench', 'Screwdriver set', 'Spirit level', 'Measuring tape', 'Pliers', 'Hammer drill', 'Pipe reamer/deburring tool'],
+    skills: ['حساب أطوال الأنابيب ومساراتها بدقة', 'فهم توزيع المياه والصرف على الورق', 'إتقان تسخين الأطراف وتوصيلها بإحكام (PPR)', 'القوة الجسدية لحفر الجدران وحمل المواسير', 'حل المشكلات وإيجاد حل سريع لتسرب', 'النظافة بعد العمل وإزالة المخلفات'],
+    skillsEN: ['Precise pipe measurement and routing', 'Reading plumbing blueprints', 'Heat welding for leak-proof joints (PPR)', 'Physical stamina for drilling and carrying pipes', 'Quick leak troubleshooting', 'Post-work cleanup'],
+    duration: '6 إلى 12 شهراً تمهين مع محترف، أو 12-18 شهراً في مركز تكوين',
+    durationEN: '6-12 months apprenticeship, or 12-18 months in vocational training',
+    careerOpportunities: ['العمل في مشاريع الإسكان والعمارات', 'شركات صيانة أو عمل حر', 'تركيب وصيانة أنظمة التدفئة المركزية', 'أقسام الصيانة الداخلية في الفنادق والمستشفيات', 'فتح ورشة تركيب وإصلاح خاصة'],
+    careerOpportunitiesEN: ['Work in housing and building projects', 'Maintenance companies or freelance', 'Central heating installation and maintenance', 'Internal maintenance at hotels and hospitals', 'Opening a private installation & repair workshop'],
+    averageIncome: 'يبدأ من 15,000 دج للمساعد ويصل لـ 80,000+ دج لمقاول الترصيص',
+    averageIncomeEN: 'Starting from 15,000 DZD for an apprentice up to 80,000+ DZD for a plumbing contractor',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'security_agent',
+    nameAR: 'عون الوقاية والأمن',
+    nameFR: 'Agent de Sécurité et de Prévention',
+    nameEN: 'Security & Prevention Agent',
+    category: 'حرف الخدمات والأمن الخاص',
+    categoryEN: 'Security & Private Services',
+    shortDescription: 'يمثل العين الساهرة التي تحمي الأرواح والممتلكات في المؤسسات والفضاءات العامة.',
+    shortDescriptionEN: 'The vigilant eye that protects lives and properties in establishments and public spaces.',
+    fullDescription: 'حيثما يُشرع باب مؤسسة أو يُضاء ممر مستشفى في الليل، هناك عون الوقاية والأمن، الحارس اليقظ الذي يضمن سلامة المكان والناس. هذه الحرفة ليست مجرد وقوف عند مدخل، بل هي مهنة مسؤولية ويقظة دائمة تمارس في البنوك، المراكز التجارية، الفنادق، المصانع، والمدارس الجزائرية. يجمع عون الأمن بين اللياقة البدنية، الملاحظة الدقيقة، وضبط النفس العالي، ليمنع المخاطر قبل وقوعها ويتدخل بحكمة عند الحاجة. يتقن فن جولات التفتيش، إدارة الدخول والخروج، الإسعافات الأولية، وأساسيات مكافحة الحرائق. إنها حرفة لا غنى عنها في كل قطاع، توفر استقراراً وظيفياً وتطوراً نحو رتب عليا في الأمن الخاص. تبدأ كعون يقظ، وتكبر لتصبح رئيس فريق أو مسؤول أمن، راكناً إلى راتب محترم وعلاقات إنسانية واسعة.',
+    fullDescriptionEN: 'Wherever a company door opens or a hospital corridor is lit at night, there is the Security & Prevention Agent, the vigilant guardian ensuring the safety of place and people. This craft is not just standing at an entrance; it\'s a profession of responsibility and constant alertness practiced in Algerian banks, shopping centers, hotels, factories, and schools. The security agent combines physical fitness, keen observation, and high self-control to prevent risks before they happen and intervene wisely when needed. They master patrol rounds, access control, first aid, and firefighting basics. It\'s an indispensable craft in every sector, offering job stability and advancement to senior private security roles. You start as a vigilant agent and grow to become a team leader or security manager, with a respectable income and broad human connections.',
+    tools: ['زي نظامي (Uniform)', 'كاشف معادن يدوي', 'جهاز اتصال لاسلكي (Walkie-talkie)', 'كاميرات مراقبة وأجهزة تسجيل', 'مصباح يدوي قوي', 'سجل أمني (دفتر المداومة)', 'حقيبة إسعافات أولية', 'طفاية حريق (جزء من البيئة)'],
+    toolsEN: ['Uniform', 'Handheld metal detector', 'Two-way radio', 'CCTV system', 'Heavy-duty flashlight', 'Logbook / Daily register', 'First aid kit', 'Fire extinguisher (on site)'],
+    skills: ['اليقظة والانتباه وملاحظة التفاصيل', 'اللياقة البدنية للوقوف والجولات المحتملة', 'ضبط النفس والتصرف بهدوء', 'التواصل الواضح المباشر وعبر اللاسلكي', 'الإسعافات الأولية الأساسية', 'كتابة التقارير وتوثيق الأحداث'],
+    skillsEN: ['Alertness & observation', 'Physical stamina', 'Self-control & calmness', 'Clear communication', 'Basic first aid skills', 'Report writing'],
+    duration: 'من 3 إلى 6 أشهر نظري، مع شهر إلى شهرين تربص ميداني.',
+    durationEN: '3-6 months theoretical, plus 1-2 months supervised field internship.',
+    careerOpportunities: ['بنوك وشركات مالية ومصرفية', 'مراكز ومجمعات تسوق', 'مستشفيات وعيادات', 'مصانع ومرافق صناعية', 'فنادق ومرافق سياحية', 'شركات حراسة خاصة'],
+    careerOpportunitiesEN: ['Banks and financial institutions', 'Shopping centers and malls', 'Hospitals and clinics', 'Factories and industrial facilities', 'Hotels and tourism facilities', 'Private security companies'],
+    averageIncome: 'يبدأ من 20,000 إلى 25,000 دج، ويصل 50,000+ دج لرئيس فريق أو مشرف.',
+    averageIncomeEN: 'Starting from 20,000 to 25,000 DZD up to 50,000+ DZD for a team leader or supervisor.',
+    image: 'https://images.unsplash.com/photo-1530982011887-3cc11cc85693?auto=format&fit=crop&w=800&q=80'
   }
 ];

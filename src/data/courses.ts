@@ -1,3 +1,5 @@
+import { securityCourse } from './security-course';
+import { sanitaryPlumbingCourse } from './plumbing-course';
 export interface QuizQuestion {
   id: string;
   question: string;
@@ -3691,6 +3693,794 @@ export const coursesData: Record<string, Course> = {
         icon: 'award'
       }
     }
-  }
-};
+  },
 
+  mens_barbering: {
+    craftId: 'mens_barbering',
+    title: 'حلاقة الرجال',
+    titleEN: 'Men\'s Barbering',
+    description: 'دورة شاملة لتعلم فن حلاقة وتجميل الرجال من الأساسيات حتى الاحتراف.',
+    descriptionEN: 'A comprehensive course to learn men\'s barbering from basics to professionalism.',
+    stages: [
+      {
+        id: 'lvl_1',
+        title: 'المرحلة 1: السلامة، النظافة، وأساسيات الأدوات',
+        titleEN: 'Stage 1: Safety, Hygiene, and Basic Tools',
+        description: 'تعلم التعقيم الأساسي، وتعرف على الأدوات وأنواع الشعر وأشكال الوجوه.',
+        descriptionEN: 'Learn basic sterilization, tools, hair types and face shapes.',
+        lessons: [
+          {
+            id: 'les_1_1',
+            title: 'التعقيم والنظافة المهنية في صالون الحلاقة',
+            titleEN: 'Sterilization and Professional Hygiene in the Barbershop',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'صالون حلاقة أنيق ونظيف. أدوات معدنية توضع داخل جهاز تعقيم بالأشعة البنفسجية. يد الحلاق ترش الكحول على أمشاط وتمسح كرسي الحلاقة. فوطة نظيفة لكل زبون. ملصق على المرآة: "صحتك أمانة".',
+            visualDescriptionEN: 'Clean and elegant barbershop. Metal tools are placed inside a UV sterilizer. Barber\'s hand sprays alcohol on combs and wipes the chair. Clean towel for each client. Poster on mirror: "Your Health is our Duty".',
+            duration: '05:00',
+            summary: [
+              'عقم كل أداة تلامس الزبون: أمشاط، مقص، شفرات.',
+              'استخدم جهاز التعقيم بالأشعة فوق البنفسجية أو محلول مطهر.',
+              'اغسل يديك قبل وبعد كل زبون.',
+              'استخدم شفرة حلاقة جديدة لكل زبون، أو عقم الموس جيداً.',
+              'نظف الكرسي، الأرضية، والأسطح يومياً.',
+              'ارتدِ قفازات عند وجود جروح أو التهابات.'
+            ],
+            summaryEN: [
+              'Sterilize every tool that touches the client: combs, scissors, blades.',
+              'Use a UV sterilizer or disinfectant solution.',
+              'Wash hands before and after each client.',
+              'Use a new razor blade for each client, or properly sterilize the straight razor.',
+              'Clean the chair, floor, and surfaces daily.',
+              'Wear gloves when there are cuts or infections.'
+            ],
+            task: {
+              title: 'تخطيط روتين التعقيم',
+              titleEN: 'Sterilization Routine Planning',
+              description: 'تخيل أنك ستفتتح صالون حلاقة. اكتب روتين تعقيم يومي من 5 خطوات. ما هي المواد التي ستشتريها للتعقيم؟',
+              descriptionEN: 'Imagine you\'re opening a barbershop. Write a 5-step daily sterilization routine. What materials will you buy for it?'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لماذا يُعد تغيير شفرة الحلاقة أو تعقيم الموس ضرورياً بعد كل زبون؟',
+                questionEN: 'Why is changing the razor blade or sterilizing the straight razor essential after each client?',
+                options: [
+                  { id: 'o1', text: 'ليكون القص أسرع', textEN: 'To cut faster', isCorrect: false },
+                  { id: 'o2', text: 'لمنع انتقال الأمراض المعدية والبكتيريا', textEN: 'To prevent the transmission of infectious diseases and bacteria', isCorrect: true },
+                  { id: 'o3', text: 'للتوفير في المنتجات', textEN: 'To save on products', isCorrect: false }
+                ],
+                explanation: 'الموس يحتك بالبشرة وقد يسبب جروحاً دقيقة، مما يجعله ناقلاً للأمراض إن لم يعقم.',
+                explanationEN: 'Razors scrape the skin and can cause micro-cuts, making them disease vectors if not sterilized.'
+              }
+            ],
+            xpReward: 15
+          },
+          {
+            id: 'les_1_2',
+            title: 'التعرف على أدوات الحلاقة واستخداماتها الأساسية',
+            titleEN: 'Identifying Barbering Tools and Their Basic Uses',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'طاولة حلاق تعرض: ماكينة (Clipper)، مقص، موس، مشط، فرشاة حلاقة. يد تمسك كل أداة وتعرض طريقة مسكها الصحيحة. الماكينة تُمسك كالقلم، المقص بإدخال الإبهام والبنصر.',
+            visualDescriptionEN: 'Barber table displaying: Clipper, scissors, straight razor, comb, shaving brush. A hand holds each showing correct grip. Clipper is held like a pen, scissors using thumb and ring finger.',
+            duration: '06:00',
+            summary: [
+              'الماكينة (Clipper): للقص الأساسي وتقليل الطول. تأتي بأمشاط متحركة بمقاسات مختلفة.',
+              'المقص: يستخدم مع المشط لتسريحات دقيقة وتخفيف الشعر.',
+              'الموس: للحلاقة الناعمة للذقن أو تحديد خطوط الرقبة.',
+              'الفرشاة: لرغوة الصابون وتحضير البشرة قبل الحلاقة.',
+              'المشط: لتوجيه الشعر أثناء القص ورفع الخصل.'
+            ],
+            summaryEN: [
+              'Clipper: for main cutting and length reduction. Has different guard sizes.',
+              'Scissors: used with comb for precise styles and texturizing.',
+              'Razor: for smooth beard shaving or neck lining.',
+              'Brush: for lathering soap and skin prep.',
+              'Comb: to guide hair during cuts and lift sections.'
+            ],
+            task: {
+              title: 'التعرف على الأدوات',
+              titleEN: 'Tool Identification',
+              description: 'إذا أتيحت لك أدوات مشابهة، امسك كل واحدة بالطريقة الصحيحة أو ارسمها واكتب وظيفتها.',
+              descriptionEN: 'If you have similar tools, hold each correctly. Otherwise draw them and note their functions.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هو الإصبعان المستخدمان للامساك الصحيح بمقص الحلاقة؟',
+                questionEN: 'Which two fingers are used to properly hold barber scissors?',
+                options: [
+                  { id: 'o1', text: 'السبابة والوسطى', textEN: 'Index and middle finger', isCorrect: false },
+                  { id: 'o2', text: 'الإبهام والبنصر', textEN: 'Thumb and ring finger', isCorrect: true },
+                  { id: 'o3', text: 'الإبهام والخنصر', textEN: 'Thumb and pinky', isCorrect: false }
+                ],
+                explanation: 'إدخال الإبهام والبنصر يوفر الثبات ويسمح للسبابة والوسطى بتوجيه المقص بدقة.',
+                explanationEN: 'Using the thumb and ring finger provides stability while letting the index and middle fingers guide the scissors.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_1_3',
+            title: 'تشخيص أنواع الشعر وفروة الرأس',
+            titleEN: 'Diagnosing Hair Types and Scalp',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'رسوم توضيحية مبسطة: شعرة مقطعها دائري (أملس)، بيضاوي (مموج)، مسطح جداً (مجعد). صور لثلاثة رجال بشعور مختلفة الكثافة.',
+            visualDescriptionEN: 'Simplified illustrations: Hair cross section circular (straight), oval (wavy), very flat (curly). Pictures of three men with different hair densities.',
+            duration: '06:00',
+            summary: [
+              'الشعر الأملس: سهل القص لكن الأخطاء تظهر بوضوح.',
+              'الشعر المموج والمجعد: يتطلب تقنيات خاصة لتجنب الانكماش.',
+              'الشعر الخفيف: يحتاج إلى تسريحات تعطي كثافة بصرية.',
+              'فروة الرأس الدهنية: تغسل قبل الحلاقة.',
+              'فروة الرأس الجافة: تحتاج ترطيباً خفيفاً.',
+              'تفحص اتجاه نمو الشعر (Grain) لأنه يحدد اتجاه القص والحلاقة.'
+            ],
+            summaryEN: [
+              'Straight hair: easy to cut but mistakes are visible.',
+              'Wavy & curly hair: require special techniques to prevent shrinkage.',
+              'Thinning hair: needs styles that offer visual volume.',
+              'Oily scalp: wash before cutting.',
+              'Dry scalp: needs light moisturizing.',
+              'Check hair growth direction (grain) as it dictates cut and shave direction.'
+            ],
+            task: {
+              title: 'تحليل الشعر في محيطك',
+              titleEN: 'Analyze Hair Around You',
+              description: 'انظر لشعر 3 أشخاص مختلفين وصنف نوع شعرهم وكثافته.',
+              descriptionEN: 'Look at the hair of 3 different people and classify their hair type and density.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لماذا من المهم معرفة اتجاه نمو الشعر (Grain) قبل بدء القص أو الحلاقة؟',
+                questionEN: 'Why is it important to know the hair growth direction (Grain) before cutting or shaving?',
+                options: [
+                  { id: 'o1', text: 'لاختيار نوع الشامبو المناسب', textEN: 'To choose the right shampoo', isCorrect: false },
+                  { id: 'o2', text: 'لتجنب الجروح والالتهابات عند الحلاقة ولضمان قص متناسق', textEN: 'To avoid nicks and irritation when shaving and ensure a neat cut', isCorrect: true },
+                  { id: 'o3', text: 'لزيادة سرعة الماكينة', textEN: 'To increase clipper speed', isCorrect: false }
+                ],
+                explanation: 'الحلاقة مع اتجاه نمو الشعر تمنع نموه تحت الجلد وتخفف التهيج.',
+                explanationEN: 'Shaving with the grain prevents ingrown hairs and reduces irritation.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_1_4',
+            title: 'تشريح الوجه واختيار القصة المناسبة',
+            titleEN: 'Face Anatomy and Choosing the Right Cut',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'سبعة أشكال وجوه: بيضاوي، دائري، مربع، مستطيل، مثلث، قلب، ماسي. أسهم تشير لمناطق التعديل.',
+            visualDescriptionEN: 'Seven face shapes: oval, round, square, rectangle, triangle, heart, diamond. Arrows point to adjustment zones.',
+            duration: '07:00',
+            summary: [
+              'الهدف: جعل الوجه يبدو أقرب للشكل البيضاوي.',
+              'الوجه الدائري: يحتاج حجم في الأعلى وجوانب قصيرة.',
+              'الوجه المربع: تخفيف الزوايا لتنعيم الجبهة والفك.',
+              'الوجه المستطيل: تجنب الشعر الطويل جداً بالأعلى.',
+              'اسأل الزبون دائماً: ما الذي تحبه وتكرهه في تسريحتك الحالية؟'
+            ],
+            summaryEN: [
+              'Goal: make the face look closer to the oval shape.',
+              'Round face: needs volume on top and short sides.',
+              'Square face: soften angles at forehead and jaw.',
+              'Rectangular face: avoid overly long hair on top.',
+              'Always ask the client: what do you like/dislike about your current style?'
+            ],
+            task: {
+              title: 'تحديد شكل الوجه والقصة',
+              titleEN: 'Identify Face Shape and Cut',
+              description: 'ارسم شكل وجهك أو وجه صديق، وحدده ثم اقترح 3 قصات مناسبة.',
+              descriptionEN: 'Draw your or a friend\'s face shape, identify it, and suggest 3 matching cuts.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هو الهدف الأساسي من اختيار قصة تتناسب مع شكل الوجه؟',
+                questionEN: 'What is the primary goal of selecting a haircut that matches face shape?',
+                options: [
+                  { id: 'o1', text: 'توفير الوقت والمجهود', textEN: 'To save time and effort', isCorrect: false },
+                  { id: 'o2', text: 'صنع توازن بصري ليقترب الوجه من الشكل البيضاوي المثالي', textEN: 'To create visual balance making the face appear closer to the ideal oval shape', isCorrect: true },
+                  { id: 'o3', text: 'إقناع الزبون بشراء منتجات تصفيف', textEN: 'To persuade the client to buy styling products', isCorrect: false }
+                ],
+                explanation: 'القصة تُستخدم لإخفاء العيوب وإبراز الملامح الجيدة وصنع تناغم بصري.',
+                explanationEN: 'Haircuts are used to hide flaws, highlight good features, and create visual harmony.'
+              }
+            ],
+            xpReward: 20
+          }
+        ]
+      },
+      {
+        id: 'lvl_2',
+        title: 'المرحلة 2: تقنيات القص الأساسية والمتقدمة',
+        titleEN: 'Stage 2: Basic and Advanced Cutting Techniques',
+        description: 'تعلم التدرج (Fade)، استخدام المقص وتمشيطه، وحلاقة الذقن بالموس وتحديد اللحية.',
+        descriptionEN: 'Learn Fade, Scissor-over-comb, straight razor shave, and beard lineup.',
+        lessons: [
+          {
+            id: 'les_2_1',
+            title: 'القصة المتدرجة (Fade)',
+            titleEN: 'The Fade Cut',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'مشهد متحرك لرأس تظهر عليه خطوط وهمية. الماكينة بمقاس 3 أعلى، 2 بالوسط، 1 بالأسفل. حركة الدمج ناعمة تصنع تدرجاً.',
+            visualDescriptionEN: 'Animated head with imaginary guidelines. Clipper with guard 3 on top, 2 in middle, 1 at bottom. Smooth blending motion creates a fade.',
+            duration: '08:00',
+            summary: [
+              'التدرج (Fade) هو انتقال سلس من شعر قصير لطويل.',
+              'استخدم حركة "الرفع عن الرأس" (Flicking) لدمج الخطوط.',
+              'ابدأ من الأسفل بمقاس صغير ثم انتقل لمقاس أكبر.',
+              'مرر أصابعك على الرأس لتشعر بأي زوايا غير مدمجة.',
+              'الأنواع: High Fade، Mid Fade، Low Fade.'
+            ],
+            summaryEN: [
+              'Fade is a seamless transition from short to long hair.',
+              'Use the "Flicking" (C-stroke) motion to blend lines.',
+              'Start from the bottom with a small guard, then move to larger ones.',
+              'Run your fingers across the head to feel unblended angles.',
+              'Types: High Fade, Mid Fade, Low Fade.'
+            ],
+            task: {
+              title: 'تخيل مستويات القص',
+              titleEN: 'Visualize Cutting Levels',
+              description: 'على مخطط رأس، حدد خطوط الـ Fade وارسم مسار الماكينة.',
+              descriptionEN: 'On a head outline, draw the Fade lines and trace the clipper path.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي حركة "Flicking" ولماذا تُستخدم في قصة الـ Fade؟',
+                questionEN: 'What is the "Flicking" motion and why is it used in a Fade cut?',
+                options: [
+                  { id: 'o1', text: 'حركة ضغط قوية للقص السريع', textEN: 'A strong pressing motion for fast cutting', isCorrect: false },
+                  { id: 'o2', text: 'حركة رفع ناعمة للماكينة بقوس للدمج بين الخطوط دون ترك علامات', textEN: 'A smooth scooping motion of the clipper in an arc to blend lines without leaving marks', isCorrect: true },
+                  { id: 'o3', text: 'حركة دائرية لخلق تجعيدات', textEN: 'A circular motion to create curls', isCorrect: false }
+                ],
+                explanation: 'هي سر اختفاء الخط الفاصل بين درجتين من الشعر.',
+                explanationEN: 'It is the secret to erasing the visible line between two hair lengths.'
+              }
+            ],
+            xpReward: 25
+          },
+          {
+            id: 'les_2_2',
+            title: 'المقص فوق المشط (Scissor Over Comb)',
+            titleEN: 'Scissor Over Comb Technique',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'يد الحلاق تمسك المشط بيد والمقص بالأخرى. خط متحرك يوضح زاوية المشط وتتبع المقص له.',
+            visualDescriptionEN: 'Barber holds comb in one hand and scissors in another. Animated line shows comb angle and scissors following it.',
+            duration: '07:00',
+            summary: [
+              'تمنح هذه التقنية تحكماً دقيقاً في طول وشكل الشعر.',
+              'المشط يحدد الزاوية والطول والمقص يتبع سطحه.',
+              'المشط المائل للخارج يبقي الشعر أطول.',
+              'قارن دائماً بين الجانبين لضمان التماثل.',
+              'تدرب على الثبات أولاً.'
+            ],
+            summaryEN: [
+              'This technique provides precise control over hair length and shape.',
+              'The comb establishes the angle and length, while scissors follow its surface.',
+              'Comb angled outward leaves hair longer.',
+              'Always compare sides for symmetry.',
+              'Practice stability first.'
+            ],
+            task: {
+              title: 'تمرين المقص والمشط',
+              titleEN: 'Scissor & Comb Exercise',
+              description: 'امسك مشطاً ومقصاً وتدرب على الحركة في الهواء بانسجام.',
+              descriptionEN: 'Hold a comb and scissors and practice the coordinated movement in the air.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'كيف تتحكم في طول الشعر المتروك باستخدام تقنية "المقص فوق المشط"؟',
+                questionEN: 'How do you control the hair length left when using the "Scissor over comb" technique?',
+                options: [
+                  { id: 'o1', text: 'بسرعة إغلاق المقص', textEN: 'By the speed of closing the scissors', isCorrect: false },
+                  { id: 'o2', text: 'عن طريق زاوية إمالة المشط، فكلما كان أبعد عن الرأس زاد طول الشعر', textEN: 'Through the comb\'s tilt angle; further from the head leaves longer hair', isCorrect: true },
+                  { id: 'o3', text: 'حسب نوع المقص المستخدم', textEN: 'Depending on the type of scissors used', isCorrect: false }
+                ],
+                explanation: 'المشط يعمل كمسطرة تحديد للطول والزاوية.',
+                explanationEN: 'The comb acts as a ruler defining length and angle.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_2_3',
+            title: 'حلاقة الذقن بالموس',
+            titleEN: 'Straight Razor Shave',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80'],
+            visualDescription: 'بشرة ذقن برغوة. موس مستقيم بزاوية 30 درجة يتحرك باتجاه بصيلات الشعر (نزولاً). يد تشد الجلد.',
+            visualDescriptionEN: 'Lathered beard skin. Straight razor at 30 degree angle moves with hair grain (downward). A hand stretches the skin.',
+            duration: '08:00',
+            summary: [
+              'جهز البشرة بماء دافئ ورغوة لتليين الشعر.',
+              'احلق باتجاه نمو الشعر لتجنب التهيج.',
+              'شد الجلد برفق لتسطيحه وتسهيل انزلاق الموس.',
+              'استخدم زاوية ميل ما بين 30 إلى 45 درجة للشفرة.',
+              'اشطف بالماء البارد وضع لوشن مهدئاً.'
+            ],
+            summaryEN: [
+              'Prep skin with warm water and lather to soften hair.',
+              'Shave with the hair growth direction to avoid irritation.',
+              'Stretch skin gently to flatten it for razor glide.',
+              'Use a blade angle between 30 and 45 degrees.',
+              'Rinse with cold water and apply soothing aftershave.'
+            ],
+            task: {
+              title: 'تجربة الزاوية الآمنة',
+              titleEN: 'Safe Angle Practice',
+              description: 'على بالون مدهون بالرغوة، جرب مسح الرغوة بحافة غير حادة لتعلم ضبط الزاوية دون فرقعته.',
+              descriptionEN: 'On a lathered balloon, practice clearing the foam with a dull edge to master the angle without popping it.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي الزاوية المثالية لإمالة الموس المستقيم (Straight Razor) على البشرة؟',
+                questionEN: 'What is the ideal tilt angle for the straight razor on the skin?',
+                options: [
+                  { id: 'o1', text: '90 درجة', textEN: '90 degrees', isCorrect: false },
+                  { id: 'o2', text: 'حوالي 30 درجة', textEN: 'Around 30 degrees', isCorrect: true },
+                  { id: 'o3', text: '0 درجة (ملاصق تماماً)', textEN: '0 degrees (flat against skin)', isCorrect: false }
+                ],
+                explanation: 'هذه الزاوية تقطع الشعر بنعومة دون أن تخترق البشرة.',
+                explanationEN: 'This angle cuts hair smoothly without digging into the skin.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'les_2_4',
+            title: 'تحديد وتخطيط اللحية',
+            titleEN: 'Beard Line Up and Shaping',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=400&q=80'],
+            visualDescription: 'رجل ذو لحية، خط أبيض لتحديد الخدين والرقبة. ماكينة تشذيب تتبع الخط. شكل U عند تفاحة آدم.',
+            visualDescriptionEN: 'Bearded man, white outline on cheeks and neck. Trimmer follows the line. U-shape above Adam\'s apple.',
+            duration: '06:00',
+            summary: [
+              'ارسم الحدود المطلوبة مسبقاً ذهنيًا أو بقلم أبيض.',
+              'خط الخد: من منبت الأذن لزاوية الفم.',
+              'خط الرقبة: فوق تفاحة آدم بشكل مائل ناعم (شكل U).',
+              'استخدم زوايا الماكينة (Trimmer) للخطوط الدقيقة.',
+              'ابتعد وتفحص التماثل من المرآة باستمرار.'
+            ],
+            summaryEN: [
+              'Pre-draw boundaries mentally or with a white pencil.',
+              'Cheek line: from top of ear base to corner of mouth.',
+              'Neck line: gentle U-shape right above Adam\'s apple.',
+              'Use the corners of the trimmer for fine details.',
+              'Step back and constantly check symmetry in the mirror.'
+            ],
+            task: {
+              title: 'رسم حدود اللحية',
+              titleEN: 'Draw Beard Lines',
+              description: 'على صورة مطبوعة لوجه، ارسم خطوط تحديد اللحية السليمة.',
+              descriptionEN: 'On a printed face photo, draw proper beard contouring lines.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'أين يجب أن يقع خط تحديد لحية الرقبة السفلي ليكون الأجمل والأكثر طبيعية؟',
+                questionEN: 'Where should the lower neck beard line be placed for the most aesthetic natural look?',
+                options: [
+                  { id: 'o1', text: 'على خط الفك بالضبط (Jawline)', textEN: 'Exactly on the jawline', isCorrect: false },
+                  { id: 'o2', text: 'فوق تفاحة آدم بشكل تقويرة حرف U', textEN: "Above Adam's apple in a U curve", isCorrect: true },
+                  { id: 'o3', text: 'عند منتصف الرقبة', textEN: 'At the middle of the neck', isCorrect: false }
+                ],
+                explanation: 'رفعه إلى خط الفك يجعل اللحية تبدو مصطنعة وغير متوازنة.',
+                explanationEN: 'Bringing it up to the jawline makes the beard look artificial and unbalanced.'
+              }
+            ],
+            xpReward: 25
+          }
+        ]
+      },
+      {
+        id: 'lvl_3',
+        title: 'المرحلة 3: قصات عصرية وخدمات متقدمة',
+        titleEN: 'Stage 3: Modern Cuts and Advanced Services',
+        description: 'قصات Pompadour و Undercut، إخفاء الصلع، ألوان الشعر، والعناية بالبشرة.',
+        descriptionEN: 'Pompadour and Undercut styles, concealing balding, hair coloring, and skincare.',
+        lessons: [
+          {
+            id: 'les_3_1',
+            title: 'القصات العصرية',
+            titleEN: 'Modern Haircuts',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'ثلاث صور: Pompadour (شعر طويل مرفوع للخلف)، Undercut (جوانب محلوقة مع فصل حاد)، French Crop (غرة قصيرة وأمامية).',
+            visualDescriptionEN: 'Three photos: Pompadour (long hair volume swept back), Undercut (shaved sides, harsh disconnect), French Crop (short fringe forward).',
+            duration: '07:00',
+            summary: [
+              'Pompadour: يتطلب تجفيفاً وحجماً كبيراً في الأمام بمثبت.',
+              'Undercut: جوانب قصيرة جداً مفصولة تماماً عن الأعلى الطويل.',
+              'French crop: قصيرة وسهلة من الأمام بلمسة خشنة.',
+              'استخدم دائماً صورة من الزبون لضمان فهم مقصده بدقة.',
+              'تقنيات مزج الشعر (Texturizing) ضرورية للقصات العصرية.'
+            ],
+            summaryEN: [
+              'Pompadour: requires blow-drying and big volume at front with pomade.',
+              'Undercut: heavily clipped sides fully disconnected from long top.',
+              'French crop: short and easy forward fringe with texture.',
+              'Always use reference photos from clients to ensure mutual understanding.',
+              'Texturizing techniques are vital for modern looks.'
+            ],
+            task: {
+              title: 'تحديد خصائص القصات',
+              titleEN: 'Identify Cut Features',
+              description: 'ابحث عن 3 صور لقصات دارجة واكتب اسم وتوصيف كل قصة.',
+              descriptionEN: 'Find 3 trending haircuts photos and write down the name and description of each.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي الميزة الأساسية لقصة الـ Undercut؟',
+                questionEN: 'What is the defining feature of the Undercut?',
+                options: [
+                  { id: 'o1', text: 'شعر طويل جداً من الخلف', textEN: 'Very long hair in the back', isCorrect: false },
+                  { id: 'o2', text: 'عدم وجود تدرج وانفصال حاد بين الجوانب المحلوقة والشعر الطويل في الأعلى', textEN: 'No fade, with a sharp disconnect between shaved sides and long top', isCorrect: true },
+                  { id: 'o3', text: 'تجعيد الشعر بشكل كامل', textEN: 'Curling all the hair entirely', isCorrect: false }
+                ],
+                explanation: 'الـ Undercut يعتمد على التناقض الصارخ وخط الفصل الواضح.',
+                explanationEN: 'The Undercut relies on stark contrast and a prominent disconnection line.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_3_2',
+            title: 'تمويه الصلع وتسريحات الشعر الخفيف',
+            titleEN: 'Concealing Balding and Thinning Hair Styles',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رجل بشعر خفيف في المقدمة، مصفف يخفف الجوانب لتعزيز كثافة الأعلى. ثم شخص أصلع جزئياً بقصة Buzz cut (محلوق جداً) تبدو أنيقة.',
+            visualDescriptionEN: 'Man with receding hairline; barber fades sides to boost top volume. Then a balding man with an elegant ultra-short Buzz cut.',
+            duration: '06:00',
+            summary: [
+              'الجوانب الطويلة تجعل الصلع العلوي أكثر وضوحاً، فاحلقها قصيرة.',
+              'شعر كثيف من الأعلى؟ استخدم تخفيف الطبقات لتغطي مساحة أكبر.',
+              'القصات القصيرة جداً (Buzz cut) أو 0 هي الأفضل للصلع المتقدم.',
+              'استخدم بودرة التكثيف لجعل الشعر الرقيق يبدو أسمك.',
+              'اللباقة ضرورية جداً عند الحديث عن تساقط الشعر مع الزبون.'
+            ],
+            summaryEN: [
+              'Long sides make top balding more obvious, keep them short.',
+              'Slightly thinning top? Use layering to cover more area.',
+              'Ultra-short cuts (Buzz cut) or completely shaved (0) work best for advanced balding.',
+              'Use volume powders to make fine hair appear thicker.',
+              'Tact is extremely necessary when discussing hair loss with clients.'
+            ],
+            task: {
+              title: 'النصيحة اللبقة',
+              titleEN: 'Tactful Advice',
+              description: 'تخيل رسالة لتوصية زبون بقصة قصيرة للتعامل مع شعره الخفيف بأسلوب إيجابي.',
+              descriptionEN: 'Imagine a message recommending a short cut to a client dealing with thinning hair in a positive tone.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لماذا نقص جوانب الشعر بشكل أقصر من المعتاد لمن لديهم شعر خفيف في الأعلى؟',
+                questionEN: 'Why do we cut sides shorter than usual for clients adjusting to thinning hair on top?',
+                options: [
+                  { id: 'o1', text: 'لتسريع وقت الحلاقة', textEN: 'To speed up the haircut time', isCorrect: false },
+                  { id: 'o2', text: 'ليبرز التباين أعلى الرأس وكأنه أكثر كثافة وامتداداً', textEN: 'To create contrast making the top appear thicker and fuller', isCorrect: true },
+                  { id: 'o3', text: 'لأن الشعر الخفيف ينمو بسرعة أكبر في الجوانب', textEN: 'Because thin hair grows faster on the sides', isCorrect: false }
+                ],
+                explanation: 'لعبة الخداع البصري: الجوانب البيضاء تبرز أي سواد في الأعلى.',
+                explanationEN: 'An optical illusion: tight sides highlight whatever darkness/density remains on top.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_3_3',
+            title: 'صبغ الشعر الرجالي وتغطية الشيب',
+            titleEN: 'Men\'s Hair Coloring & Grey Coverage',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'تطبيق صبغة نصف دائمة على جوانب شعر رمادية بفرشاة صغيرة، النتيجة طبيعية غير مصطنعة (بقاء قليل من الشيب المموه).',
+            visualDescriptionEN: 'Applying semi-permanent color on grey sides using a small brush, resulting in a natural, un-artificial look (slight camouflaged greys left).',
+            duration: '06:00',
+            summary: [
+              'استخدم صبغات شبه دائمة للحصول على مظهر مموه (Camouflage) وطبيعي.',
+              'تغطية الشيب بالكامل بلون داكن واحد قد تبدو كلون الخوذة ومصطنعة.',
+              'اختر دائماً درجة أفتح بدرجة واحدة من لون الشعر الأصلي.',
+              'قم باختبار حساسية صغير خلف الأذن قبل الاستخدام.',
+              'استخدم فرشاة دقيقة للحية لعدم تلطيخ البشرة.'
+            ],
+            summaryEN: [
+              'Use semi-permanent dyes for a natural camouflaged look.',
+              'Total block grey coverage can look like an artificial helmet.',
+              'Always choose one shade lighter than natural hair color.',
+              'Perform a small allergy patch test behind the ear.',
+              'Use a precision brush for beards to avoid skin staining.'
+            ],
+            task: {
+              title: 'تخطيط لون الشيب',
+              titleEN: 'Grey Color Planning',
+              description: 'اشرح كيف ستقنع رجلاً خائفاً من صبغة الشعر بأن النتيجة ستكون طبيعية.',
+              descriptionEN: 'Explain how you would convince a man afraid of hair coloring that the result will be natural.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هو الخطأ الشائع عند صبغ الشعر أو اللحية للرجال؟',
+                questionEN: 'What is a common mistake when dyeing men\'s hair or beards?',
+                options: [
+                  { id: 'o1', text: 'اختيار لون أسود فاحم داكن جداً يزيل أي درجات وتفاصيل ويبدو مصطنعاً', textEN: 'Choosing an overly dark jet-black color that removes depth and looks artificial', isCorrect: true },
+                  { id: 'o2', text: 'إبقاء الصبغة لـ 5 دقائق فقط', textEN: 'Leaving the dye on for only 5 minutes', isCorrect: false },
+                  { id: 'o3', text: 'استخدام فرشاة صغيرة', textEN: 'Using a small brush', isCorrect: false }
+                ],
+                explanation: 'الألوان الداكنة جداً للرجال تفتقر للتدرج الطبيعي. الدرجة الأفتح بقليل هي الأمثل.',
+                explanationEN: 'Extremely dark colors lack natural dimension. A slightly lighter shade is optimal.'
+              }
+            ],
+            xpReward: 25
+          },
+          {
+            id: 'les_3_4',
+            title: 'العناية بالبشرة الرجالية في الصالون',
+            titleEN: 'Men\'s Skincare in the Saloon',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=400&q=80'],
+            visualDescription: 'صالون: فوطة ساخنة على وجه رجل. تطبيق قناع تقشير أسود، ثم لوشن مرطب منشط. إضاءة هادئة.',
+            visualDescriptionEN: 'Saloon: hot towel over a man\'s face. Applying black peel-off mask, then an energizing moisturizer. Soft lighting.',
+            duration: '06:00',
+            summary: [
+              'العناية بالوجه تزيد من راحة الزبون ودخلك كحلاق.',
+              'ابدأ بفوطة ساخنة لفتح المسام وتليين البشرة.',
+              'استخدم غسولاً أو مقشراً خفيفاً لإزالة الجلد الميت والأوساخ.',
+              'الأقنعة الطينية (Clay mask) مريحة وتنظف بعمق.',
+              'اختم بفوطة باردة لإغلاق المسام وجل مرطب خفيف (بدون زيوت).'
+            ],
+            summaryEN: [
+              'Facials increase client relaxation and your income as a barber.',
+              'Start with a hot towel to open pores and soften skin.',
+              'Use a gentle cleanser or scrub to remove dead skin and dirt.',
+              'Clay masks are soothing and clean deeply.',
+              'Finish with a cold towel to close pores and a light moisturizer (oil-free).'
+            ],
+            task: {
+              title: 'تصميم باقة خدمة',
+              titleEN: 'Design a Service Package',
+              description: 'صمم باقة للزبائن تشمل الحلاقة، واللحية، وماسك الوجه. ضع لها اسماً مميزاً.',
+              descriptionEN: 'Design a package for clients including haircut, beard, and face mask. Give it a catchy name.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هو الهدف من وضع فوطة ساخنة (Hot Towel) على وجه الزبون قبل تنظيف البشرة أو حلاقة الذقن؟',
+                questionEN: 'What is the purpose of placing a hot towel on a client\'s face before skincare or shaving?',
+                options: [
+                  { id: 'o1', text: 'لتبريد البشرة', textEN: 'To cool the skin', isCorrect: false },
+                  { id: 'o2', text: 'لفتح المسام وتليين الشعر القاسي وتسهيل التنظيف', textEN: 'To open pores, soften coarse hair, and facilitate cleaning', isCorrect: true },
+                  { id: 'o3', text: 'لتعقيم الوجه من البكتيريا', textEN: 'To sterilize the face from bacteria', isCorrect: false }
+                ],
+                explanation: 'الحرارة والبخار يجهزان البشرة ويجعلان الحلاقة انسيابية ومريحة للغاية.',
+                explanationEN: 'Heat and steam prep the skin making the shave glide and extremely comfortable.'
+              }
+            ],
+            xpReward: 25
+          }
+        ]
+      },
+      {
+        id: 'lvl_4',
+        title: 'المرحلة 4: إدارة الصالون والمشروع النهائي',
+        titleEN: 'Stage 4: Salon Management and Final Project',
+        description: 'بناء الولاء للزبائن، تسعير الخدمات، التسويق الذكي للصالون وإثبات احترافيتك.',
+        descriptionEN: 'Building customer loyalty, pricing services, smart marketing, and proving your mastery.',
+        lessons: [
+          {
+            id: 'les_4_1',
+            title: 'الاستشارة وبناء ولاء الزبون',
+            titleEN: 'Consultation and Building Client Loyalty',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'حلاق يتحدث مع زبون، يدون ملاحظات في هاتفه عن القصة المفضلة، الزبون يبتسم برضى.',
+            visualDescriptionEN: 'Barber chatting with client, writing notes on phone about preferred cut, client smiles with satisfaction.',
+            duration: '06:00',
+            summary: [
+              'استقبل الزبون بابتسامة وقدم له مشروباً، أنت في مجال الضيافة.',
+              'استمع جيداً: اسأل باستفاضة عن الذي يريده ولا تبدأ القص قبل التأكد.',
+              'سجل في دفتر هاتفك اسم الزبون وقصته المفضلة لتذكره في زيارته القادمة.',
+              'تذكر معلوماته يُشعره بأنه ضيف VIP.',
+              'ولاء الزبون أهم من كسب زبون جديد.'
+            ],
+            summaryEN: [
+              'Welcome the client with a smile and offer a drink; you are in hospitality.',
+              'Listen well: ask exactly what he wants and don\'t cut until fully sure.',
+              'Note down his name and preferred cut in your phone to remember next time.',
+              'Remembering his details makes him feel like a VIP.',
+              'Client loyalty is more important than gaining a new one.'
+            ],
+            task: {
+              title: 'كتابة سجل الزبون',
+              titleEN: 'Write a Client Log',
+              description: 'صمم نموذج "بطاقة زبون" تملؤه بعد كل حلاقة، حدد الحقول المهمة (رقم، تفضيلات).',
+              descriptionEN: 'Design a "client card" template to fill after each cut, identifying key fields (number, preferences).'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي أهم خطوة قبل لمس مقصك لشعر زبون جديد؟',
+                questionEN: 'What is the most crucial step before your scissors touch a new client\'s hair?',
+                options: [
+                  { id: 'o1', text: 'الإسراع في القص لتوفير وقته', textEN: 'Rushing to save his time', isCorrect: false },
+                  { id: 'o2', text: 'الاستشارة وسؤاله المتعمق عن طول الشعر، أسلوبه، وما يتوقعه', textEN: 'Consultation and deep questioning about hair length, style, and expectations', isCorrect: true },
+                  { id: 'o3', text: 'اختيار التسريحة نيابة عنه بشكل مفاجئ', textEN: 'Picking a style on his behalf as a surprise', isCorrect: false }
+                ],
+                explanation: 'التواصل الواضح يمنع الكوارث وعدم الرضا ويعزز احترافيتك.',
+                explanationEN: 'Clear communication prevents disasters, avoids dissatisfaction, and boosts professionalism.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_4_2',
+            title: 'تسعير الخدمات وإدارة المحل',
+            titleEN: 'Pricing Services and Shop Management',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'قائمة أسعار واضحة على الحائط. حاسبة، دفتر محاسبة لمداخيل الورشة ومصاريف الإيجار والكهرباء.',
+            visualDescriptionEN: 'Clear price list on the wall. Calculator, accounting notebook for shop income, rent, and electricity.',
+            duration: '06:00',
+            summary: [
+              'حدد سعرك بناءً على: الجودة، الموقع العادي أو الراقي، المنافسين، ومصاريفك.',
+              'احسب كل مصاريفك الشهرية (إيجار، مواد، فواتير) لتعرف نقطة التعادل.',
+              'قدم باقات (Combo) مثل حلاقة + ماسك + لحية لتشجيع زيادة الإنفاق.',
+              'احتفظ بسجل يومي صارم للدخل والمنصرف.',
+              'طور أدواتك وبيئة الصالون باستمرار لجذب شريحة أعلى.'
+            ],
+            summaryEN: [
+              'Set pricing based on: quality, location, competitors, and your overheads.',
+              'Calculate all monthly expenses (rent, materials, bills) to know your break-even point.',
+              'Offer Combo packages (hair + mask + beard) to encourage up-selling.',
+              'Keep a strict daily ledger for income and expenses.',
+              'Constantly upgrade your tools and store environment to attract a higher tier.'
+            ],
+            task: {
+              title: 'تسعير باقات',
+              titleEN: 'Create Packages',
+              description: 'اكتب قائمة أسعار مبسطة لصالونك تتضمن 3 خدمات أساسية و باقتين كومبو.',
+              descriptionEN: 'Write a simplified price list for your shop including 3 basic services and 2 combos.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'كيف يمكن لباكات العروض (Combos) مساعدة إدارة الصالون ماليًا؟',
+                questionEN: 'How can Combo packages financially help a salon\'s management?',
+                options: [
+                  { id: 'o1', text: 'لا تفيد لأنها تخفض السعر النهائي قليلاً', textEN: "They don't because they slightly lower the final price", isCorrect: false },
+                  { id: 'o2', text: 'تشجع الزبون على الدفع لخدمة إضافية لم يكن يفكر بها، مما يزيد الدخل العام', textEN: "They encourage the client to pay for an extra service they hadn't planned, increasing overall revenue", isCorrect: true },
+                  { id: 'o3', text: 'تقلل من استخدام ماكينة الحلاقة', textEN: 'They reduce the use of clippers', isCorrect: false }
+                ],
+                explanation: 'هي استراتيجية (Up-selling) بيع خدمات إضافية بطريقة تبدو مغرية للزبون.',
+                explanationEN: "It's an up-selling strategy making extra services look appealing to the client."
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_4_3',
+            title: 'التسويق عبر وسائل التواصل الاجتماعي',
+            titleEN: 'Social Media Marketing',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'هاتف ذكي يظهر صفحة إنستغرام: صور عالية الدقة لتدرج خيالي (Fade)، فيديو قبل/بعد، تعليق يحوي هاشتاغات محلية.',
+            visualDescriptionEN: 'Smartphone showing an Instagram page: High-res photos of flawless fades, before/after video, captions with local hashtags.',
+            duration: '06:00',
+            summary: [
+              'الصالون الذي لا يملك صفحة نشطة يختفي من أعين الشباب.',
+              'صور "قبل وبعد" بأمانة وإضاءة جيدة لجذب الانتباه.',
+              'استأذن الزبون دائماً قبل نشر صوره.',
+              'استخدم هاشتاجات لمدينتك وحيك (#حلاق_وهران، #حلاقة_الجزائر).',
+              'الفيديوهات القصيرة (Reels) لعملية القص تنتشر أسرع بكثير.'
+            ],
+            summaryEN: [
+              'A shop without an active page is invisible to the youth.',
+              'Take honest, well-lit "Before & After" photos to attract attention.',
+              'Always ask the client\'s permission before posting.',
+              'Use local hashtags for your city.',
+              'Short videos (Reels) of the cutting process go viral much faster.'
+            ],
+            task: {
+              title: 'صناعة إعلان مرئي',
+              titleEN: 'Create a Visual Ad',
+              description: 'اكتب الوصف (Caption) المثالي لصورة عمل متقن تضعه على حساب صالونك.',
+              descriptionEN: 'Write the perfect Caption for a pristine work photo you post on your salon\'s account.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لماذا يعتبر المحتوى المرئي (كالصور والفيديوهات) أقوى تسويق لصالون الحلاقة؟',
+                questionEN: 'Why is visual content (photos/videos) the strongest marketing for a barbershop?',
+                options: [
+                  { id: 'o1', text: 'لأنه بديل عن المهارة الفعلية للحلاق', textEN: 'Because it substitutes the barber\'s actual skill', isCorrect: false },
+                  { id: 'o2', text: 'لأن العين تشتري قبل كل شيء، وصور القصات والمكان تبرهن على الكفاءة مباشرة', textEN: 'Because the eye buys first, and photos of cuts/venue directly prove competence', isCorrect: true },
+                  { id: 'o3', text: 'لأن الصور تستهلك بيانات إنترنت أقل', textEN: 'Because photos use less internet data', isCorrect: false }
+                ],
+                explanation: 'الزبون يبحث عن الثقة، والصورة المتقنة لقصة من عملك هي خير دليل.',
+                explanationEN: 'Clients look for trust, and a pristine photo of your work is the best proof.'
+              }
+            ],
+            xpReward: 25
+          },
+          {
+            id: 'les_4_4',
+            title: 'مشروع التخرج – تنفيذ إطلالة كاملة',
+            titleEN: 'Final Project – Executing a Full Look',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي كبير: صورة رجل بشعر مجعد وغير مرتب. ثم صورة "بعد": قصة Fade نظيفة، لحية مستقيمة محددة، وبشرة نضرة. علامة الشارة الذهبية متوهجة بالزاوية.',
+            visualDescriptionEN: 'Large illustration: man with messy curly hair. Then "After": clean Fade, sharp beard lineup, and fresh skin. Glowing gold badge in the corner.',
+            duration: '15:00',
+            summary: [
+              'استخدم كل ما تعلمته من المرحب والتشخيص، للتشذيب، للحلاقة والعناية.',
+              'قدم استشارة كاملة، واسأل عن التاريخ والتفضيلات.',
+              'تعرف على شكل الوجه، واقترح القصة.',
+              'اهتم بأدق التفاصيل والزوايا والألوان.',
+              'النظافة والتنظيم وسحر التواصل يصنعان "الحلاق المحترف".'
+            ],
+            summaryEN: [
+              'Use everything you learned from welcome, diagnosis, to trim, shave and care.',
+              'Provide a full consultation, asking history and preferences.',
+              'Identify the face shape and suggest the cut.',
+              'Pay attention to the smallest details, angles, and colorings.',
+              'Cleanliness, organization, and social charm make the "Master Barber".'
+            ],
+            task: {
+              title: 'تنفيذ التحول الكامل',
+              titleEN: 'Execute the Full Transformation',
+              description: 'أحضر زبوناً وهمياً وصف حالته، ثم اكتب المراحل التسع التي ستتخذها لتغيير مظهره.',
+              descriptionEN: 'Invent a fictional client, describe his state, then write the 9 steps you\'ll take to transform his look.'
+            },
+            quiz: [
+              {
+                id: 'q_final_barb',
+                question: 'لقد أنهيت كل المراحل والدروس وأصبحت مستعداً كحلاق محترف ملم بالتقنيات العصرية وإدارة الصالون! اضغط "صحيح" لاستلام الشارة.',
+                questionEN: 'You have finished all stages and are ready as a Master Barber with modern techniques and salon management! Click "True" to receive your badge.',
+                options: [
+                  { id: 'o1', text: 'صحيح', textEN: 'True', isCorrect: true },
+                  { id: 'o2', text: 'خاطئ', textEN: 'False', isCorrect: false }
+                ],
+                explanation: 'ألف مبروك! مقصك جاهز لبناء الثقة ونحت الشخصيات في كل الأحياء.',
+                explanationEN: 'Congratulations! Your scissors are ready to build confidence and sculpt personalities in every neighborhood.'
+              }
+            ],
+            xpReward: 100
+          }
+        ]
+      }
+    ],
+    badges: {
+      started: {
+        id: 'barb_starter',
+        title: 'خبير النظافة',
+        titleEN: 'Hygiene Expert',
+        description: 'أكملت أساسيات النظافة والتعقيم وفهم الأدوات.',
+        descriptionEN: 'Completed basics of hygiene, sterilization, and tools understanding.',
+        icon: 'shield'
+      },
+      completed: {
+        id: 'barb_master',
+        title: 'حلاق محترف',
+        titleEN: 'Master Barber',
+        description: 'أنهيت المسار وأصبحت قادراً على إدارة وتحويل مظهر الزبائن ببراعة وثقة.',
+        descriptionEN: 'Finished the path and can masterfully transform client looks and manage a salon.',
+        icon: 'award'
+      }
+    }
+  }
+,
+  sanitary_plumbing: sanitaryPlumbingCourse
+, security_agent: securityCourse };
