@@ -124,5 +124,28 @@ export const crafts: Craft[] = [
     averageIncome: 'من 25,000 دج إلى 50,000+ دج للمحترفين، وقد يصل حتى 100,000+ دج في العمل الحر وعن بعد.',
     averageIncomeEN: 'Starting at 25,000 DZD up to 50,000+ DZD. Freelancers can earn 100,000+ DZD remote.',
     image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'ms_access',
+    nameAR: 'Microsoft Access وإدارة قواعد البيانات',
+    nameFR: 'Microsoft Access et Gestion des Bases de Données',
+    nameEN: 'Microsoft Access & Database Management',
+    category: 'إدارة ورقمنة',
+    categoryEN: 'Administration & Digitization',
+    shortDescription: 'تصميم وإدارة قواعد بيانات مرنة لتنظيم المعلومات وتسهيل اتخاذ القرارات.',
+    shortDescriptionEN: 'Design and manage flexible databases to organize information and facilitate decision-making.',
+    fullDescription: 'في عالم الإدارة الحديثة في الجزائر، تتراكم البيانات بشكل يومي. حرفة إدارة قواعد البيانات باستخدام Microsoft Access تمنحك القدرة على تحويل الفوضى إلى نظام. سواء كنت تعمل في مسار إداري، أو شركة ناشئة، أو مؤسسة عمومية، سيمكنك Access من تصميم جداول منسقة، نماذج إدخال سهلة الاستخدام، واستخراج تقارير دقيقة بضغطة زر. هذه الحرفة لا تتطلب خلفية برمجية معقدة، بل تعتمد على المنطق التنظيمي الدقيق، مما يجعلها مطلوبة بشدة لرقمنة تسيير المخازن، شؤون الموظفين، والمبيعات.',
+    fullDescriptionEN: 'In the modern administrative world in Algeria, data accumulates daily. The craft of Database Management using Microsoft Access empowers you to turn chaos into order. Whether you work in administration, a startup, or a public institution, Access enables you to design structured tables, user-friendly entry forms, and extract accurate reports with a click. This craft does not require complex programming background; rather, it relies on strict organizational logic, making it highly demanded for digitizing inventory management, human resources, and sales.',
+    tools: ['حاسوب مكتبي أو محمول', 'برنامج Microsoft Access', 'لوحة مفاتيح وماوس', 'اتصال بالإنترنت', 'دفتر لتخطيط قواعد البيانات'],
+    toolsEN: ['Desktop or Laptop Computer', 'Microsoft Access Software', 'Keyboard & Mouse', 'Internet Connection', 'Notebook for database planning'],
+    skills: ['التفكير المنطقي التنظيمي', 'فهم العلاقات بين البيانات', 'الدقة والملاحظة القوية', 'تصميم واجهات إدخال بسيطة', 'تحليل المتطلبات'],
+    skillsEN: ['Logical & organizational thinking', 'Understanding data relationships', 'Accuracy & strong observation', 'Designing simple entry interfaces', 'Requirements analysis'],
+    duration: 'من 3 إلى 6 أشهر',
+    durationEN: '3 to 6 months',
+    careerOpportunities: ['الإدارات العمومية والمدارس', 'مكاتب تسيير الموارد البشرية والمخازن', 'الشركات التجارية الخاصة', 'العمل الحر في تطوير قواعد بيانات صغيرة'],
+    careerOpportunitiesEN: ['Public administrations & schools', 'HR & Inventory management offices', 'Private commercial companies', 'Freelance development of small databases'],
+    averageIncome: 'بداية بـ 35,000 دج كإداري، وتصل لتجاوز 80,000 دج للمستشارين في الرقمنة والعمل الحر.',
+    averageIncomeEN: 'Starting at 35,000 DZD for admins, exceeding 80,000 DZD for digitization consultants and freelancers.',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80'
   }
 ];

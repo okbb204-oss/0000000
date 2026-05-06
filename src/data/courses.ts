@@ -14,6 +14,7 @@ export interface Lesson {
   visualType: 'animation' | 'illustration';
   visualUrls: string[];
   visualDescription?: string;
+  visualDescriptionEN?: string;
   duration: string;
   summary: string[];
   summaryEN?: string[];
@@ -39,6 +40,10 @@ export interface Course {
   description: string;
   descriptionEN?: string;
   levels: Level[];
+  badges?: {
+    started: { id: string; title: string; titleEN?: string; description: string; descriptionEN?: string; icon: string };
+    completed: { id: string; title: string; titleEN?: string; description: string; descriptionEN?: string; icon: string };
+  };
 }
 
 export const coursesData: Record<string, Course> = {
@@ -1161,6 +1166,769 @@ export const coursesData: Record<string, Course> = {
         ]
       }
     ]
+  },
+  'ms_access': {
+    craftId: 'ms_access',
+    title: 'تصميم وإدارة قواعد البيانات بـ Microsoft Access',
+    titleEN: 'Database Design & Management with Microsoft Access',
+    description: 'مسار تعليمي متكامل ينطلق بك من فهم أساسيات البيانات إلى بناء أنظمة إدارة متكاملة للمؤسسات والشركات.',
+    descriptionEN: 'A comprehensive educational path that takes you from understanding data basics to building integrated management systems for organizations and companies.',
+    levels: [
+      {
+        id: 'lvl_1',
+        title: 'المرحلة 1: أساسيات قواعد البيانات والجداول',
+        titleEN: 'Stage 1: Database Basics & Tables',
+        description: 'تعرف على بيئة Access وكيفية بناء الأساس المتين لأي قاعدة بيانات.',
+        descriptionEN: 'Get to know the Access environment and how to build the solid foundation of any database.',
+        lessons: [
+          {
+            id: 'les_1_1',
+            title: 'مقدمة في Microsoft Access والتخطيط',
+            titleEN: 'Introduction to Microsoft Access & Planning',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي لشخص يرسم مخططاً لقاعدة بيانات على سبورة بيضاء.',
+            visualDescriptionEN: 'Illustration of a person drawing a database schematic on a whiteboard.',
+            duration: '10:00',
+            summary: [
+              'قاعدة البيانات هي مستودع رقمي منظم للمعلومات.',
+              'Access يربط البيانات، الواجهات، والتقارير في ملف واحد.',
+              'التخطيط على الورق قبل فتح البرنامج يوفر الكثير من الوقت.'
+            ],
+            summaryEN: [
+              'A database is an organized digital repository for information.',
+              'Access connects data, interfaces, and reports in one file.',
+              'Planning on paper before opening the software saves a lot of time.'
+            ],
+            task: {
+              title: 'تخطيط نظام مصغر لحفظ جهات الاتصال',
+              titleEN: 'Plan a mini contact management system',
+              description: 'ارسم على ورقة الحقوق الأساسية (الاسم، اللقب، الهاتف، البريد) لتطبيق جهات اتصالك.',
+              descriptionEN: 'Draw on paper the basic fields (Name, Last Name, Phone, Email) for your contacts app.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي الخطوة الأهم قبل إنشاء قاعدة البيانات؟',
+                questionEN: 'What is the most important step before creating a database?',
+                options: [
+                  { id: 'o1', text: 'شراء حاسوب جديد', textEN: 'Buying a new computer', isCorrect: false },
+                  { id: 'o2', text: 'التخطيط الورقي للبيانات والعلاقات', textEN: 'Paper planning of data and relationships', isCorrect: true },
+                  { id: 'o3', text: 'حفظ الملف', textEN: 'Saving the file', isCorrect: false }
+                ],
+                explanation: 'التخطيط السليم يمنع الأخطاء الهيكلية لاحقاً.',
+                explanationEN: 'Proper planning prevents structural errors later.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'les_1_2',
+            title: 'تشغيل Access والتعرف على الشريط والكائنات',
+            titleEN: 'Opening Access & Understanding the Ribbon and Objects',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'شاشة حاسوب تظهر سطح المكتب، نقرة مزدوجة على أيقونة Access. تظهر شاشة البداية. سهم يتحرك نحو "قاعدة بيانات فارغة". تظهر بعدها نافذة التنقل (Navigation Pane) ويُشار إلى الأقسام: جداول، استعلامات، نماذج، تقارير.',
+            visualDescriptionEN: 'Computer screen showing desktop, double click on Access icon. Start screen appears. Arrow moves to "Blank database". Navigation Pane appears and highlights: Tables, Queries, Forms, Reports.',
+            duration: '08:00',
+            summary: [
+              'Access جزء من حزمة Microsoft Office.',
+              'عند فتحه، تختار "قاعدة بيانات فارغة" لبدء مشروع جديد.',
+              'احفظ ملفك فوراً باسم واضح ومكان تعرفه.',
+              'الشريط الرئيسي يحتوي على تبويبات: إنشاء، بيانات خارجية، أدوات قاعدة البيانات.',
+              'الكائنات الأربعة الرئيسية: جداول (Tables)، استعلامات (Queries)، نماذج (Forms)، تقارير (Reports).'
+            ],
+            summaryEN: [
+              'Access is part of the Microsoft Office suite.',
+              'Upon opening, choose "Blank database" to start a new project.',
+              'Save your file immediately with a clear name in a known location.',
+              'The main ribbon contains tabs: Create, External Data, Database Tools.',
+              'The four main objects: Tables, Queries, Forms, Reports.'
+            ],
+            task: {
+              title: 'إنشاء واستكشاف ملف جديد',
+              titleEN: 'Create and explore a new file',
+              description: 'افتح Access على حاسوبك. أنشئ قاعدة بيانات فارغة باسم \'تجربتي_الاولى.accdb\'. تصفح التبويبات وحدد مكان كل كائن.',
+              descriptionEN: 'Open Access on your computer. Create a blank database named \'My_First_Experience.accdb\'. Browse the tabs and locate each object type.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'أين تجد أدوات تصميم الجداول والنماذج لبنائها من الصفر؟',
+                questionEN: 'Where do you find the tools to design tables and forms from scratch?',
+                options: [
+                  { id: 'o1', text: 'تبويب بيانات خارجية', textEN: 'External Data tab', isCorrect: false },
+                  { id: 'o2', text: 'الصفحة الرئيسية', textEN: 'Home tab', isCorrect: false },
+                  { id: 'o3', text: 'تبويب إنشاء (Create)', textEN: 'Create tab', isCorrect: true }
+                ],
+                explanation: 'خيارات الإنشاء تتيح بناء جميع كائنات قاعدة البيانات بأشكالها المختلفة.',
+                explanationEN: 'The Create tab provides tools to build all database objects in their various forms.'
+              }
+            ],
+            xpReward: 20
+          },
+          {
+            id: 'les_1_3',
+            title: 'إنشاء الجدول الأول – الحقول وأنواع البيانات',
+            titleEN: 'Creating the First Table - Fields and Data Types',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'مشهد متحرك: نافذة فارغة لجدول. تظهر أعمدة: "اسم الحقل" و"نوع البيانات". يد تكتب "الاسم الكامل" وتختار "نص قصير"، ثم تكتب "تاريخ الميلاد" وتختار "تاريخ/وقت"، ثم "الراتب" وتختار "عملة". بعدها يتم حفظ الجدول باسم "الموظفين".',
+            visualDescriptionEN: 'Animated scene: Empty table window. Columns appear: "Field Name" and "Data Type". A hand types "Full Name" and selects "Short Text", then types "Date of Birth" and selects "Date/Time", then "Salary" and selects "Currency". The table is then saved as "Employees".',
+            duration: '12:00',
+            summary: [
+              'الجدول هو اللبنة الأساسية: صفوف (سجلات) وأعمدة (حقول).',
+              'كل حقل له اسم فريد ونوع بيانات محدد.',
+              'أنواع شائعة: نص قصير، نص طويل، رقم، تاريخ/وقت، عملة، نعم/لا.',
+              'اختر النوع المناسب بدقة لتجنب أخطاء لاحقة.',
+              'احفظ الجدول باسم واضح مباشرة.'
+            ],
+            summaryEN: [
+              'The table is the core building block: rows (records) and columns (fields).',
+              'Each field has a unique name and a specific data type.',
+              'Common types: Short Text, Long Text, Number, Date/Time, Currency, Yes/No.',
+              'Choose the appropriate type accurately to avoid later errors.',
+              'Save the table with a clear name immediately.'
+            ],
+            task: {
+              title: 'إنشاء جدول الزبائن',
+              titleEN: 'Create the Customers table',
+              description: 'أنشئ جدولاً باسم \'الزبائن\' يحتوي على الحقول: معرف_الزبون (ترقيم تلقائي)، الاسم (نص قصير)، رقم_الهاتف (نص قصير)، تاريخ_التسجيل (تاريخ/وقت).',
+              descriptionEN: 'Create a table named \'Customers\' containing fields: Customer_ID (AutoNumber), Name (Short Text), Phone_Number (Short Text), Registration_Date (Date/Time).'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لماذا نستخدم نوع "نص قصير" لرقم الهاتف بدل "رقم"؟',
+                questionEN: 'Why do we use "Short Text" for a phone number instead of "Number"?',
+                options: [
+                  { id: 'o1', text: 'البرنامج لا يقبل الأرقام الطويلة', textEN: 'The software does not accept long numbers', isCorrect: false },
+                  { id: 'o2', text: 'لأننا لن نجري عليه عمليات حسابية وقد يبدأ بالصفر', textEN: 'Because we won\'t perform calculations on it and it might start with zero', isCorrect: true },
+                  { id: 'o3', text: 'لتقليل حجم الملف', textEN: 'To reduce the file size', isCorrect: false }
+                ],
+                explanation: 'حقول الأرقام تُخزن القيم الرياضية. رقم الهاتف لا يُجمع ولا يُطرح، لذلك نقوم بحفظه كنص ليتم عرض الصفر البدائي.',
+                explanationEN: 'Number fields store mathematical values. A phone number is not added or subtracted, so we save it as text to preserve leading zeros.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'les_1_4',
+            title: 'المفتاح الأساسي والفهرسة – منع التكرار',
+            titleEN: 'Primary Key & Indexing - Preventing Duplication',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1618044733300-9472054094ee?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'جدول يظهر فيه عمود "المعرف" بجانبه أيقونة مفتاح صغير. عند محاولة إدخال رقم مكرر، يظهر تنبيه أحمر لطيف. ثم مشهد يوضح أن الفهرسة تُسرّع البحث مثل فهرس الكتاب.',
+            visualDescriptionEN: 'A table showing an "ID" column with a small key icon next to it. Trying to enter a duplicate number prompts a gentle red alert. Then a scene shows indexing speeding up search like a book\'s index.',
+            duration: '09:00',
+            summary: [
+              'المفتاح الأساسي (Primary Key): حقل يميز كل سجل بشكل فريد.',
+              'غالباً ما يكون "ترقيم تلقائي" ويتزايد تلقائياً.',
+              'يمنع Access إدخال قيم مكررة في هذا الحقل.',
+              'الفهرسة (Indexing) تسرّع البحث والفرز، استخدمها للحقول التي ستُبحث كثيراً (مثل الاسم).',
+              'لا تفرط في الفهرسة لأنها تبطئ الإدخال والتعديل.'
+            ],
+            summaryEN: [
+              'Primary Key: A field that uniquely identifies each record.',
+              'Often an "AutoNumber" that increments automatically.',
+              'Access prevents entering duplicate values in this field.',
+              'Indexing speeds up search and sorting; use it for frequently searched fields (e.g., Name).',
+              'Do not over-index as it slows down data entry and modification.'
+            ],
+            task: {
+              title: 'تأمين الجداول وتقوية الأداء',
+              titleEN: 'Securing tables and boosting performance',
+              description: 'في جدول \'الزبائن\'، تأكد من أن \'معرف_الزبون\' هو المفتاح الأساسي. أضف فهرسة لحقل \'الاسم\'. أدخل 5 سجلات وهمية.',
+              descriptionEN: 'In the \'Customers\' table, make sure \'Customer_ID\' is the primary key. Add an index to the \'Name\' field. Enter 5 dummy records.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي الخاصية الرئيسية للمفتاح الأساسي؟',
+                questionEN: 'What is the main property of a primary key?',
+                options: [
+                  { id: 'o1', text: 'لا يمكن أن يتكرر داخل الجدول أبداً', textEN: 'It can never be duplicated within the table', isCorrect: true },
+                  { id: 'o2', text: 'يجب أن يكون دائماً نصوصاً', textEN: 'It must always be text', isCorrect: false },
+                  { id: 'o3', text: 'يسهل عملية طباعة الجدول', textEN: 'It makes printing the table easier', isCorrect: false }
+                ],
+                explanation: 'وظيفة المفتاح الأساسي هي ضمان تمييز السجلات دون خلط بينها.',
+                explanationEN: 'The primary key\'s function is to ensure records are distinguished without confusion.'
+              }
+            ],
+            xpReward: 30
+          }
+        ]
+      },
+      {
+        id: 'lvl_2',
+        title: 'المرحلة 2: العلاقات، الاستيراد، وإدخال البيانات',
+        titleEN: 'Stage 2: Relationships, Importing, and Data Entry',
+        description: 'اكتشف كيف ترتبط الجداول ببعضها، وكيف تستورد البيانات وتتحقق من صحتها.',
+        descriptionEN: 'Discover how tables relate to each other, and how to import and validate data.',
+        lessons: [
+          {
+            id: 'les_2_1',
+            title: 'العلاقات بين الجداول – ربط المعلومات',
+            titleEN: 'Relationships Between Tables - Linking Information',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي لثلاثة جداول: "زبائن"، "طلبات"، "منتجات". خطوط بينها: بين زبائن وطلبات (واحد-إلى-متعدد)، بين طلبات ومنتجات (متعدد-إلى-متعدد عبر جدول وسيط). أسهم صغيرة تشرح.',
+            visualDescriptionEN: 'Illustration of three tables: "Customers", "Orders", "Products". Lines between them: between customers and orders (one-to-many), between orders and products (many-to-many via a junction table). Small arrows explain.',
+            duration: '15:00',
+            summary: [
+              'العلاقات تمنع تكرار البيانات وتربط الجداول ببعضها.',
+              'العلاقة الأكثر شيوعاً: واحد-إلى-متعدد (زبون واحد له عدة طلبات).',
+              'تحتاج إلى حقل مشترك (مفتاح خارجي) في الجدول "ابن".',
+              'لإنشاء علاقة: أدوات قاعدة البيانات > علاقات > اسحب الحقل المشترك.',
+              'فعّل "التأكد من التكامل المرجعي" لضمان عدم حذف سجل أب مرتبط بأبناء.'
+            ],
+            summaryEN: [
+              'Relationships prevent data duplication and link tables together.',
+              'The most common relationship: One-to-Many (one customer has many orders).',
+              'Requires a common field (foreign key) in the "child" table.',
+              'To create a relationship: Database Tools > Relationships > Drag the common field.',
+              'Enable "Enforce Referential Integrity" to ensure a parent record linked to children is not deleted.'
+            ],
+            task: {
+              title: 'إنشاء علاقة واحد-إلى-متعدد',
+              titleEN: 'Create a One-to-Many Relationship',
+              description: 'أنشئ جدولاً جديداً \'طلبات\' يحتوي على: معرف_الطلب، تاريخ_الطلب، معرف_الزبون (رقم). اربطه بجدول \'الزبائن\' بعلاقة واحد-إلى-متعدد.',
+              descriptionEN: 'Create a new table \'Orders\' containing: Order_ID, Order_Date, Customer_ID (Number). Link it to the \'Customers\' table with a one-to-many relationship.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما فائدة تفعيل "التأكد من التكامل المرجعي" (Enforce Referential Integrity)؟',
+                questionEN: 'What is the benefit of enabling "Enforce Referential Integrity"?',
+                options: [
+                  { id: 'o1', text: 'يمنع حذف زبون إذا كان لديه طلبات مسجلة لتفادي ضياع البيانات المرجعية', textEN: 'Prevents deleting a customer if they have recorded orders to avoid losing reference data', isCorrect: true },
+                  { id: 'o2', text: 'يسرع من عمل قاعدة البيانات', textEN: 'Speeds up the database', isCorrect: false },
+                  { id: 'o3', text: 'ينسق ألوان الجداول لتكون متطابقة', textEN: 'Formats table colors to match', isCorrect: false }
+                ],
+                explanation: 'التكامل المرجعي يحمي علاقات الجداول ويمنع وجود سجلات يتيمة.',
+                explanationEN: 'Referential integrity protects table relationships and prevents orphan records.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'les_2_2',
+            title: 'استيراد البيانات من Excel و CSV',
+            titleEN: 'Importing Data from Excel and CSV',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'مشهد: ملف Excel مفتوح بجانب Access. في Access، تبويب "بيانات خارجية" > "استيراد من Excel". نافذة معالج تظهر، يختار الملف، ثم الورقة، ثم يحدد إذا كان الصف الأول عناوين أعمدة. البيانات تظهر في جدول Access.',
+            visualDescriptionEN: 'Scene: Excel file open next to Access. In Access, tab "External Data" > "Import from Excel". Wizard window appears, path chosen, sheet selected, specifies first row has column headings. Data appears in Access table.',
+            duration: '08:30',
+            summary: [
+              'يمكنك استيراد بيانات جاهزة من Excel أو ملفات CSV.',
+              'اذهب إلى: بيانات خارجية > ملف جديد > Excel.',
+              'اتبع المعالج: اختر الملف، حدد الورقة، تأكد من أنواع البيانات.',
+              'إذا كانت البيانات تحتوي على أخطاء، سيُنشئ Access جدول أخطاء منفصلاً.',
+              'هذه المهارة توفر ساعات من الإدخال اليدوي.'
+            ],
+            summaryEN: [
+              'You can easily import existing data from Excel or CSV files.',
+              'Go to: External Data > New Data Source > From File > Excel.',
+              'Follow the wizard: choose file, select sheet, verify data types.',
+              'If the data contains errors, Access creates a separate error table.',
+              'This skill saves hours of manual entry.'
+            ],
+            task: {
+              title: 'تطبيق الاستيراد',
+              titleEN: 'Apply Importing',
+              description: 'أنشئ ملف Excel بسيطاً بـ 10 صفوف (منتج، سعر، كمية) واستورده إلى Access. صحح أي خطأ يظهر.',
+              descriptionEN: 'Create a simple Excel file with 10 rows (Product, Price, Quantity) and import it into Access. Correct any errors that arise.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'عند استيراد جدول، ماذا يحدث إذا كانت بعض الخلايا في Excel تحتوي قيماً غير مطابقة لنوع الحقل (مثال: نصوص في حقل أرقام)؟',
+                questionEN: 'When importing a table, what happens if some Excel cells contain values that don\'t match the field type (e.g., text in a number field)?',
+                options: [
+                  { id: 'o1', text: 'يفشل الاستيراد تماماً ويمسح Access الجدول', textEN: 'Import fails completely and Access deletes the table', isCorrect: false },
+                  { id: 'o2', text: 'يقوم Access بإنشاء جدول خاص يحتوي على الأخطاء ويترك الخلايا الخاطئة فارغة في الجدول الأصلي', textEN: 'Access creates a special table containing the errors and leaves the wrong cells empty in the original table', isCorrect: true },
+                  { id: 'o3', text: 'يحاول Access تخمين القيم الصحيحة', textEN: 'Access attempts to guess the correct values', isCorrect: false }
+                ],
+                explanation: 'لضمان عدم توقف عملية الاستيراد، يقوم Access بعزل الأخطاء لكي تقوم بمراجعتها لاحقاً.',
+                explanationEN: 'To ensure the import process doesn\'t halt, Access isolates errors so you can review them later.'
+              }
+            ],
+            xpReward: 25
+          },
+          {
+            id: 'les_2_3',
+            title: 'إدخال البيانات يدوياً والتعامل مع الأوراق الفرعية',
+            titleEN: 'Manual Data Entry and Handling Subdatasheets',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'جدول "طلبات" مفتوح. صف جديد يُملأ. أسفل الصف، تظهر ورقة بيانات فرعية (Subdatasheet) تلقائياً تظهر تفاصيل الطلب المرتبطة من جدول آخر. يد تكتب تاريخاً وتختار زبوناً من قائمة منسدلة.',
+            visualDescriptionEN: 'Orders table open. New row being filled. Below the row, a Subdatasheet automatically appears showing related order details from another table. Hand typing a date and selecting a customer from a dropdown.',
+            duration: '09:00',
+            summary: [
+              'لإدخال بيانات: افتح الجدول وابدأ الكتابة في الصف الفارغ الأخير.',
+              'عند وجود علاقة، يمكن لـ Access عرض بيانات الجدول المرتبط تلقائياً.',
+              'استخدم قوائم البحث (Lookup) لتسهيل اختيار القيم من جدول آخر.',
+              'اختصارات: Ctrl+\' لنسخ قيمة الحقل العلوي، Ctrl+; لإدخال تاريخ اليوم.',
+              'احفظ السجل بالانتقال إلى سجل آخر (لا زر حفظ منفصل).'
+            ],
+            summaryEN: [
+              'To enter data: Open the table and start typing in the last empty row.',
+              'When a relationship exists, Access can automatically display related table data.',
+              'Use Lookup lists to easily select values from another table.',
+              'Shortcuts: Ctrl+\' to copy value from above, Ctrl+; to insert today\'s date.',
+              'Save the record by moving to another record (no separate save button).'
+            ],
+            task: {
+              title: 'التدرب على الإدخال السريع',
+              titleEN: 'Practice fast entry',
+              description: 'أدخل 5 طلبات في جدول الطلبات، كل طلب مرتبط بزبون مختلف. استخدم قائمة البحث لاختيار الزبون.',
+              descriptionEN: 'Enter 5 orders in the Orders table, each linked to a different customer. Use the lookup list to select the customer.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي وظيفة ورقة البيانات الفرعية (Subdatasheet)؟',
+                questionEN: 'What is the function of a Subdatasheet?',
+                options: [
+                  { id: 'o1', text: 'طباعة البيانات بسرعة', textEN: 'Print data quickly', isCorrect: false },
+                  { id: 'o2', text: 'تغيير ألوان الجدول', textEN: 'Change table colors', isCorrect: false },
+                  { id: 'o3', text: 'عرض سجلات الجدول المرتبط (الجدول الفرعي) داخل الجدول الأساسي مباشرة', textEN: 'Display records of the related table (child table) directly inside the main table', isCorrect: true }
+                ],
+                explanation: 'هي تتيح عرض والتعامل مع التفاصيل المرتبطة (كطلبات الزبون) مباشرة من واجهة الزبون.',
+                explanationEN: 'It allows viewing and interacting with related details (like customer orders) directly from the customer interface.'
+              }
+            ],
+            xpReward: 25
+          },
+          {
+            id: 'les_2_4',
+            title: 'التحقق من صحة البيانات وتنسيق الجداول',
+            titleEN: 'Data Validation and Table Formatting',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'نافذة تصميم الجدول. في حقل "العمر"، في خصائص الحقل، قاعدة التحقق: "Bين 18 و65". رسالة تحقق: "العمر يجب أن يكون بين 18 و65 سنة". عند محاولة إدخال 70، تظهر رسالة لطيفة باللون البرتقالي.',
+            visualDescriptionEN: 'Table Design window. For "Age", Validation Rule: "Between 18 and 65". Validation Text: "Age must be between 18 and 65". Trying to enter 70 prompts a nice orange message.',
+            duration: '11:00',
+            summary: [
+              'قواعد التحقق تمنع إدخال بيانات خاطئة من البداية.',
+              'أمثلة: ">0" للكمية، "Is Not Null" للحقول الإجبارية.',
+              'يمكن وضع قناع إدخال (Input Mask) لأرقام الهاتف: "0999-99-99-99".',
+              'التنسيق: يمكن عرض التاريخ بصيغ مختلفة، أو الأرقام بمنازل عشرية محددة.',
+              'البيانات النظيفة توفر وقتاً هائلاً لاحقاً.'
+            ],
+            summaryEN: [
+              'Validation rules prevent entering bad data from the start.',
+              'Examples: ">0" for quantity, "Is Not Null" for required fields.',
+              'An Input Mask can be set for phone numbers: "0999-99-99-99".',
+              'Formatting: dates can be shown differently, numbers with specific decimal places.',
+              'Clean data saves immense time later.'
+            ],
+            task: {
+              title: 'تطبيق قواعد التحقق',
+              titleEN: 'Apply Validation Rules',
+              description: 'في قاعدة بياناتك، أضف قاعدة تحقق لحقل \'الراتب\' بحيث لا يقل عن 18000 دج. أضف قناع إدخال لحقل الهاتف.',
+              descriptionEN: 'In your database, add a validation rule for \'Salary\' to be not less than 18000 DZD. Add an input mask to the phone field.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما الفرق بين قاعدة التحقق (Validation Rule) وقناع الإدخال (Input Mask)؟',
+                questionEN: 'What is the difference between a Validation Rule and an Input Mask?',
+                options: [
+                  { id: 'o1', text: 'لا يوجد أية فروق، كلاهما لنفس الغرض', textEN: 'No differences, both serve the same purpose', isCorrect: false },
+                  { id: 'o2', text: 'قناع الإدخال خاص بالتواريخ فقط', textEN: 'Input Mask is only for dates', isCorrect: false },
+                  { id: 'o3', text: 'قاعدة التحقق تختبر قيمة البيانات منطقياً، أما قناع الإدخال فيتحكم في طريقة وشكل إدخال الأحرف والأرقام', textEN: 'Validation rule logically tests the data value, whereas Input Mask controls the format and pattern of entered characters', isCorrect: true }
+                ],
+                explanation: 'قناع الإدخال يحافظ على تناسق الأشكال (مثل نمط رقم الهاتف)، وقواعد التحقق تضمن منطقية القيم (مثل مبلغ أكبر من الصفر).',
+                explanationEN: 'Input mask preserves format consistency, while validation rules ensure logical values.'
+              }
+            ],
+            xpReward: 30
+          }
+        ]
+      },
+      {
+        id: 'lvl_3',
+        title: 'المرحلة 3: الاستعلامات – استخراج الإجابات',
+        titleEN: 'Stage 3: Queries - Extracting Answers',
+        description: 'اسأل قاعدة بياناتك أسئلة ذكية للحصول على التقارير والنتائج بسرعة البرق.',
+        descriptionEN: 'Ask your database smart questions to get reports and results at lightning speed.',
+        lessons: [
+          {
+            id: 'les_3_1',
+            title: 'استعلام التحديد البسيط (Select Query)',
+            titleEN: 'Simple Select Query',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'نافذة تصميم الاستعلام. جدول "الزبائن" مضاف. حقول مزدوج عليها: الاسم، المدينة. في صف المعايير تحت "المدينة": "وهران". عند تشغيل الاستعلام، تظهر قائمة بالزبائن من وهران فقط.',
+            visualDescriptionEN: 'Query Design window. "Customers" table added. Fields clicked: Name, City. In Criteria row under "City": "Oran". Running the query displays a list of customers strictly from Oran.',
+            duration: '09:00',
+            summary: [
+              'الاستعلام هو سؤال توجهه لقاعدة البيانات.',
+              'استعلام التحديد يعرض بيانات تطابق معايير معينة.',
+              'أنشئه من: إنشاء > تصميم استعلام > أضف الجداول > اسحب الحقول > ضع المعايير.',
+              'يمكنك عرض حقول محددة فقط، دون كشف كل الجدول.',
+              'المعايير النصية توضع بين علامتي تنصيص في SQL، لكن في واجهة Access تكتب مباشرة.'
+            ],
+            summaryEN: [
+              'A query is a question you ask the database.',
+              'Select query displays data matching certain criteria.',
+              'Create via: Create > Query Design > Add Tables > Drag Fields > Set Criteria.',
+              'You can show specific fields only without exposing the whole table.',
+              'Text criteria are in quotes in SQL, but directly typed in Access UI.'
+            ],
+            task: {
+              title: 'أول استعلام لك',
+              titleEN: 'Your first query',
+              description: 'أنشئ استعلاماً يعرض أسماء الزبائن الذين سجلوا بعد تاريخ 1/1/2024. أظهر الاسم والتاريخ فقط.',
+              descriptionEN: 'Create a query showing customer names who registered after 1/1/2024. Show only Name and Date.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لماذا نستخدم الاستعلام (Query) بدلاً من البحث في الجداول مباشرة؟',
+                questionEN: 'Why do we use a Query instead of searching tables directly?',
+                options: [
+                  { id: 'o1', text: 'لأن الجداول لا يمكن فتحها بعد إغلاقها', textEN: 'Because tables cannot be opened after closing', isCorrect: false },
+                  { id: 'o2', text: 'لقدرته على تصفية، حساب، وعرض البيانات من عدة جداول في وجهة واحدة مخصصة', textEN: 'For its ability to filter, calculate, and display data from multiple tables in one custom view', isCorrect: true },
+                  { id: 'o3', text: 'الاستعلام يحذف البيانات غير المهمة', textEN: 'A query deletes unimportant data', isCorrect: false }
+                ],
+                explanation: 'الاستعلام هو أداة فلترة قوية تُسهل ترتيب المعلومات واستدعائها بناء على شروط.',
+                explanationEN: 'A query is a powerful filtering tool that makes ordering and retrieving conditioned data easy.'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'les_3_2',
+            title: 'الاستعلام بمعايير متعددة والفرز',
+            titleEN: 'Querying with Multiple Criteria and Sorting',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'نافذة التصميم، لكن صف المعايير يحتوي: "وهران" تحت المدينة، و ">20" تحت تاريخ_التسجيل. النتيجة: زبائن من وهران سجلوا بعد 2020. عمود "الاسم" مُرتب أبجدياً.',
+            visualDescriptionEN: 'Design window, criteria row has: "Oran" under City, and ">20" under Registration_Date. Result: Oran customers registered after 2020. "Name" column sorted alphabetically.',
+            duration: '10:00',
+            summary: [
+              'يمكن الجمع بين عدة معايير في نفس الصف (AND) أو في صفوف مختلفة (OR).',
+              'للفرز: اختر "تصاعدي" أو "تنازلي" في صف الفرز تحت الحقل.',
+              'يمكنك استخدام رموز: >, <, >=, <=, <> (لا يساوي).',
+              'لعرض الزبائن من وهران أو قسنطينة: ضع "وهران" في صف المعايير و"قسنطينة" في صف "أو".'
+            ],
+            summaryEN: [
+              'Combine multiple criteria in the same row (AND) or different rows (OR).',
+              'To sort: choose "Ascending" or "Descending" in the Sort row under the field.',
+              'You can use symbols: >, <, >=, <=, <> (Not equal).',
+              'To show customers from Oran or Constantine: place "Oran" in Criteria row and "Constantine" in the "or" row.'
+            ],
+            task: {
+              title: 'تصميم استعلام مركب',
+              titleEN: 'Design a complex query',
+              description: 'أنشئ استعلاماً يعرض الطلبات التي تزيد قيمتها عن 5000 دج، مرتبة من الأحدث إلى الأقدم.',
+              descriptionEN: 'Create a query showing orders exceeding 5000 DZD, sorted newest to oldest.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'إذا وضعت شرطين في نفس السطر بمنطقة الشروط، ما هي العلاقة المنطقية بينهما؟',
+                questionEN: 'If you put two conditions on the same criteria line, what is the logical relationship between them?',
+                options: [
+                  { id: 'o1', text: 'أو (OR)', textEN: 'OR', isCorrect: false },
+                  { id: 'o2', text: 'و (AND)', textEN: 'AND', isCorrect: true },
+                  { id: 'o3', text: 'لا (NOT)', textEN: 'NOT', isCorrect: false }
+                ],
+                explanation: 'كتابة شرطين على نفس الصف تعني أن كليهما يجب أن يتحققا معاً (AND).',
+                explanationEN: 'Writing two conditions on the same row means both must be met together (AND).'
+              }
+            ],
+            xpReward: 30
+          },
+          {
+            id: 'les_3_3',
+            title: 'الاستعلامات الحسابية والإجمالية',
+            titleEN: 'Calculated and Totals Queries',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'في تصميم الاستعلام، زر "الإجماليات" (Σ) يظهر صفاً جديداً. تحت حقل "المبلغ" نختار "Sum"، تحت "معرف_الطلب" نختار "Count". النتيجة تظهر مجموع المبيعات وعدد الطلبات.',
+            visualDescriptionEN: 'In query design, the "Totals" button (Σ) reveals a new row. Under "Amount" we pick "Sum", under "Order_ID" we pick "Count". Result shows total sales and order count.',
+            duration: '11:30',
+            summary: [
+              'استعلامات الإجماليات تلخص البيانات: مجموع، متوسط، عدد، أعلى، أدنى.',
+              'فعّل صف الإجماليات من زر "Sigma" في شريط التصميم.',
+              'يمكن إنشاء حقل حسابي: "الإجمالي: [السعر] * [الكمية]".',
+              'هذه الاستعلامات ضرورية للتقارير الشهرية والمحاسبة.',
+              'جرب Group By لتجميع النتائج حسب فئة (مثلاً: مجموع المبيعات لكل مدينة).'
+            ],
+            summaryEN: [
+              'Totals queries summarize data: Sum, Avg, Count, Max, Min.',
+              'Enable the Totals row from the "Sigma" button in the Design ribbon.',
+              'You can create a calculated field: "Total: [Price] * [Quantity]".',
+              'These queries are essential for monthly reports and accounting.',
+              'Try "Group By" to group results by category (e.g., total sales per city).'
+            ],
+            task: {
+              title: 'إنشاء حقل حسابي',
+              titleEN: 'Create a calculated field',
+              description: 'أنشئ استعلاماً يحسب إجمالي قيمة الطلبات لكل زبون. أظهر اسم الزبون والمجموع.',
+              descriptionEN: 'Create a query calculating total order values per customer. Show Customer Name and Sum.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'لإيجاد عدد السجلات التي توافق شرطاً معيناً، أي دالة إجمال نستعمل؟',
+                questionEN: 'To find the number of records meeting a certain condition, which total function do we use?',
+                options: [
+                  { id: 'o1', text: 'Sum (المجموع)', textEN: 'Sum', isCorrect: false },
+                  { id: 'o2', text: 'Max (الحد الأقصى)', textEN: 'Max', isCorrect: false },
+                  { id: 'o3', text: 'Count (العدد)', textEN: 'Count', isCorrect: true }
+                ],
+                explanation: 'Count تقوم بإحصاء وحساب عدد السجلات (الصفوف)، بينما Sum تجمع القيم الرقمية بداخلها.',
+                explanationEN: 'Count tallies the number of records (rows), while Sum adds numeric values within them.'
+              }
+            ],
+            xpReward: 35
+          },
+          {
+            id: 'les_3_4',
+            title: 'استعلامات الإجراء (Action Queries) – تحديث، حذف، إلحاق',
+            titleEN: 'Action Queries - Update, Delete, Append',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1614064641913-6b71f3016578?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'قائمة Access تظهر أنواع الاستعلامات. اختيار "استعلام تحديث" (Update Query). نافذة تصميم، صف "تحديث إلى" لحقل "السعر" بـ "[السعر]*1.1". عند التشغيل، تحذير "أنت على وشك تحديث 50 سجلاً". ثم تأكيد.',
+            visualDescriptionEN: 'Access menu showing query types. Choosing "Update Query". Design window, "Update To" row for "Price" field with "[Price]*1.1". Upon running, warning "You are about to update 50 rows". Then confirmation.',
+            duration: '10:00',
+            summary: [
+              'استعلامات الإجراء تغير البيانات فعلياً، استخدمها بحذر.',
+              'تحديث: لتعديل مجموعة سجلات دفعة واحدة (مثلاً رفع الأسعار 10%).',
+              'حذف: لحذف سجلات تنطبق عليها معايير.',
+              'إلحاق: لإضافة سجلات من جدول لآخر.',
+              'دائماً خذ نسخة احتياطية قبل تشغيلها.'
+            ],
+            summaryEN: [
+              'Action queries permanently change data; use with caution.',
+              'Update: Edit a batch of records at once (e.g., raise prices by 10%).',
+              'Delete: Remove records meeting criteria.',
+              'Append: Add records from one table to another.',
+              'Always make a backup before running them.'
+            ],
+            task: {
+              title: 'تنفيذ استعلام إجراء بحذر',
+              titleEN: 'Execute an Action Query carefully',
+              description: 'خذ نسخة من قاعدة بياناتك. أنشئ استعلام تحديث يضيف 1000 دج لراتب كل الموظفين الذين رواتبهم أقل من 25000 دج. نفذه ثم تحقق.',
+              descriptionEN: 'Make a backup. Create an update query adding 1000 DZD to all employees with a salary below 25000 DZD. Run and verify.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي النصيحة الأهم دائماً قبل عمل استعلام حذف أو تحديث؟',
+                questionEN: 'What is the most important advice before running a Delete or Update query?',
+                options: [
+                  { id: 'o1', text: 'أخذ نسخة احتياطية (Backup) قبل التنفيذ', textEN: 'Make a backup before executing', isCorrect: true },
+                  { id: 'o2', text: 'التحويل إلى اللغة الإنجليزية', textEN: 'Switching to English', isCorrect: false },
+                  { id: 'o3', text: 'تغيير ألوان الجدول', textEN: 'Changing table colors', isCorrect: false }
+                ],
+                explanation: 'لأن استعلام الإجراء يقوم بتعديلات أو حذوفات لا يمكن التراجع عنها بـ Ctrl+Z.',
+                explanationEN: 'Because an Action Query makes irreversible modifications or deletions (Ctrl+Z won\'t work).'
+              }
+            ],
+            xpReward: 30
+          }
+        ]
+      },
+      {
+        id: 'lvl_4',
+        title: 'المرحلة 4: النماذج، التقارير، والتطبيق المتكامل',
+        titleEN: 'Stage 4: Forms, Reports, and Integrated App',
+        description: 'صمم واجهات إدخال جذابة وتقارير متطورة وأتمت أعمالك لتبني برنامجك الخاص.',
+        descriptionEN: 'Design attractive input interfaces, sophisticated reports, and automate tasks to build your own app.',
+        lessons: [
+          {
+            id: 'les_4_1',
+            title: 'إنشاء نموذج إدخال بيانات بسيط',
+            titleEN: 'Creating a Simple Data Entry Form',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'مشهد متحرك: من تبويب "إنشاء" يختار "نموذج" (Form). يظهر نموذج تلقائي يعرض سجلات جدول الزبائن واحداً تلو الآخر. يد تنتقل بين السجلات بأزرار التنقل. ثم ينتقل إلى عرض التصميم ويُضبط حجم الحقول ومكانها.',
+            visualDescriptionEN: 'Animated scene: From "Create" tab selects "Form". An automatic form appears showing Customers table records one by one. Hand navigates records with buttons. Then moves to Design View, adjusting field sizes and placements.',
+            duration: '14:00',
+            summary: [
+              'النموذج واجهة سهلة لإدخال البيانات بدلاً من فتح الجدول مباشرة.',
+              'لإنشائه بسرعة: حدد الجدول > إنشاء > نموذج.',
+              'يمكن تخصيص التصميم: أضف شعاراً، غير ألوان الخلفية، رتب الحقول.',
+              'أضف أزراراً (زر حفظ، زر سجل جديد) من خلال عرض التصميم.',
+              'النموذج يقلل أخطاء الإدخال ويساعد المستخدمين غير التقنيين.'
+            ],
+            summaryEN: [
+              'A Form is a user-friendly interface for data entry instead of opening tables directly.',
+              'To build rapidly: Select table > Create > Form.',
+              'Customize design: add a logo, change backgrounds, rearrange fields.',
+              'Add buttons (Save, New Record) in Design View.',
+              'Forms reduce entry errors and help non-technical users.'
+            ],
+            task: {
+              title: 'تصميم أول نموذج لك',
+              titleEN: 'Design your first form',
+              description: 'أنشئ نموذجاً لجدول \'الطلبات\'. أضف عنواناً في الأعلى \'نموذج إدخال الطلبات\'. جرب إدخال طلب جديد باستخدامه.',
+              descriptionEN: 'Create a form for the \'Orders\' table. Add a title at the top \'Order Input Form\'. Try entering a new order using it.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هو الهدف الأساسي من النماذج (Forms) في Access؟',
+                questionEN: 'What is the main goal of Forms in Access?',
+                options: [
+                  { id: 'o1', text: 'بناء واجهات سهلة وآمنة للمستخدمين لإدخال وتعديل البيانات دون لمس الجداول الخام', textEN: 'Build easy and secure interfaces for users to enter and edit data without touching raw tables', isCorrect: true },
+                  { id: 'o2', text: 'طباعة البيانات للمدير', textEN: 'Print data for the manager', isCorrect: false },
+                  { id: 'o3', text: 'القيام بالعمليات الحسابية المعقدة', textEN: 'Perform complex calculations', isCorrect: false }
+                ],
+                explanation: 'النماذج هي الواجهة الأمامية التي تحمي تركيبة قاعدة البيانات وتجعل الاستخدام ممتعاً وسهلاً.',
+                explanationEN: 'Forms are the frontend protecting the database structure, making usage enjoyable and easy.'
+              }
+            ],
+            xpReward: 35
+          },
+          {
+            id: 'les_4_2',
+            title: 'إنشاء تقرير احترافي للطباعة',
+            titleEN: 'Creating a Professional Report for Printing',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1540340061722-f155c5dfc5b2?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'من تبويب "إنشاء" > "تقرير" (Report). يظهر تقرير ببيانات الزبائن في صفوف وأعمدة، مع ترويسة وتذييل تلقائيين. ثم عرض التصميم: تُضاف مسطرة، يُنسق الخط، يُضاف شعار في الترويسة.',
+            visualDescriptionEN: 'From "Create" tab > "Report". Report appears with customer data organized in columns and rows, with automatic headers and footers. Then Design View: ruler added, font formatted, logo added in header.',
+            duration: '11:00',
+            summary: [
+              'التقارير لعرض البيانات بصيغة قابلة للطباعة أو التصدير PDF.',
+              'أنشئها بسرعة من الجدول أو الاستعلام > إنشاء > تقرير.',
+              'في عرض التصميم، يمكنك تجميع البيانات (مثلاً: تقرير المبيعات مجمّع حسب المدينة).',
+              'أضف أرقام الصفحات، التاريخ، والشعار.',
+              'صدر التقرير إلى PDF لإرساله للزبون أو الإدارة.'
+            ],
+            summaryEN: [
+              'Reports display data in a printable format or can be exported to PDF.',
+              'Create quickly from table/query via: Create > Report.',
+              'In Design View, you can group data (e.g., sales report grouped by city).',
+              'Add page numbers, date, and a logo.',
+              'Export the report to PDF to send to the client or management.'
+            ],
+            task: {
+              title: 'تطوير تقرير للطباعة',
+              titleEN: 'Develop a printable report',
+              description: 'أنشئ تقريراً من استعلام مجموع الطلبات لكل زبون. جمّعه حسب المدينة. صدره إلى PDF.',
+              descriptionEN: 'Create a report from the total orders per customer query. Group by City. Export to PDF.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'إذا أردنا إعداد ورقة لطباعة فواتير آخر الشهر، فما هو الكائن المناسب لاستخدامه؟',
+                questionEN: 'If we want to prepare a page to print end-of-month invoices, which object is best to use?',
+                options: [
+                  { id: 'o1', text: 'الجدول (Table)', textEN: 'Table', isCorrect: false },
+                  { id: 'o2', text: 'التقرير (Report)', textEN: 'Report', isCorrect: true },
+                  { id: 'o3', text: 'النموذج (Form)', textEN: 'Form', isCorrect: false }
+                ],
+                explanation: 'التقرير متخصص في تشكيل البيانات بالشكل الأنسب للطباعة على الورق واستخراج العروض.',
+                explanationEN: 'Reports specialize in formatting data properly for paper printing and exporting presentations.'
+              }
+            ],
+            xpReward: 35
+          },
+          {
+            id: 'les_4_3',
+            title: 'أتمتة المهام باستخدام الماكرو (Macro)',
+            titleEN: 'Automating Tasks using Macros',
+            visualType: 'animation',
+            visualUrls: ['https://images.unsplash.com/photo-1610488251214-7227ab8bfeb9?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'نافذة تصميم الماكرو. إجراء "OpenForm" لفتح نموذج الزبائن، ثم إجراء "MessageBox" لعرض رسالة ترحيب. بعدها يسند الماكرو إلى زر في النموذج الرئيسي. عند النقر، يُفتح النموذج وتظهر الرسالة.',
+            visualDescriptionEN: 'Macro design window. "OpenForm" action targeting Customers form, then "MessageBox" action displaying a welcome message. Then the macro is bound to a button on the main form. On click, form opens and message shows.',
+            duration: '10:45',
+            summary: [
+              'الماكرو يسجل سلسلة أوامر وينفذها بنقرة واحدة.',
+              'استخدمه لأتمتة المهام المتكررة: فتح تقرير، تصدير بيانات، عرض رسالة.',
+              'يمكن ربط الماكرو بزر في نموذج.',
+              'لا يتطلب معرفة برمجية عميقة.',
+              'مثالي لبناء تطبيقات Access سهلة الاستعمال للموظفين.'
+            ],
+            summaryEN: [
+              'A Macro records a sequence of commands and executes them with a single click.',
+              'Use it to automate repetitive tasks: opening reports, exporting, displaying messages.',
+              'The macro can be bound to a button in a form.',
+              'It does not require deep programming knowledge.',
+              'Perfect for building user-friendly Access applications for employees.'
+            ],
+            task: {
+              title: 'تشغيل الماكرو الأول',
+              titleEN: 'Run your first macro',
+              description: 'أنشئ ماكرو بسيطاً يفتح تقرير \'مجموع الطلبات\' ويعرض رسالة \'تم فتح التقرير\'. اربطه بزر في نموذج رئيسي.',
+              descriptionEN: 'Create a simple macro that opens \'Total Orders\' report and shows message \'Report Opened\'. Bind it to a button on a main form.'
+            },
+            quiz: [
+              {
+                id: 'q1',
+                question: 'ما هي أهم فائدة لاستخدام وحدات الماكرو في تطبيقك؟',
+                questionEN: 'What is the main benefit of using Macros in your application?',
+                options: [
+                  { id: 'o1', text: 'إنها ترسم تقارير بيانية تلقائياً', textEN: 'They draw graphic reports automatically', isCorrect: false },
+                  { id: 'o2', text: 'أتمتة المهام المتكررة وتوفير الوقت بنقرات بسيطة، دون الحاجة لتعلم البرمجة المعقدة', textEN: 'Automating repetitive tasks and saving time with simple clicks, without learning complex coding', isCorrect: true },
+                  { id: 'o3', text: 'الماكرو يقوم بإصلاح أخطاء ويندوز', textEN: 'A macro fixes Windows errors', isCorrect: false }
+                ],
+                explanation: 'الماكرو هو ببساطة مجموعة تعليمات مجهزة مسبقاً لتكون سهلة التشغيل بضغطة زر.',
+                explanationEN: 'A macro is simply a pre-made set of instructions tailored for easy execution via button click.'
+              }
+            ],
+            xpReward: 35
+          },
+          {
+            id: 'les_4_4',
+            title: 'مشروع التخرج – نظام متكامل لمكتبة صغيرة',
+            titleEN: 'Capstone Project - Complete System for a Small Library',
+            visualType: 'illustration',
+            visualUrls: ['https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?auto=format&fit=crop&w=1200&q=80'],
+            visualDescription: 'رسم توضيحي كبير يظهر قاعدة بيانات Access مكتملة بنماذج أنيقة وتقارير. شعار مكتبة وهمية "مكتبة النور". جداول: كتب، أعضاء، إعارات. نموذج إعارة بسيط. تقرير بالكتب المعارة حالياً.',
+            visualDescriptionEN: 'Large illustration showcasing a complete Access database with elegant forms and reports. Fictional "Al-Noor Library" logo. Tables: Books, Members, Loans. Simple loan form. Report of currently loaned books.',
+            duration: '35:00',
+            summary: [
+              'دمج كل المهارات المكتسبة لبناء نظام فعال.',
+              'بناء الجداول الأساسية: الكتب، الأعضاء، الإعارات.',
+              'تأمين العلاقات والتكامل المرجعي.',
+              'تصميم النماذج وتسهيل البحث بالإستعلامات.',
+              'تنسيق التقارير النهائية للمدير.'
+            ],
+            summaryEN: [
+              'Integrate all acquired skills to build an effective system.',
+              'Build essential tables: Books, Members, Loans.',
+              'Secure relationships and referential integrity.',
+              'Design forms and simplify search with queries.',
+              'Format final reports for the manager.'
+            ],
+            task: {
+              title: 'تطوير تطبيق مكتبة النور',
+              titleEN: 'Develop Al-Noor Library App',
+              description: 'صمم قاعدة بيانات: 1- جداول (كتب، أعضاء، إعارات)، 2- نماذج بمفاتيح منسدلة، 3- تقرير للكتب غير المرجعة مع ماكرو يفتحه.',
+              descriptionEN: 'Design a DB: 1- Tables (Books, Members, Loans), 2- Forms with dropdowns, 3- Unreturned books report with an opening macro.'
+            },
+            xpReward: 150
+          }
+        ]
+      }
+    ],
+    badges: {
+      started: {
+        id: 'acc_starter',
+        title: 'مخطط البيانات المبتدئ',
+        titleEN: 'Beginner Data Planner',
+        description: 'بدأت رحلتك في تنظيم البيانات مع Access.',
+        descriptionEN: 'Started your journey in organizing data with Access.',
+        icon: 'database'
+      },
+      completed: {
+        id: 'acc_pro',
+        title: 'محترف Microsoft Access',
+        titleEN: 'Microsoft Access Professional',
+        description: 'أتممت جميع المراحل وأصبحت قادراً على بناء أنظمة قواعد البيانت.',
+        descriptionEN: 'Completed all stages and are now capable of building database systems.',
+        icon: 'database'
+      }
+    }
   }
 };
 

@@ -54,11 +54,11 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="order-1 lg:order-2 relative"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl relative z-10 border-4 border-[var(--color-card)]">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl relative z-10 border-4 border-[var(--color-card)] flex items-center justify-center bg-white">
                 <img 
-                  src="https://images.unsplash.com/photo-1621643912166-ef1bf8efcc57?auto=format&fit=crop&w=1200&q=80" 
-                  alt="حرفي جزائري يعمل بشغف" 
-                  className="w-full h-full object-cover"
+                  src="/logo.png" 
+                  alt="شعار حرفتي" 
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className={`absolute -bottom-8 ${isRTL ? '-right-8' : '-left-8'} w-48 h-48 bg-[var(--color-accent)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 z-0`}></div>
